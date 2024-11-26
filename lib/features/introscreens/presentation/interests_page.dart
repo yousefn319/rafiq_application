@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq_application/features/introscreens/presentation/get_started.dart';
 import 'package:rafiq_application/widgets/interest.dart';
 
 int clicked = 1;
@@ -17,7 +18,7 @@ class _InterestsPageState extends State<InterestsPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Determine interests',
           style: TextStyle(fontWeight: FontWeight.w600),
         ),
@@ -27,7 +28,7 @@ class _InterestsPageState extends State<InterestsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
@@ -53,7 +54,7 @@ class _InterestsPageState extends State<InterestsPage> {
             SizedBox(
               height: 400,
               child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                       childAspectRatio: 5,
                       mainAxisSpacing: 20),
@@ -105,13 +106,22 @@ class _InterestsPageState extends State<InterestsPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: const Color(0xff071952)),
-                child: const Center(
-                  child: Text(
-                    'Sign up',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return GetStarted();
+                      },
+                    ));
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Sign up',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ),
               ),

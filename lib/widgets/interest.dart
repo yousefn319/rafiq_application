@@ -18,10 +18,10 @@ class _InterestState extends State<Interest> {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         height: 31,
         decoration: BoxDecoration(
-          color: Color(0xffC1C1C1),
+          color: const Color(0xffC1C1C1),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Center(

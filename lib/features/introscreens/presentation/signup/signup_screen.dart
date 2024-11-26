@@ -8,6 +8,6 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
-    return Scaffold();
+    return const Scaffold();
   }
 }
