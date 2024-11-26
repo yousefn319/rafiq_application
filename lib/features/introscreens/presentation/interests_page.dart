@@ -34,6 +34,7 @@ class _InterestsPageState extends State<InterestsPage> {
                       crossAxisCount: 4,
                       childAspectRatio: 5,
                       mainAxisSpacing: 20),
+                  itemCount: 26,
                   itemBuilder: (context, index) {
                     return SizedBox(
                         height: 30,
