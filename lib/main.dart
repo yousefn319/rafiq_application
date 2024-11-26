@@ -6,6 +6,8 @@ void main() {
 }
 
 class RafiqApp extends StatelessWidget {
+  static double ui_width = 375;
+  static double ui_height = 943;
   const RafiqApp({super.key});
   @override
   Widget build(BuildContext context) {
