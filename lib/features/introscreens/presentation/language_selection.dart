@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq_application/features/introscreens/presentation/interests_page.dart';
 
 class LanguageSelection extends StatelessWidget {
   const LanguageSelection({
@@ -38,12 +39,18 @@ class LanguageSelection extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            LanguageSelectionScreen(),
+            const LanguageSelectionScreen(),
             const SizedBox(
               height: 10,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const InterestsPage();
+                  },
+                ));
+              },
               child: Container(
                 height: 44,
                 width: 360,
@@ -101,7 +108,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                   _selectedLanguage = value;
                 });
               },
-              activeColor: Color(0xff071952),
+              activeColor: const Color(0xff071952),
             ),
             Text(
               language,

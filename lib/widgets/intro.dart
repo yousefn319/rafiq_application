@@ -4,13 +4,13 @@ import 'package:flutter_svg/svg.dart';
 class Intro extends StatelessWidget {
   Intro(
       {super.key,
-      required this.image,
+      this.image,
       required this.title,
       required this.subTitle,
       required this.onTap});
   String title;
   String subTitle;
-  String image;
+  String? image;
   VoidCallback onTap;
 
   @override
@@ -23,7 +23,7 @@ class Intro extends StatelessWidget {
         ),
         Center(
           child: SvgPicture.asset(
-            image,
+            image ?? "images/intros/white.svg",
             height: 343,
             width: 343,
           ),
