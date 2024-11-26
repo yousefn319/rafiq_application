@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/features/introscreens/presentation/forth_intro.dart';
+import 'package:rafiq_application/features/introscreens/presentation/language_selection.dart';
 import 'package:rafiq_application/widgets/intro.dart';
 
 class ThirdIntro extends StatelessWidget {
