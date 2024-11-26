@@ -9,7 +9,7 @@ class GetStarted extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Get started',
           style: TextStyle(fontWeight: FontWeight.w600),
         ),
@@ -24,12 +24,12 @@ class GetStarted extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset('images/intros/5.svg'),
-                  SizedBox(
+                  const SizedBox(
                     height: 60,
                   ),
-                  Text(
+                  const Text(
                     'Let’s Start',
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
@@ -37,10 +37,10 @@ class GetStarted extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Fill your information below to create it',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -53,7 +53,7 @@ class GetStarted extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Color(0xff071952),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(16),

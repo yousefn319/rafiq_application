@@ -110,7 +110,7 @@ class _InterestsPageState extends State<InterestsPage> {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return GetStarted();
+                        return const GetStarted();
                       },
                     ));
                   },
