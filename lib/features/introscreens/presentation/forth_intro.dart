@@ -69,6 +69,8 @@ class ForthIntro extends StatelessWidget {
 }
 
 class LanguageSelectionScreen extends StatefulWidget {
+  const LanguageSelectionScreen({super.key});
+
   @override
   _LanguageSelectionScreenState createState() =>
       _LanguageSelectionScreenState();
@@ -99,11 +101,11 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                   _selectedLanguage = value;
                 });
               },
-              activeColor: Colors.blue,
+              activeColor: Color(0xff071952),
             ),
             Text(
               language,
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
             ),
           ],
         );
