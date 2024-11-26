@@ -19,7 +19,7 @@ class ThirdIntro extends StatelessWidget {
           onTap: () {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return const ForthIntro();
+                return const LanguageSelection();
               },
             ));
           },
