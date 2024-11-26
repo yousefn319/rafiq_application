@@ -17,13 +17,36 @@ class _InterestsPageState extends State<InterestsPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Determine interests'),
+        title: Text(
+          'Determine interests',
+          style: TextStyle(fontWeight: FontWeight.w600),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 26),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: SvgPicture.asset(
+                    'images/intros/tick_square.svg',
+                    height: 24,
+                    width: 24,
+                  ),
+                ),
+                const Text(
+                  'Let’s find out your tastes',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                )
+              ],
+            ),
             const SizedBox(
               height: 50,
             ),
@@ -70,16 +93,7 @@ class _InterestsPageState extends State<InterestsPage> {
             //     Interest(interest: 'interest'),
             //   ],
             // ),
-            const SizedBox(
-              height: 25,
-            ),
-            const Text(
-              'Sign up',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700),
-            ),
+
             const SizedBox(
               height: 10,
             ),
@@ -93,7 +107,7 @@ class _InterestsPageState extends State<InterestsPage> {
                     color: const Color(0xff071952)),
                 child: const Center(
                   child: Text(
-                    'select language',
+                    'Sign up',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
