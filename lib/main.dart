@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/features/introscreens/presentation/first_intro.dart';
+import 'package:rafiq_application/features/introscreens/presentation/home_screen.dart';
+import 'package:rafiq_application/features/introscreens/presentation/signup/signup_screen.dart';
 
 void main() {
   runApp(const RafiqApp());
@@ -11,9 +13,11 @@ class RafiqApp extends StatelessWidget {
   const RafiqApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FirstIntro(),
+      home: SignUpScreen(
+        type: 'Student',
+      ),
     );
   }
 }
