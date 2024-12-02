@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -148,7 +149,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: agreeToTerms ? () {} : null,
+              onPressed: agreeToTerms
+                  ? () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return OtpVerification(
+                            title: "Verify OTP",
+                          );
+                        },
+                      ));
+                    }
+                  : null,
               child: Center(child: Text('Sign up')),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),

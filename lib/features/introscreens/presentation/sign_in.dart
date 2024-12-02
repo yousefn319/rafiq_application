@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/features/introscreens/presentation/Sign_up.dart';
+import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
 import 'package:rafiq_application/widgets/button.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
 
@@ -95,7 +96,13 @@ class LoginForm extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return OtpVerification(title: "a7a");
+                      },
+                    ));
+                  },
                   child: const Text('Forgot Password ? ',
                       style: TextStyle(
                           color: Color(0xff999999),

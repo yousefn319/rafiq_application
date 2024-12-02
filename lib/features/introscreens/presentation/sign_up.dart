@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
+import 'package:rafiq_application/features/introscreens/presentation/signup/signup_screen.dart';
 import 'package:rafiq_application/widgets/button.dart';
 
 class SignUp extends StatelessWidget {
@@ -28,12 +29,28 @@ class SignUp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Button(
-                    onClick: () {},
+                    onClick: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return SignUpScreen(
+                            type: 'Student',
+                          );
+                        },
+                      ));
+                    },
                     text: 'As Student',
                     width: 180,
                   ),
                   Button(
-                    onClick: () {},
+                    onClick: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return SignUpScreen(
+                            type: 'Instructor',
+                          );
+                        },
+                      ));
+                    },
                     text: 'As Instructor',
                     width: 180,
                   )
