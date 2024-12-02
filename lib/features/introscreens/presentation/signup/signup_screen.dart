@@ -73,28 +73,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
               },
             ),
             SizedBox(height: 16),
-            DropdownButtonFormField(
-              decoration: InputDecoration(
-                labelText: 'Gender',
-                border: OutlineInputBorder(),
-              ),
-              items: ['Male', 'Female', 'Other']
-                  .map((gender) => DropdownMenuItem(
-                        value: gender,
-                        child: Text(gender),
-                      ))
-                  .toList(),
-              onChanged: (value) {},
-            ),
+            widget.type == 'Instructor'
+                ? DropdownButtonFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Gender',
+                      border: OutlineInputBorder(),
+                    ),
+                    items: ['Male', 'Female', 'Other']
+                        .map((gender) => DropdownMenuItem(
+                              value: gender,
+                              child: Text(gender),
+                            ))
+                        .toList(),
+                    onChanged: (value) {},
+                  )
+                : SizedBox(),
             SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'CV',
-                hintText: 'Attach your file here',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.attach_file),
-              ),
-            ),
+            widget.type == 'Instructor'
+                ? TextField(
+                    decoration: InputDecoration(
+                      labelText: 'CV',
+                      hintText: 'Attach your file here',
+                      border: OutlineInputBorder(),
+                      suffixIcon: Icon(Icons.attach_file),
+                    ),
+                  )
+                : SizedBox(),
             SizedBox(height: 16),
             TextField(
               obscureText: true,
