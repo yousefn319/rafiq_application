@@ -15,7 +15,9 @@ class RafiqApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: SignUpScreen(
+        type: 'Student',
+      ),
     );
   }
 }

@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
+  final String type;
+
+  const SignUpScreen({super.key, required this.type});
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  String userType = 'Student';
   bool agreeToTerms = false;
 
   @override
@@ -21,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           },
         ),
         backgroundColor: Colors.white,
-        title: Text('Sign up'),
+        title: Text("${widget.type}"),
         centerTitle: true,
         elevation: 0,
       ),
@@ -30,54 +32,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        userType = 'Student';
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(8), // Add rounded corners
-                      ),
-                      backgroundColor: userType == 'Student'
-                          ? Colors.indigo
-                          : const Color.fromARGB(255, 255, 255, 255),
-                      foregroundColor:
-                          userType == 'Student' ? Colors.white : Colors.black,
-                    ),
-                    child: Text('As Student'),
-                  ),
-                ),
-                SizedBox(width: 8),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        userType = 'Instructor';
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(8), // Add rounded corners
-                      ),
-                      backgroundColor: userType == 'Instructor'
-                          ? Colors.indigo
-                          : const Color.fromARGB(255, 255, 255, 255),
-                      foregroundColor: userType == 'Instructor'
-                          ? Colors.white
-                          : Colors.black,
-                    ),
-                    child: Text('As Instructor'),
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
