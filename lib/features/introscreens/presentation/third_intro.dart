@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq_application/features/introscreens/presentation/get_started.dart';
 import 'package:rafiq_application/features/introscreens/presentation/language_selection.dart';
 import 'package:rafiq_application/widgets/intro.dart';
 
@@ -12,6 +13,7 @@ class ThirdIntro extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(),
         body: Intro(
+          text: 'Get Started',
           image: 'images/intros/3.svg',
           title: 'Learn easily and anytime!',
           subTitle:
@@ -19,7 +21,7 @@ class ThirdIntro extends StatelessWidget {
           onTap: () {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return const LanguageSelection();
+                return const GetStarted();
               },
             ));
           },

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rafiq_application/widgets/button.dart';
 
 class Intro extends StatelessWidget {
   Intro(
       {super.key,
       this.image,
+      this.text = 'Next',
       required this.title,
       required this.subTitle,
       required this.onTap});
@@ -12,6 +14,7 @@ class Intro extends StatelessWidget {
   String subTitle;
   String? image;
   VoidCallback onTap;
+  String text;
 
   @override
   Widget build(BuildContext context) {
@@ -51,25 +54,7 @@ class Intro extends StatelessWidget {
         const SizedBox(
           height: 80,
         ),
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            height: 44,
-            width: 360,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: const Color(0xff071952)),
-            child: const Center(
-              child: Text(
-                'Next',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-          ),
-        )
+        Button(onClick: onTap, text: text)
       ],
     );
   }
