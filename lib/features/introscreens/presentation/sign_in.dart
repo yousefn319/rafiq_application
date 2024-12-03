@@ -31,15 +31,15 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 88,
           ),
-          Center(
-            child: const Text(
+          const Center(
+            child: Text(
               'Sign In',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
             ),
@@ -55,7 +55,7 @@ class LoginForm extends StatelessWidget {
             height: 20,
           ),
           const SizedBox(
-            width: 380,
+            width: double.infinity,
             height: 30,
             child: Row(
               children: [
@@ -66,15 +66,14 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           TypingField(
-              controller: emailController,
+              // controller: emailController,
               type: TextInputType.emailAddress,
-              icon: const Icon(Icons.email_outlined),
               label: 'Email'),
           const SizedBox(
-            height: 10,
+            height: 16,
           ),
           const SizedBox(
-            width: 380,
+            width: double.infinity,
             height: 30,
             child: Row(
               children: [
@@ -85,12 +84,14 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           TypingField(
-              controller: passwordController,
-              type: TextInputType.visiblePassword,
-              icon: const Icon(Icons.lock_outline_rounded),
-              label: 'Password'),
+            // controller: passwordController,
+            type: TextInputType.visiblePassword,
+            icon: const Icon(Icons.visibility),
+            label: 'Password',
+            secure: true,
+          ),
           SizedBox(
-            width: 380,
+            width: double.infinity,
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -99,7 +100,7 @@ class LoginForm extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return OtpVerification(title: "a7a");
+                        return const OtpVerification(title: "a7a");
                       },
                     ));
                   },
@@ -112,7 +113,7 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 22,
           ),
           Button(
               onClick: () {

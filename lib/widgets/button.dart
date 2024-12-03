@@ -13,7 +13,7 @@ class Button extends StatefulWidget {
     super.key,
     required this.onClick,
     this.height = 52,
-    this.width = 380,
+    this.width = double.infinity,
     required this.text,
     this.color = const Color(0xff071952),
     this.textColor = Colors.white,

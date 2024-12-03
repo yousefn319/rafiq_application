@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
+import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
+import 'package:rafiq_application/widgets/typing_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -18,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -29,43 +31,88 @@ class _SignUpScreenState extends State<SignUpScreen> {
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Name',
-                hintText: 'Mohammed Aref',
-                border: OutlineInputBorder(),
+            const SizedBox(height: 16),
+            const SizedBox(
+                width: double.infinity,
+                height: 32,
+                child: Row(children: [
+                  Text('Name',
+                      style: TextStyle(
+                          color: Color(0xff071952),
+                          fontWeight: FontWeight.w600))
+                ])),
+            TypingField(
+              type: TextInputType.name,
+              label: 'Name',
+            ),
+            const SizedBox(height: 16),
+            const SizedBox(
+                width: double.infinity,
+                height: 32,
+                child: Row(children: [
+                  Text('Email',
+                      style: TextStyle(
+                          color: Color(0xff071952),
+                          fontWeight: FontWeight.w600))
+                ])),
+            TypingField(
+              type: TextInputType.emailAddress,
+              label: 'Email',
+            ),
+            const SizedBox(height: 16),
+            const SizedBox(
+                width: double.infinity,
+                height: 32,
+                child: Row(children: [
+                  Text('Phone',
+                      style: TextStyle(
+                          color: Color(0xff071952),
+                          fontWeight: FontWeight.w600))
+                ])),
+            TypingField(
+              type: TextInputType.phone,
+              label: 'Phone',
+              prefixNum: const Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Text('EG'),
               ),
             ),
-            SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email',
-                hintText: '3aref@gmail.com',
-                border: OutlineInputBorder(),
+            const SizedBox(height: 16),
+            const SizedBox(
+              width: double.infinity,
+              height: 32,
+              child: Row(
+                children: [
+                  Text('Date',
+                      style: TextStyle(
+                          color: Color(0xff071952),
+                          fontWeight: FontWeight.w600))
+                ],
               ),
             ),
-            SizedBox(height: 16),
             TextField(
-              decoration: InputDecoration(
-                labelText: 'Phone',
-                prefix: Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: Text('US'),
-                ),
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.phone,
-            ),
-            SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
+              cursorColor: Color(0xff088395),
+              decoration: const InputDecoration(
                 labelText: 'Date of Birth',
-                border: OutlineInputBorder(),
+                floatingLabelBehavior: FloatingLabelBehavior.never,
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(8))),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  borderSide: BorderSide(
+                    color: Color(0xff071952),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    gapPadding: BorderSide.strokeAlignCenter,
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    borderSide: BorderSide(
+                      color: Color(0xff088395),
+                    )),
                 suffixIcon: Icon(Icons.calendar_today),
               ),
               readOnly: true,
@@ -73,12 +120,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 // Show date picker
               },
             ),
-            SizedBox(height: 16),
+            widget.type == 'Instructor'
+                ? const SizedBox(height: 16)
+                : SizedBox(),
+            widget.type == 'Instructor'
+                ? const SizedBox(
+                    width: double.infinity,
+                    height: 32,
+                    child: Row(
+                      children: [
+                        Text('Gender',
+                            style: TextStyle(
+                                color: Color(0xff071952),
+                                fontWeight: FontWeight.w600))
+                      ],
+                    ),
+                  )
+                : const SizedBox(),
             widget.type == 'Instructor'
                 ? DropdownButtonFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Gender',
-                      border: OutlineInputBorder(),
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8))),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          color: Color(0xff071952),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          gapPadding: BorderSide.strokeAlignCenter,
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide: BorderSide(
+                            color: Color(0xff088395),
+                          )),
                     ),
                     items: ['Male', 'Female', 'Other']
                         .map((gender) => DropdownMenuItem(
@@ -88,40 +165,92 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         .toList(),
                     onChanged: (value) {},
                   )
-                : SizedBox(),
-            SizedBox(height: 16),
+                : const SizedBox(),
             widget.type == 'Instructor'
-                ? TextField(
+                ? const SizedBox(height: 16)
+                : SizedBox(),
+            widget.type == 'Instructor'
+                ? const SizedBox(
+                    width: double.infinity,
+                    height: 32,
+                    child: Row(
+                      children: [
+                        Text('CV',
+                            style: TextStyle(
+                                color: Color(0xff071952),
+                                fontWeight: FontWeight.w600))
+                      ],
+                    ),
+                  )
+                : const SizedBox(),
+            widget.type == 'Instructor'
+                ? const TextField(
+                    cursorColor: Color(0xff088395),
                     decoration: InputDecoration(
                       labelText: 'CV',
                       hintText: 'Attach your file here',
-                      border: OutlineInputBorder(),
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(8))),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(
+                          color: Color(0xff071952),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          gapPadding: BorderSide.strokeAlignCenter,
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          borderSide: BorderSide(
+                            color: Color(0xff088395),
+                          )),
                       suffixIcon: Icon(Icons.attach_file),
                     ),
                   )
-                : SizedBox(),
-            SizedBox(height: 16),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.visibility),
+                : const SizedBox(),
+            const SizedBox(height: 16),
+            const SizedBox(
+              width: double.infinity,
+              height: 32,
+              child: Row(
+                children: [
+                  Text('Password',
+                      style: TextStyle(
+                          color: Color(0xff071952),
+                          fontWeight: FontWeight.w600))
+                ],
               ),
             ),
-            SizedBox(height: 16),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Confirm Password',
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.visibility),
+            TypingField(
+              type: TextInputType.visiblePassword,
+              label: 'Password',
+              secure: true,
+              icon: const Icon(Icons.visibility),
+            ),
+            const SizedBox(height: 16),
+            const SizedBox(
+              width: double.infinity,
+              height: 32,
+              child: Row(
+                children: [
+                  Text('Confirm Password',
+                      style: TextStyle(
+                          color: Color(0xff071952),
+                          fontWeight: FontWeight.w600))
+                ],
               ),
             ),
-            SizedBox(height: 16),
+            TypingField(
+              type: TextInputType.visiblePassword,
+              label: 'Confirm Password',
+              secure: true,
+              icon: const Icon(Icons.visibility),
+            ),
+            const SizedBox(height: 16),
             Row(
               children: [
                 Checkbox(
+                  activeColor: Color(0xff071952),
                   value: agreeToTerms,
                   onChanged: (value) {
                     setState(() {
@@ -129,7 +258,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     });
                   },
                 ),
-                Expanded(
+                const Expanded(
                   child: Text.rich(
                     TextSpan(
                       text: 'Agree with ',
@@ -137,7 +266,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextSpan(
                           text: 'terms & Conditions',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: Color(0xff088395),
                             decoration: TextDecoration.underline,
                           ),
                         ),
@@ -147,30 +276,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: agreeToTerms
                   ? () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return OtpVerification(
+                          return const OtpVerification(
                             title: "Verify OTP",
                           );
                         },
                       ));
                     }
                   : null,
-              child: Center(child: Text('Sign up')),
+              child: const Center(child: Text('Sign up')),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-              ),
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  backgroundColor: Color(0xff071952)),
             ),
-            SizedBox(height: 16),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
+            const SizedBox(height: 16),
             Center(
               child: TextButton(
-                onPressed: () {},
-                child: Text('Already have an account? Sign in'),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignIn()));
+                },
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have an account? ',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    Text(
+                      'Sign in',
+                      style: TextStyle(color: Color(0xff088395)),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

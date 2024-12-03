@@ -7,11 +7,11 @@ class OTPInput extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildOTPField(context),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         _buildOTPField(context),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         _buildOTPField(context),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         _buildOTPField(context),
       ],
     );
@@ -22,6 +22,7 @@ class OTPInput extends StatelessWidget {
       width: 77, // Width of each square
       height: 77, // Height of each square
       child: TextFormField(
+        cursorColor: Color(0xff088395),
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         maxLength: 1, // Only one digit per field
@@ -32,10 +33,10 @@ class OTPInput extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: Colors.blue, width: 2.0),
+            borderSide: const BorderSide(color: Color(0xff088395), width: 2.0),
           ),
         ),
-        style: TextStyle(fontSize: 24), // Adjust font size as needed
+        style: const TextStyle(fontSize: 24), // Adjust font size as needed
         onChanged: (value) {
           if (value.length == 1) {
             // Automatically move to the next field

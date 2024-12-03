@@ -20,7 +20,7 @@ class FirstIntro extends StatelessWidget {
               context,
               PageRouteBuilder(
                 pageBuilder: (context, animation, secondaryAnimation) =>
-                    SecondIntro(),
+                    const SecondIntro(),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
                   // Horizontal Slide transition (slide beside each other)

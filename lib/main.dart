@@ -15,7 +15,7 @@ class RafiqApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: FirstIntro(),
+        home: const FirstIntro(),
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: const AppBarTheme(

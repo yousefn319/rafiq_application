@@ -72,6 +72,7 @@ flutter:
     - images/logins/forgot_pass.svg
     - images/logins/otp_security.svg
     - images/logins/palm_recognition.svg
+    - images/logins/reset_password.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
+import 'package:rafiq_application/features/introscreens/presentation/sign_up.dart';
 import 'package:rafiq_application/widgets/button.dart';
 
 class GetStarted extends StatelessWidget {
@@ -62,58 +63,66 @@ class GetStarted extends StatelessWidget {
                         topRight: Radius.circular(16))),
                 width: double.infinity,
                 height: 300,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 44,
-                    ),
-                    Button(
-                      onClick: () {},
-                      text: 'Sign up',
-                      color: Colors.white,
-                      textColor: Color(0xff071952),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Button(
-                      borderColor: Colors.white,
-                      onClick: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignIn(),
-                            ));
-                      },
-                      text: 'Sign in',
-                    )
-                    // GestureDetector(
-                    //   onTap: () {
-                    //     Navigator.push(context, MaterialPageRoute(
-                    //       builder: (context) {
-                    //         return SignIn();
-                    //       },
-                    //     ));
-                    //   },
-                    //   child: Container(
-                    //     height: 44,
-                    //     width: 360,
-                    //     decoration: BoxDecoration(
-                    //         border: Border.all(color: Colors.white),
-                    //         borderRadius: BorderRadius.circular(8),
-                    //         color: const Color(0xff071952)),
-                    //     child: const Center(
-                    //       child: Text(
-                    //         'Sign in',
-                    //         style: TextStyle(
-                    //             color: Colors.white,
-                    //             fontSize: 16,
-                    //             fontWeight: FontWeight.w700),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 44,
+                      ),
+                      Button(
+                        onClick: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUp()));
+                        },
+                        text: 'Sign up',
+                        color: Colors.white,
+                        textColor: Color(0xff071952),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Button(
+                        borderColor: Colors.white,
+                        onClick: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignIn(),
+                              ));
+                        },
+                        text: 'Sign in',
+                      )
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     Navigator.push(context, MaterialPageRoute(
+                      //       builder: (context) {
+                      //         return SignIn();
+                      //       },
+                      //     ));
+                      //   },
+                      //   child: Container(
+                      //     height: 44,
+                      //     width: 360,
+                      //     decoration: BoxDecoration(
+                      //         border: Border.all(color: Colors.white),
+                      //         borderRadius: BorderRadius.circular(8),
+                      //         color: const Color(0xff071952)),
+                      //     child: const Center(
+                      //       child: Text(
+                      //         'Sign in',
+                      //         style: TextStyle(
+                      //             color: Colors.white,
+                      //             fontSize: 16,
+                      //             fontWeight: FontWeight.w700),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // )
+                    ],
+                  ),
                 )),
           ),
         ],
