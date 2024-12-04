@@ -19,7 +19,7 @@ class SignUp extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 350,
           ),
           Center(
@@ -32,7 +32,7 @@ class SignUp extends StatelessWidget {
                     onClick: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return SignUpScreen(
+                          return const SignUpScreen(
                             type: 'Student',
                           );
                         },
@@ -45,7 +45,7 @@ class SignUp extends StatelessWidget {
                     onClick: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return SignUpScreen(
+                          return const SignUpScreen(
                             type: 'Instructor',
                           );
                         },

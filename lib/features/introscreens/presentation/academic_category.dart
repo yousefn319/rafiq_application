@@ -19,7 +19,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Row(
@@ -52,7 +52,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                           prefixIcon: Icon(Icons.search)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Container(
@@ -127,7 +127,8 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         selectedButton = 2; // Select the second button
                       });
                     },
-                    child: Text('Non-Academic', style: TextStyle(fontSize: 18)),
+                    child: const Text('Non-Academic',
+                        style: TextStyle(fontSize: 18)),
                   ),
                 ],
               ),
@@ -146,10 +147,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -158,7 +160,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Kids Courses',
                               style: TextStyle(
                                   fontSize: 18,
@@ -176,10 +178,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -188,7 +191,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Primary education',
                               style: TextStyle(
                                   fontSize: 18,
@@ -207,10 +210,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -219,7 +223,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Preparatory education',
                               style: TextStyle(
                                   fontSize: 18,
@@ -237,10 +241,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -249,7 +254,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Secondary education',
                               style: TextStyle(
                                   fontSize: 18,
@@ -268,11 +273,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                           height: 188,
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Color(0xff999999),
+                                  color: const Color(0xff999999),
                                   strokeAlign: BorderSide.strokeAlignCenter),
                               color: Colors.white,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(8))),
+                                  const BorderRadius.all(Radius.circular(8))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -281,7 +286,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                                 height: 120,
                                 width: 170,
                               ),
-                              Text(
+                              const Text(
                                 'University education',
                                 style: TextStyle(
                                     fontSize: 18,
@@ -312,10 +317,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -324,7 +330,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               '3D Design',
                               style: TextStyle(
                                   fontSize: 18,
@@ -342,10 +348,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -354,7 +361,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Graphic Design',
                               style: TextStyle(
                                   fontSize: 18,
@@ -373,10 +380,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -385,7 +393,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Web Development',
                               style: TextStyle(
                                   fontSize: 18,
@@ -403,10 +411,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -415,7 +424,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Cybersecurity',
                               style: TextStyle(
                                   fontSize: 18,
@@ -433,10 +442,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -445,7 +455,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Network Security',
                               style: TextStyle(
                                   fontSize: 18,
@@ -463,10 +473,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -475,7 +486,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'UI/UX',
                               style: TextStyle(
                                   fontSize: 18,
@@ -493,10 +504,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -505,7 +517,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'AI',
                               style: TextStyle(
                                   fontSize: 18,
@@ -523,10 +535,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                         height: 188,
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color: Color(0xff999999),
+                                color: const Color(0xff999999),
                                 strokeAlign: BorderSide.strokeAlignCenter),
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -535,7 +548,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               height: 120,
                               width: 170,
                             ),
-                            Text(
+                            const Text(
                               'Flutter',
                               style: TextStyle(
                                   fontSize: 18,

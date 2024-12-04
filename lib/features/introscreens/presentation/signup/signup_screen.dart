@@ -95,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
             TextField(
-              cursorColor: Color(0xff088395),
+              cursorColor: const Color(0xff088395),
               decoration: const InputDecoration(
                 labelText: 'Date of Birth',
                 floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -122,7 +122,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             widget.type == 'Instructor'
                 ? const SizedBox(height: 16)
-                : SizedBox(),
+                : const SizedBox(),
             widget.type == 'Instructor'
                 ? const SizedBox(
                     width: double.infinity,
@@ -168,7 +168,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 : const SizedBox(),
             widget.type == 'Instructor'
                 ? const SizedBox(height: 16)
-                : SizedBox(),
+                : const SizedBox(),
             widget.type == 'Instructor'
                 ? const SizedBox(
                     width: double.infinity,
@@ -250,7 +250,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Row(
               children: [
                 Checkbox(
-                  activeColor: Color(0xff071952),
+                  activeColor: const Color(0xff071952),
                   value: agreeToTerms,
                   onChanged: (value) {
                     setState(() {
@@ -295,7 +295,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8)),
-                  backgroundColor: Color(0xff071952)),
+                  backgroundColor: const Color(0xff071952)),
             ),
             const SizedBox(height: 16),
             const SizedBox(height: 16),
@@ -303,7 +303,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignIn()));
+                      MaterialPageRoute(builder: (context) => const SignIn()));
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
