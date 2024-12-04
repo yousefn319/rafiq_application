@@ -56,6 +56,7 @@ class ResetPassword extends StatelessWidget {
                       )),
                   suffixIcon: Icon(Icons.visibility),
                 ),
+                keyboardType: TextInputType.visiblePassword,
               ),
               const SizedBox(height: 16),
               const SizedBox(

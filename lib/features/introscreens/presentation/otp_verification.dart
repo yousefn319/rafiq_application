@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq_application/features/introscreens/presentation/academic_category.dart';
 import 'package:rafiq_application/features/introscreens/presentation/reset_password.dart';
 import 'package:rafiq_application/widgets/OTPfields.dart';
 import 'package:rafiq_application/widgets/button.dart';

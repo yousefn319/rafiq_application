@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/features/introscreens/presentation/Sign_up.dart';
+import 'package:rafiq_application/features/introscreens/presentation/academic_category.dart';
 import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
 import 'package:rafiq_application/widgets/button.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
@@ -117,6 +118,11 @@ class LoginForm extends StatelessWidget {
           ),
           Button(
               onClick: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AcademicCategory(),
+                    ));
                 print('Email: ${emailController.text}');
                 print('Password: ${passwordController.text}');
               },

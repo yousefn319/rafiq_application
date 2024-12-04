@@ -73,6 +73,19 @@ flutter:
     - images/logins/otp_security.svg
     - images/logins/palm_recognition.svg
     - images/logins/reset_password.svg
+    - images/courses/kids.png
+    - images/courses/prep.png
+    - images/courses/primary.png
+    - images/courses/secondary.png
+    - images/courses/university.png
+    - images/courses/ai.png
+    - images/courses/cyber.png
+    - images/courses/flutter.png
+    - images/courses/graphic.png
+    - images/courses/design.png
+    - images/courses/web.png
+    - images/courses/ui.png
+    - images/courses/network.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
