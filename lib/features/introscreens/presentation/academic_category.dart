@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
 
 class AcademicCategory extends StatefulWidget {
   @override
@@ -304,266 +305,56 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                   ],
                 ),
               if (selectedButton == 2)
-                Wrap(
-                  spacing: 12.0, // Space between widgets horizontally
-                  runSpacing: 12.0, // Space between lines vertically
-                  alignment: WrapAlignment.spaceBetween,
-                  children: [
-                    // First Row (2 widgets side by side)
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/design.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              '3D Design',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
+                SizedBox(
+                  height: 1000,
+                  child: GridView.builder(
+                    physics: BouncingScrollPhysics(),
+                    itemCount: 10,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CourseDetails(),
+                              ));
+                        },
+                        child: Container(
+                          width: 194,
+                          height: 188,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color(0xff999999),
+                                  strokeAlign: BorderSide.strokeAlignCenter),
+                              color: Colors.white,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8))),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset(
+                                'images/courses/ui.png',
+                                height: 120,
+                                width: 170,
+                              ),
+                              const Text(
+                                'UI/UX',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff071952)),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/graphic.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Graphic Design',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    // Second Row (2 widgets side by side)
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/web.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Web Development',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/cyber.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Cybersecurity',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/network.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Network Security',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/ui.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'UI/UX',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/ai.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'AI',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/flutter.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Flutter',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    )
-                  ],
-                ),
+                      );
+                    },
+                  ),
+                )
             ],
           ),
         ),
