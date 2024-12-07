@@ -89,6 +89,7 @@ class LoginForm extends StatelessWidget {
             // controller: passwordController,
             type: TextInputType.visiblePassword,
             icon: const Icon(Icons.visibility),
+
             label: 'Password',
             secure: true,
           ),
@@ -102,7 +103,7 @@ class LoginForm extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return const OtpVerification(title: "a7a");
+                        return const OtpVerification(title: "aqa");
                       },
                     ));
                   },
@@ -122,7 +123,7 @@ class LoginForm extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AcademicCategory(),
+                      builder: (context) => const HomeScreen(),
                     ));
                 print('Email: ${emailController.text}');
                 print('Password: ${passwordController.text}');
