@@ -75,11 +75,11 @@ class GetStarted extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SignUp()));
+                                  builder: (context) => const SignUp()));
                         },
                         text: 'Sign up',
                         color: Colors.white,
-                        textColor: Color(0xff071952),
+                        textColor: const Color(0xff071952),
                       ),
                       const SizedBox(
                         height: 20,
@@ -90,7 +90,7 @@ class GetStarted extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => SignIn(),
+                                builder: (context) => const SignIn(),
                               ));
                         },
                         text: 'Sign in',

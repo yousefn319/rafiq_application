@@ -15,11 +15,11 @@ class _CourseDetailsState extends State<CourseDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Course Details'),
+        title: const Text('Course Details'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
@@ -75,15 +75,15 @@ class _CourseDetailsState extends State<CourseDetails> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 228,
                             ),
                             IconButton(
                               onPressed: () {
                                 // Action for the button
                               },
-                              icon: Icon(
-                                Icons.bookmark_outline, // Example icon
+                              icon: const Icon(
+                                Icons.favorite_outline, // Example icon
                                 color: Colors.black87, // Set icon color
                               ),
                               iconSize: 32, // Adjust the icon size
@@ -102,7 +102,7 @@ class _CourseDetailsState extends State<CourseDetails> {
               const SizedBox(
                 height: 12,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -121,7 +121,7 @@ class _CourseDetailsState extends State<CourseDetails> {
               const SizedBox(
                 height: 12,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
@@ -134,13 +134,13 @@ class _CourseDetailsState extends State<CourseDetails> {
                 height: 12,
               ),
               ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 0),
                 leading: Image.asset('images/courses/aref.png'),
-                title: Text(
+                title: const Text(
                   'Mohammed Aref',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                subtitle: Text(
+                subtitle: const Text(
                   'Instructor at route academy',
                   style: TextStyle(color: Colors.grey, fontSize: 13),
                 ),
@@ -151,9 +151,9 @@ class _CourseDetailsState extends State<CourseDetails> {
                     children: [
                       IconButton(
                           style: IconButton.styleFrom(
-                              backgroundColor: Color(0xffEEEEEE)),
+                              backgroundColor: const Color(0xffEEEEEE)),
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.message_outlined,
                             color: Color(
                               0xff088395,
@@ -161,9 +161,9 @@ class _CourseDetailsState extends State<CourseDetails> {
                           )),
                       IconButton(
                           style: IconButton.styleFrom(
-                              backgroundColor: Color(0xffEEEEEE)),
+                              backgroundColor: const Color(0xffEEEEEE)),
                           onPressed: () {},
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.phone_outlined,
                             color: Color(
                               0xff088395,
@@ -176,10 +176,10 @@ class _CourseDetailsState extends State<CourseDetails> {
               const SizedBox(
                 height: 8,
               ),
-              Divider(
+              const Divider(
                 color: Color(0xffEEEEEE),
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
@@ -191,11 +191,11 @@ class _CourseDetailsState extends State<CourseDetails> {
               const SizedBox(
                 height: 8,
               ),
-              ReadMoreDescription(
+              const ReadMoreDescription(
                 description:
                     'Unlock the world of user-centric design with our comprehensive UI/UX Design Course! This course is tailored for aspiring designers, developers, and anyone passionate about crafting intuitive and engaging digital experiences. You\'ll learn the fundamentals of user interface (UI) design and user experience (UX) principles, exploring tools like Figma and Adobe XD to create wireframes, prototypes, and mockups. Dive into the psychology of design, usability testing, and responsive design techniques to ensure your creations resonate across all devices. By the end of this course, you\'ll have a polished portfolio of projects, showcasing your ability to design visually appealing and user-friendly websites and mobile applications. Whether you\'re starting from scratch or enhancing your current skills, this course will elevate your design journey.What You’ll Learn: Design principles and color theory Wireframing and prototyping User research and persona creation Usability testing and feedback integration Responsive design for web and mobile Who This Course is For: Beginners, developers, and professionals aiming to transition into the design field or improve their skills in crafting exceptional digital experiences.',
               ),
-              Divider(
+              const Divider(
                 color: Color(0xffEEEEEE),
               ),
               const SizedBox(
@@ -285,31 +285,31 @@ class _CourseDetailsState extends State<CourseDetails> {
                   height: 800,
                   child: ListView.builder(
                     itemCount: 10,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.symmetric(vertical: 8),
+                        margin: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: Colors.grey)),
                         child: ListTile(
-                          leading: Text(
+                          leading: const Text(
                             '01',
                             style: TextStyle(
                                 fontSize: 42,
                                 color: Color(0xff999999),
                                 fontWeight: FontWeight.bold),
                           ),
-                          title: Text(
+                          title: const Text(
                             'Session 1',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          subtitle: Text('Subtitle'),
+                          subtitle: const Text('Subtitle'),
                           trailing: IconButton(
                               style: IconButton.styleFrom(
-                                  backgroundColor: Color(0xff088395)),
+                                  backgroundColor: const Color(0xff088395)),
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.file_copy_outlined,
                                 color: Colors.white,
                               )),
@@ -322,7 +322,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                 SizedBox(
                   height: 800,
                   child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: 10,
                     itemBuilder: (context, index) {
                       return const Column(
@@ -414,7 +414,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                           onClick: () {},
                           text: 'Add to favorite',
                           color: Colors.white,
-                          textColor: Color(0xff071952),
+                          textColor: const Color(0xff071952),
                         ),
 
                         // GestureDetector(

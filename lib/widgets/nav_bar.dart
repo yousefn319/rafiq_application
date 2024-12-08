@@ -22,8 +22,8 @@ class _NavBarState extends State<NavBar> {
         onPressed: () {
           _onItemTapped(2); // Set the center button action
         },
-        shape: CircleBorder(),
-        backgroundColor: Color(0xff071952),
+        shape: const CircleBorder(),
+        backgroundColor: const Color(0xff071952),
         child: SvgPicture.asset('images/courses/robot.svg'),
       ),
       floatingActionButtonLocation:
@@ -38,16 +38,16 @@ class _NavBarState extends State<NavBar> {
               iconSize: 32,
               icon: Icon(Icons.home,
                   color: _selectedIndex == 0
-                      ? Color(0xff071952)
-                      : Color(0xff088395)),
+                      ? const Color(0xff071952)
+                      : const Color(0xff088395)),
               onPressed: () => _onItemTapped(0),
             ),
             IconButton(
               iconSize: 32,
               icon: Icon(Icons.menu_book,
                   color: _selectedIndex == 1
-                      ? Color(0xff071952)
-                      : Color(0xff088395)),
+                      ? const Color(0xff071952)
+                      : const Color(0xff088395)),
               onPressed: () => _onItemTapped(1),
             ),
             const SizedBox(width: 60), // Adds space between the two sides
@@ -55,16 +55,16 @@ class _NavBarState extends State<NavBar> {
               iconSize: 32,
               icon: Icon(Icons.favorite,
                   color: _selectedIndex == 3
-                      ? Color(0xff071952)
-                      : Color(0xff088395)),
+                      ? const Color(0xff071952)
+                      : const Color(0xff088395)),
               onPressed: () => _onItemTapped(3),
             ),
             IconButton(
               iconSize: 32,
               icon: Icon(Icons.person,
                   color: _selectedIndex == 4
-                      ? Color(0xff071952)
-                      : Color(0xff088395)),
+                      ? const Color(0xff071952)
+                      : const Color(0xff088395)),
               onPressed: () => _onItemTapped(4),
             ),
           ],

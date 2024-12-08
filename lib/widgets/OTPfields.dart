@@ -22,7 +22,7 @@ class OTPInput extends StatelessWidget {
       width: 77, // Width of each square
       height: 77, // Height of each square
       child: TextFormField(
-        cursorColor: Color(0xff088395),
+        cursorColor: const Color(0xff088395),
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
         maxLength: 1, // Only one digit per field

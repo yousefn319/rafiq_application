@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
+import 'package:rafiq_application/features/introscreens/presentation/popular_courses.dart';
 
 class AcademicCategory extends StatefulWidget {
   @override
@@ -29,7 +30,6 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                   const Expanded(
                     child: TextField(
                       cursorColor: Color(0xff088395),
-                      obscureText: true,
                       decoration: InputDecoration(
                           labelText: 'Search courses',
                           floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -142,7 +142,13 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                   children: [
                     // First Row (2 widgets side by side)
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PopularCourses(),
+                            ));
+                      },
                       child: Container(
                         width: 194,
                         height: 188,
@@ -173,7 +179,13 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PopularCourses(),
+                            ));
+                      },
                       child: Container(
                         width: 194,
                         height: 188,
@@ -205,7 +217,13 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                     ),
                     // Second Row (2 widgets side by side)
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PopularCourses(),
+                            ));
+                      },
                       child: Container(
                         width: 194,
                         height: 188,
@@ -236,7 +254,13 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PopularCourses(),
+                            ));
+                      },
                       child: Container(
                         width: 194,
                         height: 188,
@@ -268,7 +292,13 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                     ),
                     Center(
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const PopularCourses(),
+                              ));
+                        },
                         child: Container(
                           width: 194,
                           height: 188,
@@ -306,21 +336,22 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                 ),
               if (selectedButton == 2)
                 SizedBox(
-                  height: 1000,
+                  height: 1344,
                   child: GridView.builder(
-                    physics: BouncingScrollPhysics(),
-                    itemCount: 10,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12),
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: 12,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CourseDetails(),
+                                builder: (context) => const PopularCourses(),
                               ));
                         },
                         child: Container(

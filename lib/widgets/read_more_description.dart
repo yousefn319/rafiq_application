@@ -31,7 +31,7 @@ class _ReadMoreDescriptionState extends State<ReadMoreDescription> {
       children: [
         Text(
           displayText,
-          style: TextStyle(fontSize: 16, color: Colors.grey),
+          style: const TextStyle(fontSize: 16, color: Colors.grey),
         ),
         if (text.length > widget.trimLength)
           TextButton(
@@ -42,7 +42,7 @@ class _ReadMoreDescriptionState extends State<ReadMoreDescription> {
             },
             child: Text(
               isExpanded ? 'Read Less' : 'Read More',
-              style: TextStyle(color: Colors.blue),
+              style: const TextStyle(color: Colors.blue),
             ),
           ),
       ],
