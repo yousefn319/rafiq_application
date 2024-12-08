@@ -159,9 +159,9 @@ class _MyCoursesState extends State<MyCourses> {
                               child: Row(
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(16),
-                                        bottomLeft: Radius.circular(16)),
+                                        bottomLeft: const Radius.circular(16)),
                                     child: Image.asset(
                                       'images/courses/flutter.png',
                                       width: 166,

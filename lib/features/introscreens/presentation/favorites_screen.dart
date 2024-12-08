@@ -167,7 +167,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                       ],
                                     ),
                                     const SizedBox(height: 12),
-                                    Row(
+                                    const Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
@@ -186,7 +186,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                         ),
                                       ],
                                     ),
-                                    Row(
+                                    const Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       crossAxisAlignment:
@@ -212,7 +212,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 12,
                             )
                           ],

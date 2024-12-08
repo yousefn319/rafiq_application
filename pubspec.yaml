@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.14
   circle_nav_bar: ^2.1.1
+  intl: ^0.20.1
 
 dev_dependencies:
   flutter_test:
@@ -93,6 +94,7 @@ flutter:
     - images/buttons/notification.svg
     - images/buttons/message.svg
     - images/courses/Completed.svg
+    - images/courses/profile_picture.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

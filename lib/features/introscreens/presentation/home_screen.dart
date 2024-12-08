@@ -5,6 +5,7 @@ import 'package:rafiq_application/features/introscreens/presentation/academic_ca
 import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
 import 'package:rafiq_application/features/introscreens/presentation/favorites_screen.dart';
 import 'package:rafiq_application/features/introscreens/presentation/home_page.dart';
+import 'package:rafiq_application/features/introscreens/presentation/messages_screen.dart';
 import 'package:rafiq_application/features/introscreens/presentation/my_courses.dart';
 import 'package:rafiq_application/features/introscreens/presentation/profile_screen.dart';
 import 'package:rafiq_application/features/introscreens/presentation/rafiq_chatbot_screen.dart';
@@ -45,8 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 child: AppBar(
                   automaticallyImplyLeading: false,
-                  leading: CircleAvatar(
-                    child: Image.asset('images/courses/aref.png'),
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(32),
+                    child: Image.asset('images/courses/profile_picture.jpg'),
                   ),
                   title: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +85,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           IconButton.styleFrom(backgroundColor: Colors.black12),
                       icon: const Icon(Icons.message_outlined),
                       onPressed: () {
-                        // Action for messages icon
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MessagesScreen(),
+                            ));
                       },
                     ),
                   ],

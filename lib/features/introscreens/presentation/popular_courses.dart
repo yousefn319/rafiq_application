@@ -19,22 +19,22 @@ class _PopularCoursesState extends State<PopularCourses> {
             ? TextField(
                 controller: _searchController,
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Search...',
                   border: InputBorder.none,
                   hintStyle: TextStyle(color: Colors.white),
                 ),
               )
-            : Text('Popular Courses'),
+            : const Text('Popular Courses'),
         centerTitle: true,
         actions: [
           IconButton(
             style: IconButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
-                backgroundColor: Color(0xff071952),
+                backgroundColor: const Color(0xff071952),
                 foregroundColor: Colors.white),
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {
               setState(() {
                 _isSearching = !_isSearching;
@@ -52,12 +52,12 @@ class _PopularCoursesState extends State<PopularCourses> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: ListView.builder(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           itemCount: 8,
           itemBuilder: (context, index) {
             return Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 GestureDetector(
@@ -65,7 +65,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CourseDetails(),
+                          builder: (context) => const CourseDetails(),
                         ));
                   },
                   child: Container(
@@ -84,7 +84,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                     child: Row(
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(16),
                               bottomLeft: Radius.circular(16)),
                           child: Image.asset(
@@ -95,7 +95,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 16),
+                          padding: const EdgeInsets.only(left: 16),
                           child: SizedBox(
                             width: 200,
                             height: 166,
@@ -109,10 +109,11 @@ class _PopularCoursesState extends State<PopularCourses> {
                                     IconButton(
                                         style: IconButton.styleFrom(),
                                         onPressed: () {},
-                                        icon: Icon(Icons.favorite_outline)),
+                                        icon:
+                                            const Icon(Icons.favorite_outline)),
                                   ],
                                 ),
-                                Text(
+                                const Text(
                                   'UI UX Diploma',
                                   style: TextStyle(
                                       color: Color(0xff202244),
@@ -123,7 +124,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                                       TextOverflow.ellipsis, // softWrap: true,
                                 ),
                                 // SizedBox(height: 8),
-                                Row(
+                                const Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
@@ -166,7 +167,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                                     ),
                                   ],
                                 ),
-                                Text(
+                                const Text(
                                   '1000 EGP',
                                   style: TextStyle(
                                       color: Color(0xff088395),

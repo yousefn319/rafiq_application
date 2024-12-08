@@ -118,6 +118,33 @@ class _CourseDetailsState extends State<CourseDetails> {
                   ),
                 ],
               ),
+              Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  width: double.infinity,
+                  height: 150,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 28,
+                      ),
+                      Button(
+                        borderColor: Colors.white,
+                        onClick: () {},
+                        text: 'Book Now',
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Button(
+                        onClick: () {},
+                        text: 'Add to favorite',
+                        color: Colors.white,
+                        textColor: const Color(0xff071952),
+                      ),
+                    ],
+                  )),
               const SizedBox(
                 height: 12,
               ),
@@ -389,63 +416,6 @@ class _CourseDetailsState extends State<CourseDetails> {
                     },
                   ),
                 ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    width: double.infinity,
-                    height: 180,
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 28,
-                        ),
-                        Button(
-                          borderColor: Colors.white,
-                          onClick: () {},
-                          text: 'Book Now',
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Button(
-                          onClick: () {},
-                          text: 'Add to favorite',
-                          color: Colors.white,
-                          textColor: const Color(0xff071952),
-                        ),
-
-                        // GestureDetector(
-                        //   onTap: () {
-                        //     Navigator.push(context, MaterialPageRoute(
-                        //       builder: (context) {
-                        //         return SignIn();
-                        //       },
-                        //     ));
-                        //   },
-                        //   child: Container(
-                        //     height: 44,
-                        //     width: 360,
-                        //     decoration: BoxDecoration(
-                        //         border: Border.all(color: Colors.white),
-                        //         borderRadius: BorderRadius.circular(8),
-                        //         color: const Color(0xff071952)),
-                        //     child: const Center(
-                        //       child: Text(
-                        //         'Sign in',
-                        //         style: TextStyle(
-                        //             color: Colors.white,
-                        //             fontSize: 16,
-                        //             fontWeight: FontWeight.w700),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // )
-                      ],
-                    )),
-              ),
             ],
           ),
         ),
