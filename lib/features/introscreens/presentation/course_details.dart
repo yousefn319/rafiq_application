@@ -1,21 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq_application/features/introscreens/presentation/video_screen.dart';
 import 'package:rafiq_application/widgets/button.dart';
 import 'package:rafiq_application/widgets/read_more_description.dart';
+import 'package:video_player/video_player.dart';
 
 class CourseDetails extends StatefulWidget {
-  const CourseDetails({super.key});
+  const CourseDetails({super.key, required this.type});
+  final String type;
 
   @override
   State<CourseDetails> createState() => _CourseDetailsState();
 }
 
 class _CourseDetailsState extends State<CourseDetails> {
+  late VideoPlayerController _videoController;
+  bool _isPlaying = false;
   int selectedButton = 1;
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the video player with a real video URL
+    _videoController = VideoPlayerController.network(
+      'https://www.w3schools.com/html/mov_bbb.mp4', // Sample video URL
+    )
+      ..addListener(() {
+        setState(() {});
+      })
+      ..setLooping(true)
+      ..initialize();
+  }
+
+  @override
+  void dispose() {
+    _videoController.dispose();
+    super.dispose();
+  }
+
+  void _togglePlayPause() {
+    if (_videoController.value.isPlaying) {
+      _videoController.pause();
+    } else {
+      _videoController.play();
+    }
+    setState(() {
+      _isPlaying = _videoController.value.isPlaying;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Course Details'),
+        title: Text('${widget.type}'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -102,49 +138,53 @@ class _CourseDetailsState extends State<CourseDetails> {
               const SizedBox(
                 height: 12,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'UI UX Diploma',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                   ),
-                  Text(
-                    '4500',
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff088395)),
-                  ),
+                  widget.type == 'Course Details'
+                      ? const Text(
+                          '4500',
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff088395)),
+                        )
+                      : const SizedBox()
                 ],
               ),
-              Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  width: double.infinity,
-                  height: 150,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 28,
-                      ),
-                      Button(
-                        borderColor: Colors.white,
-                        onClick: () {},
-                        text: 'Book Now',
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Button(
-                        onClick: () {},
-                        text: 'Add to favorite',
+              widget.type == 'Course Details'
+                  ? Container(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
-                        textColor: const Color(0xff071952),
                       ),
-                    ],
-                  )),
+                      width: double.infinity,
+                      height: 150,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 28,
+                          ),
+                          Button(
+                            borderColor: Colors.white,
+                            onClick: () {},
+                            text: 'Book Now',
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Button(
+                            onClick: () {},
+                            text: 'Add to favorite',
+                            color: Colors.white,
+                            textColor: const Color(0xff071952),
+                          ),
+                        ],
+                      ))
+                  : const SizedBox(),
               const SizedBox(
                 height: 12,
               ),
@@ -308,43 +348,89 @@ class _CourseDetailsState extends State<CourseDetails> {
               ),
               const SizedBox(height: 20),
               if (selectedButton == 1)
-                SizedBox(
-                  height: 800,
-                  child: ListView.builder(
-                    itemCount: 10,
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.grey)),
-                        child: ListTile(
-                          leading: const Text(
-                            '01',
-                            style: TextStyle(
-                                fontSize: 42,
-                                color: Color(0xff999999),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          title: const Text(
-                            'Session 1',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: const Text('Subtitle'),
-                          trailing: IconButton(
-                              style: IconButton.styleFrom(
-                                  backgroundColor: const Color(0xff088395)),
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.file_copy_outlined,
-                                color: Colors.white,
-                              )),
+                widget.type == 'Course Details'
+                    ? SizedBox(
+                        height: 800,
+                        child: ListView.builder(
+                          itemCount: 10,
+                          physics: const BouncingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: Colors.grey)),
+                              child: ListTile(
+                                leading: const Text(
+                                  '01',
+                                  style: TextStyle(
+                                      fontSize: 42,
+                                      color: Color(0xff999999),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                title: const Text(
+                                  'Session 1',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: const Text('Subtitle'),
+                                trailing: IconButton(
+                                    style: IconButton.styleFrom(
+                                        backgroundColor:
+                                            const Color(0xff088395)),
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.file_copy_outlined,
+                                      color: Colors.white,
+                                    )),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                ),
+                      )
+                    : SizedBox(
+                        height: 800,
+                        child: ListView.builder(
+                          itemCount: 10,
+                          physics: const BouncingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: Colors.grey)),
+                              child: ListTile(
+                                leading: const Text(
+                                  '01',
+                                  style: TextStyle(
+                                      fontSize: 42,
+                                      color: Color(0xff999999),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                title: const Text(
+                                  'Session 1',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: const Text('Subtitle'),
+                                trailing: IconButton(
+                                    style: IconButton.styleFrom(
+                                        backgroundColor:
+                                            const Color(0xff088395)),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => VideoScreen(),
+                                          ));
+                                    },
+                                    icon: const Icon(
+                                      Icons.play_arrow,
+                                      color: Colors.white,
+                                    )),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
               if (selectedButton == 2)
                 SizedBox(
                   height: 800,

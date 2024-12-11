@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^2.0.14
   circle_nav_bar: ^2.1.1
   intl: ^0.20.1
+  video_player: ^2.9.2
 
 dev_dependencies:
   flutter_test:

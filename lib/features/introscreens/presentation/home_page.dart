@@ -214,7 +214,9 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const CourseDetails(),
+                              builder: (context) => const CourseDetails(
+                                type: 'Course Details',
+                              ),
                             ));
                       },
                       child: Padding(
@@ -325,7 +327,9 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const CourseDetails(),
+                              builder: (context) => const CourseDetails(
+                                type: 'Course Details',
+                              ),
                             ));
                       },
                       child: Padding(

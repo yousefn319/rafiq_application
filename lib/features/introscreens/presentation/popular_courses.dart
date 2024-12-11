@@ -65,7 +65,9 @@ class _PopularCoursesState extends State<PopularCourses> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CourseDetails(),
+                          builder: (context) => const CourseDetails(
+                            type: 'Course Details',
+                          ),
                         ));
                   },
                   child: Container(

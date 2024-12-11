@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
 
 class MyCourses extends StatefulWidget {
   const MyCourses({super.key});
@@ -143,103 +144,118 @@ class _MyCoursesState extends State<MyCourses> {
                       (index) {
                         return Column(
                           children: [
-                            Container(
-                              height: 166,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(16),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 6,
-                                    offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(16),
-                                        bottomLeft: const Radius.circular(16)),
-                                    child: Image.asset(
-                                      'images/courses/flutter.png',
-                                      width: 166,
-                                      height: double.infinity,
-                                      fit: BoxFit.cover,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const CourseDetails(
+                                          type: 'My Course'),
+                                    ));
+                              },
+                              child: Container(
+                                height: 166,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      blurRadius: 6,
+                                      offset: Offset(0, 3),
                                     ),
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(left: 16),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          'UI/UX Design',
-                                          style: TextStyle(
-                                              color: Color(0xffFF6B00),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(
-                                          'Intro to UI/UX Design',
-                                          style: TextStyle(
-                                              color: Color(0xff202244),
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        SizedBox(height: 8),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Icon(
-                                                  Icons.star,
-                                                  color: Color(0xffFCCB40),
-                                                ),
-                                                Text(
-                                                  '4.4',
-                                                  style: TextStyle(
-                                                      color: Color(0xff202244),
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 16,
-                                            ),
-                                            Text(
-                                              '|',
-                                              style: TextStyle(
-                                                  color: Color(0xff202244),
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w900),
-                                            ),
-                                            SizedBox(
-                                              width: 16,
-                                            ),
-                                            Text(
-                                              '30 Hrs 06 Mins',
-                                              style: TextStyle(
-                                                  color: Color(0xff202244),
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ],
-                                        )
-                                      ],
+                                  ],
+                                ),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(16),
+                                          bottomLeft:
+                                              const Radius.circular(16)),
+                                      child: Image.asset(
+                                        'images/courses/flutter.png',
+                                        width: 166,
+                                        height: double.infinity,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  )
-                                ],
+                                    const Padding(
+                                      padding: EdgeInsets.only(left: 16),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Text(
+                                            'UI/UX Design',
+                                            style: TextStyle(
+                                                color: Color(0xffFF6B00),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'Intro to UI/UX Design',
+                                            style: TextStyle(
+                                                color: Color(0xff202244),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          SizedBox(height: 8),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Icon(
+                                                    Icons.star,
+                                                    color: Color(0xffFCCB40),
+                                                  ),
+                                                  Text(
+                                                    '4.4',
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xff202244),
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                width: 16,
+                                              ),
+                                              Text(
+                                                '|',
+                                                style: TextStyle(
+                                                    color: Color(0xff202244),
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w900),
+                                              ),
+                                              SizedBox(
+                                                width: 16,
+                                              ),
+                                              Text(
+                                                '30 Hrs 06 Mins',
+                                                style: TextStyle(
+                                                    color: Color(0xff202244),
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             const SizedBox(
@@ -260,114 +276,129 @@ class _MyCoursesState extends State<MyCourses> {
                       (index) {
                         return Column(
                           children: [
-                            Container(
-                              height: 166,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(16),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 6,
-                                    offset: Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(16),
-                                        bottomLeft: Radius.circular(16)),
-                                    child: Image.asset(
-                                      'images/courses/network.png',
-                                      height: double.infinity,
-                                      width: 166,
-                                      fit: BoxFit.cover,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const CourseDetails(
+                                          type: 'My Course'),
+                                    ));
+                              },
+                              child: Container(
+                                height: 166,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      blurRadius: 6,
+                                      offset: Offset(0, 3),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 16),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text(
-                                              'Flutter Development',
-                                              style: TextStyle(
-                                                  color: Color(0xffFF6B00),
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            const SizedBox(
-                                              width: 24,
-                                            ),
-                                            SvgPicture.asset(
-                                                'images/courses/Completed.svg')
-                                          ],
-                                        ),
-                                        const Text(
-                                          'Intro to Dart',
-                                          style: TextStyle(
-                                              color: Color(0xff202244),
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        const Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Icon(
-                                                  Icons.star,
-                                                  color: Color(0xffFCCB40),
-                                                ),
-                                                Text(
-                                                  '3.9',
-                                                  style: TextStyle(
-                                                      color: Color(0xff202244),
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 16,
-                                            ),
-                                            Text(
-                                              '|',
-                                              style: TextStyle(
-                                                  color: Color(0xff202244),
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w900),
-                                            ),
-                                            SizedBox(
-                                              width: 16,
-                                            ),
-                                            Text(
-                                              '22 Hrs 12 Mins',
-                                              style: TextStyle(
-                                                  color: Color(0xff202244),
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ],
-                                        )
-                                      ],
+                                  ],
+                                ),
+                                child: Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(16),
+                                          bottomLeft: Radius.circular(16)),
+                                      child: Image.asset(
+                                        'images/courses/network.png',
+                                        height: double.infinity,
+                                        width: 166,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  )
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 16),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              const Text(
+                                                'Flutter Development',
+                                                style: TextStyle(
+                                                    color: Color(0xffFF6B00),
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              const SizedBox(
+                                                width: 24,
+                                              ),
+                                              SvgPicture.asset(
+                                                  'images/courses/Completed.svg')
+                                            ],
+                                          ),
+                                          const Text(
+                                            'Intro to Dart',
+                                            style: TextStyle(
+                                                color: Color(0xff202244),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          const SizedBox(height: 8),
+                                          const Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Icon(
+                                                    Icons.star,
+                                                    color: Color(0xffFCCB40),
+                                                  ),
+                                                  Text(
+                                                    '3.9',
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xff202244),
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                width: 16,
+                                              ),
+                                              Text(
+                                                '|',
+                                                style: TextStyle(
+                                                    color: Color(0xff202244),
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.w900),
+                                              ),
+                                              SizedBox(
+                                                width: 16,
+                                              ),
+                                              Text(
+                                                '22 Hrs 12 Mins',
+                                                style: TextStyle(
+                                                    color: Color(0xff202244),
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             const SizedBox(
