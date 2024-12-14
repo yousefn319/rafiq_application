@@ -96,7 +96,9 @@ flutter:
     - images/buttons/message.svg
     - images/courses/Completed.svg
     - images/courses/profile_picture.jpg
-
+    - images/logins/facebook.svg
+    - images/logins/google.svg
+    - images/logins/forgotpassword.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

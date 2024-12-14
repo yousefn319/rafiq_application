@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
 import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
+import 'package:rafiq_application/widgets/date_of_birth.dart';
+import 'package:rafiq_application/widgets/password_field.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -94,32 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
             ),
-            TextField(
-              cursorColor: const Color(0xff088395),
-              decoration: const InputDecoration(
-                labelText: 'Date of Birth',
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8))),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  borderSide: BorderSide(
-                    color: Color(0xff071952),
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                    gapPadding: BorderSide.strokeAlignCenter,
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(
-                      color: Color(0xff088395),
-                    )),
-                suffixIcon: Icon(Icons.calendar_today),
-              ),
-              readOnly: true,
-              onTap: () {
-                // Show date picker
-              },
-            ),
+            DateOfBirth(),
             widget.type == 'Instructor'
                 ? const SizedBox(height: 16)
                 : const SizedBox(),
@@ -221,12 +199,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
             ),
-            TypingField(
-              type: TextInputType.visiblePassword,
-              label: 'Password',
-              secure: true,
-              icon: const Icon(Icons.visibility),
-            ),
+            PasswordField(),
             const SizedBox(height: 16),
             const SizedBox(
               width: double.infinity,
@@ -240,11 +213,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
             ),
-            TypingField(
-              type: TextInputType.visiblePassword,
+            PasswordField(
               label: 'Confirm Password',
-              secure: true,
-              icon: const Icon(Icons.visibility),
             ),
             const SizedBox(height: 16),
             Row(
@@ -298,6 +268,89 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   backgroundColor: const Color(0xff071952)),
             ),
             const SizedBox(height: 16),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                    width: 162,
+                    child: Divider(
+                      color: Color(0xff475467),
+                    )),
+                Text(
+                  'OR',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color(0xff475467),
+                  ),
+                ),
+                SizedBox(
+                    width: 162,
+                    child: Divider(
+                      color: Color(0xff475467),
+                    )),
+              ],
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  minimumSize: const Size(double.infinity, 50),
+                  side: BorderSide(color: Color(0xffd0d0d0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  backgroundColor: Colors.white),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'images/logins/google.svg',
+                    height: 28,
+                    width: 28,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Center(
+                      child: Text('Continue with Google',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16))),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  minimumSize: const Size(double.infinity, 50),
+                  side: BorderSide(color: Color(0xffd0d0d0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  backgroundColor: Colors.white),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'images/logins/facebook.svg',
+                    height: 28,
+                    width: 28,
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  const Center(
+                      child: Text('Continue with Facebook',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16))),
+                ],
+              ),
+            ),
             const SizedBox(height: 16),
             Center(
               child: TextButton(

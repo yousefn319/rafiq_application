@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
 import 'package:rafiq_application/widgets/button.dart';
 
 class ResetPassword extends StatelessWidget {
@@ -108,7 +109,15 @@ class ResetPassword extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 22),
-              Button(onClick: () {}, text: 'Save Password')
+              Button(
+                  onClick: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignIn()),
+                      (route) => false, // Remove all routes
+                    );
+                  },
+                  text: 'Save Password')
             ],
           ),
         ),

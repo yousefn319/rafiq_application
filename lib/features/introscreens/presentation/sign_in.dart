@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/Sign_up.dart';
 import 'package:rafiq_application/features/introscreens/presentation/academic_category.dart';
+import 'package:rafiq_application/features/introscreens/presentation/forget_password.dart';
 import 'package:rafiq_application/features/introscreens/presentation/home_screen.dart';
 import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
 import 'package:rafiq_application/widgets/button.dart';
+import 'package:rafiq_application/widgets/password_field.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
 
 class SignIn extends StatelessWidget {
@@ -85,14 +88,7 @@ class LoginForm extends StatelessWidget {
               ],
             ),
           ),
-          TypingField(
-            // controller: passwordController,
-            type: TextInputType.visiblePassword,
-            icon: const Icon(Icons.visibility),
-
-            label: 'Password',
-            secure: true,
-          ),
+          PasswordField(),
           SizedBox(
             width: double.infinity,
             height: 40,
@@ -103,7 +99,7 @@ class LoginForm extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return const OtpVerification(title: "aqa");
+                        return const ForgetPassword();
                       },
                     ));
                   },
@@ -129,9 +125,92 @@ class LoginForm extends StatelessWidget {
                 print('Password: ${passwordController.text}');
               },
               text: 'Sign in'),
-          const SizedBox(
-            height: 20,
+          const SizedBox(height: 16),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                  width: 162,
+                  child: Divider(
+                    color: Color(0xff475467),
+                  )),
+              Text(
+                'OR',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Color(0xff475467),
+                ),
+              ),
+              SizedBox(
+                  width: 162,
+                  child: Divider(
+                    color: Color(0xff475467),
+                  )),
+            ],
           ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black,
+                minimumSize: const Size(double.infinity, 50),
+                side: BorderSide(color: Color(0xffd0d0d0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                backgroundColor: Colors.white),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'images/logins/google.svg',
+                  height: 28,
+                  width: 28,
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                const Center(
+                    child: Text('Continue with Google',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16))),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black,
+                minimumSize: const Size(double.infinity, 50),
+                side: BorderSide(color: Color(0xffd0d0d0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                backgroundColor: Colors.white),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'images/logins/facebook.svg',
+                  height: 28,
+                  width: 28,
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                const Center(
+                    child: Text('Continue with Facebook',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16))),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -158,7 +237,7 @@ class LoginForm extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   )),
             ],
-          )
+          ),
         ],
       ),
     );

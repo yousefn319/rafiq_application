@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
 import 'package:rafiq_application/features/introscreens/presentation/popular_courses.dart';
+import 'package:rafiq_application/widgets/search_bar.dart';
 
 class AcademicCategory extends StatefulWidget {
   @override
@@ -24,57 +25,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Expanded(
-                    child: TextField(
-                      cursorColor: Color(0xff088395),
-                      decoration: InputDecoration(
-                          labelText: 'Search courses',
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8))),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            borderSide: BorderSide(
-                              color: Color(0xff071952),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              gapPadding: BorderSide.strokeAlignCenter,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                              borderSide: BorderSide(
-                                color: Color(0xff088395),
-                              )),
-                          suffixIcon: Icon(Icons.mic_none),
-                          prefixIcon: Icon(Icons.search)),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 56, // Set height for square
-                    width: 56, // Set width equal to height for square
-                    decoration: BoxDecoration(
-                      color: const Color(0xff071952), // Background color
-                      borderRadius: BorderRadius.circular(8), // Rounded corners
-                    ),
-                    child: IconButton(
-                      onPressed: () {
-                        // Button action
-                      },
-                      icon: const Icon(
-                        Icons.filter_alt_outlined,
-                        color: Colors.white, // Icon color
-                      ),
-                    ),
-                  )
-                ],
-              ),
+              SearchBarA(),
               const SizedBox(
                 height: 22,
               ),
