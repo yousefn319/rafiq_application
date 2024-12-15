@@ -41,28 +41,44 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: showAppBar
           ? PreferredSize(
-              preferredSize: const Size.fromHeight(68),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
+              preferredSize: const Size.fromHeight(
+                  kToolbarHeight + 8), // Adjust height for padding
+              child: Container(
+                color: Colors.white, // AppBar color
                 child: AppBar(
+                  backgroundColor:
+                      Colors.white, // Make AppBar itself transparent
+                  elevation: 0, // Remove shadow
                   automaticallyImplyLeading: false,
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(32),
-                    child: Image.asset('images/courses/profile_picture.jpg'),
-                  ),
-                  title: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'Welcome Omar,',
-                        style: TextStyle(fontSize: 20),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(32),
+                        child: Image.asset(
+                          'images/courses/profile_picture.jpg',
+                          height: 54,
+                          width: 54,
+                        ),
                       ),
-                      Text(
-                        'What do you want to learn today ?',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xff999999),
-                            fontWeight: FontWeight.w500),
+                      SizedBox(width: 8),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Welcome Omar,',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          Text(
+                            'What do you want to learn today ?',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xff999999),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -76,9 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         // Action for notification icon
                       },
                     ),
-                    const SizedBox(
-                      width: 8,
-                    ),
+                    const SizedBox(width: 8),
                     IconButton(
                       color: const Color(0xff088395),
                       style:
@@ -86,12 +100,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: const Icon(Icons.message_outlined),
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const MessagesScreen(),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MessagesScreen(),
+                          ),
+                        );
                       },
                     ),
+                    SizedBox(width: 18)
                   ],
                 ),
               ),
