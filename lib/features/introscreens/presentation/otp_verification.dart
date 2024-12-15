@@ -4,18 +4,24 @@ import 'package:rafiq_application/features/introscreens/presentation/academic_ca
 import 'package:rafiq_application/features/introscreens/presentation/reset_password.dart';
 import 'package:rafiq_application/widgets/OTPfields.dart';
 import 'package:rafiq_application/widgets/button.dart';
+import 'package:rafiq_application/widgets/resend_code_widget.dart';
 
-class OtpVerification extends StatelessWidget {
+class OtpVerification extends StatefulWidget {
   const OtpVerification({super.key, required this.title});
   final String title;
 
+  @override
+  State<OtpVerification> createState() => _OtpVerificationState();
+}
+
+class _OtpVerificationState extends State<OtpVerification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          title == "Verify OTP" ? 'Verify OTP ' : 'Verify Password',
+          widget.title == "Verify OTP" ? 'Verify OTP ' : 'Verify Password',
           style: const TextStyle(fontWeight: FontWeight.w600),
         ),
       ),
@@ -25,7 +31,7 @@ class OtpVerification extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              title == 'Verify OTP'
+              widget.title == 'Verify OTP'
                   ? Center(
                       child: SvgPicture.asset(
                         "images/logins/otp_security.svg",
@@ -41,7 +47,7 @@ class OtpVerification extends StatelessWidget {
                       ),
                     ),
               const SizedBox(
-                height: 30,
+                height: 34,
               ),
               const Text(
                 'Check Your email',
@@ -55,20 +61,13 @@ class OtpVerification extends StatelessWidget {
                     color: Color(0xff999999)),
               ),
               const SizedBox(
-                height: 20,
+                height: 24,
               ),
               OTPInput(),
-              const Text(
-                'Resend Code in ',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: Color(0xff999999)),
-              ),
               const SizedBox(
-                height: 20,
+                height: 24,
               ),
-              title == 'Verify OTP'
+              widget.title == 'Verify OTP'
                   ? Button(onClick: () {}, text: 'Verify OTP')
                   : Button(
                       onClick: () {
@@ -80,27 +79,9 @@ class OtpVerification extends StatelessWidget {
                       },
                       text: 'Verify OTP'),
               const SizedBox(
-                height: 12,
+                height: 16,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Don’t receive code ? ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        color: Color(0xff999999)),
-                  ),
-                  Text(
-                    'Resend code',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        color: Color(0xff071952)),
-                  ),
-                ],
-              ),
+              ResendCodeWidget()
             ],
           ),
         ),
