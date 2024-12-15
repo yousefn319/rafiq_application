@@ -7,6 +7,7 @@ import 'package:rafiq_application/features/introscreens/presentation/favorites_s
 import 'package:rafiq_application/features/introscreens/presentation/home_page.dart';
 import 'package:rafiq_application/features/introscreens/presentation/messages_screen.dart';
 import 'package:rafiq_application/features/introscreens/presentation/my_courses.dart';
+import 'package:rafiq_application/features/introscreens/presentation/notifications_screen.dart';
 import 'package:rafiq_application/features/introscreens/presentation/profile_screen.dart';
 import 'package:rafiq_application/features/introscreens/presentation/rafiq_chatbot_screen.dart';
 import 'package:rafiq_application/widgets/nav_bar.dart';
@@ -92,7 +93,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           IconButton.styleFrom(backgroundColor: Colors.black12),
                       icon: const Icon(Icons.notifications_outlined),
                       onPressed: () {
-                        // Action for notification icon
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const NotificationsScreen(),
+                            ));
                       },
                     ),
                     const SizedBox(width: 8),
