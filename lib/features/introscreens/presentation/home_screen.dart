@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: showAppBar
           ? PreferredSize(
-              preferredSize: const Size.fromHeight(kToolbarHeight),
+              preferredSize: const Size.fromHeight(68),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 child: AppBar(

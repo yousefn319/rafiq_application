@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq_application/features/introscreens/presentation/get_started.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -291,7 +292,13 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 12),
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const GetStarted()),
+                    (route) => false, // Remove all routes
+                  );
+                },
                 leading: const Icon(
                   Icons.logout_outlined,
                   size: 32,
