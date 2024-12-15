@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   automaticallyImplyLeading: false,
 
                   title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ClipRRect(
@@ -63,13 +63,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 54,
                         ),
                       ),
-                      SizedBox(width: 8),
+                      SizedBox(width: 12),
                       const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Welcome Omar,',
                             style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(
+                            height: 4,
                           ),
                           Text(
                             'What do you want to learn today ?',
