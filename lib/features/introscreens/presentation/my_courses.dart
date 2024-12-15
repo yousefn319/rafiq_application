@@ -82,55 +82,64 @@ class _MyCoursesState extends State<MyCourses> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: selectedButton == 1
-                          ? Colors.white
-                          : const Color(0xff088395),
-                      backgroundColor: selectedButton == 1
-                          ? const Color(0xff088395)
-                          : Colors.white,
-                      minimumSize: const Size(194, 44),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        side: const BorderSide(
-                          color: Color(0xff088395),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: selectedButton == 1
+                            ? Colors.white
+                            : const Color(0xff088395),
+                        backgroundColor: selectedButton == 1
+                            ? const Color(0xff088395)
+                            : Colors.white,
+                        minimumSize: const Size(
+                            0, 44), // Width set to 0, height is fixed
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: const BorderSide(
+                            color: Color(0xff088395),
+                          ),
                         ),
                       ),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        selectedButton = 1; // Select the first button
-                      });
-                    },
-                    child: const Text(
-                      'ongoing',
-                      style: TextStyle(fontSize: 18),
+                      onPressed: () {
+                        setState(() {
+                          selectedButton = 1; // Select the first button
+                        });
+                      },
+                      child: const Text(
+                        'Ongoing',
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: selectedButton == 2
-                          ? Colors.white
-                          : const Color(0xff088395),
-                      backgroundColor: selectedButton == 2
-                          ? const Color(0xff088395)
-                          : Colors.white,
-                      minimumSize: const Size(194, 44),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        side: const BorderSide(
-                          color: Color(0xff088395),
+                  const SizedBox(width: 8), // Add space between the buttons
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: selectedButton == 2
+                            ? Colors.white
+                            : const Color(0xff088395),
+                        backgroundColor: selectedButton == 2
+                            ? const Color(0xff088395)
+                            : Colors.white,
+                        minimumSize: const Size(
+                            0, 44), // Width set to 0, height is fixed
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: const BorderSide(
+                            color: Color(0xff088395),
+                          ),
                         ),
                       ),
+                      onPressed: () {
+                        setState(() {
+                          selectedButton = 2; // Select the second button
+                        });
+                      },
+                      child: const Text(
+                        'Completed',
+                        style: TextStyle(fontSize: 18),
+                      ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        selectedButton = 2; // Select the second button
-                      });
-                    },
-                    child:
-                        const Text('Completed', style: TextStyle(fontSize: 18)),
                   ),
                 ],
               ),
