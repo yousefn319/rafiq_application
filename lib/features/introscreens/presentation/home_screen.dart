@@ -38,6 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     bool showAppBar = _selectedIndex == 0;
     return Scaffold(
       appBar: showAppBar
@@ -60,29 +62,34 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(32),
                         child: Image.asset(
                           'images/courses/profile_picture.jpg',
-                          height: 54,
-                          width: 54,
+                          height: screenHeight * 0.06,
+                          width: screenHeight * 0.06,
                         ),
                       ),
                       SizedBox(width: 12),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Welcome Omar,',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            'What do you want to learn today ?',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xff999999),
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
+                      const Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Welcome Omar,',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              'What do you want to learn today ?',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Color(0xff999999),
+                                  fontWeight: FontWeight.w500,
+                                  overflow: TextOverflow.ellipsis),
+                              maxLines: 1, // Prevent overflow
+                              softWrap: false,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

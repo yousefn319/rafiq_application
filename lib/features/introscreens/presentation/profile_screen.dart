@@ -6,6 +6,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Profile'),
@@ -13,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
@@ -40,28 +43,30 @@ class ProfileScreen extends StatelessWidget {
                                   'images/courses/profile_picture.jpg'),
                             ),
                           ),
-                          const Column(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width: 220,
-                                child: Text(
-                                  'Mohammed Aref',
+                                width: screenWidth * 0.4,
+                                child: const Text(
+                                  'ahmed elsayed hamoda',
                                   style: TextStyle(
                                       color: Color(0xff071952),
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 22,
-                                      overflow: TextOverflow.ellipsis),
+                                      fontSize: 20,
+                                      overflow: TextOverflow.visible),
+                                  maxLines: 1, // Prevent overflow
+                                  // softWrap: false,
                                 ),
                               ),
                               SizedBox(
-                                width: 220,
-                                child: Text(
+                                width: screenWidth * 0.4,
+                                child: const Text(
                                   'Mo3aref@gmail.com',
                                   style: TextStyle(
                                       color: Color(0xff999999),
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.w400,
                                       fontSize: 16,
                                       overflow: TextOverflow.ellipsis),
                                 ),
@@ -295,7 +300,7 @@ class ProfileScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => const GetStarted()),
+                    MaterialPageRoute(builder: (context) => GetStarted()),
                     (route) => false, // Remove all routes
                   );
                 },

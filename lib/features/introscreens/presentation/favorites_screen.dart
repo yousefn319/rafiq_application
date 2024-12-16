@@ -288,7 +288,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                     ),
                                     Positioned(
                                       top: MediaQuery.of(context).size.height *
-                                          0.19,
+                                          0.2,
                                       left: 0,
                                       right: 0,
                                       child: Padding(
@@ -304,7 +304,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                                 color: Colors.black,
                                               ),
                                             ),
-                                            const SizedBox(height: 8),
+                                            SizedBox(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.01,
+                                            ),
                                             Text(
                                               'A passionate UI/UX designer with a knack for creating intuitive and beautiful interfaces.',
                                               textAlign: TextAlign.center,

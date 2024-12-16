@@ -1,65 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/widgets/button.dart';
 
 class Intro extends StatelessWidget {
-  Intro(
-      {super.key,
-      this.image,
-      this.text = 'Next',
-      required this.title,
-      required this.subTitle,
-      required this.onTap});
-  String title;
-  String subTitle;
-  String? image;
-  VoidCallback onTap;
-  String text;
+  Intro({
+    super.key,
+    this.image,
+    this.text = 'Next',
+    required this.title,
+    required this.subTitle,
+    required this.onTap,
+  });
+
+  final String title;
+  final String subTitle;
+  final String? image;
+  final VoidCallback onTap;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(screenWidth * 0.06), // Dynamic padding
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 100,
+            SizedBox(
+              height: screenHeight * 0.1, // Adjusted spacing
             ),
             Center(
               child: SvgPicture.asset(
                 image ?? "images/intros/white.svg",
-                height: 343,
-                width: 343,
+                height: screenHeight * 0.35, // Adjusted image height
+                width: screenWidth * 0.9, // Adjusted image width
               ),
             ),
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: screenHeight * 0.05, // Dynamic spacing
             ),
             Text(
               title,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: screenWidth * 0.05, // Scaled font size
+                fontWeight: FontWeight.w700,
+              ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: screenHeight * 0.01, // Dynamic spacing
             ),
             Text(
               subTitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.grey,
-                fontSize: 16,
+                fontSize: screenWidth * 0.04, // Scaled font size
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(
-              height: 80,
+            SizedBox(
+              height: screenHeight * 0.08, // Adjusted spacing
             ),
-            Button(onClick: onTap, text: text)
+            Button(onClick: onTap, text: text),
           ],
         ),
       ),

@@ -59,7 +59,7 @@ class MessagesScreen extends StatelessWidget {
                                 maxLines: 1, // Prevent overflow
                                 softWrap: false, // Prevent wrapping
                               ),
-                              const SizedBox(height: 8),
+                              SizedBox(height: 8),
                               Text(
                                 'you must watch the second lecture, apply it, and study it well',
                                 style: TextStyle(

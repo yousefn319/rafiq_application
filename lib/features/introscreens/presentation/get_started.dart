@@ -5,10 +5,13 @@ import 'package:rafiq_application/features/introscreens/presentation/sign_up.dar
 import 'package:rafiq_application/widgets/button.dart';
 
 class GetStarted extends StatelessWidget {
-  const GetStarted({super.key});
+  GetStarted({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -26,9 +29,13 @@ class GetStarted extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset('images/intros/5.svg'),
-                  const SizedBox(
-                    height: 60,
+                  SvgPicture.asset(
+                    'images/intros/5.svg',
+                    height: screenHeight * 0.4,
+                    width: screenWidth * 0.4,
+                  ),
+                  SizedBox(
+                    height: screenHeight * 0.05,
                   ),
                   const Text(
                     'Let’s Start',
@@ -37,8 +44,8 @@ class GetStarted extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: screenHeight * 0.01,
                   ),
                   const Text(
                     'Fill your information below to create it',
@@ -62,13 +69,13 @@ class GetStarted extends StatelessWidget {
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16))),
                 width: double.infinity,
-                height: 300,
+                height: screenHeight * 0.28,
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 44,
+                      SizedBox(
+                        height: screenHeight * 0.02,
                       ),
                       Button(
                         onClick: () {
@@ -81,8 +88,8 @@ class GetStarted extends StatelessWidget {
                         color: Colors.white,
                         textColor: const Color(0xff071952),
                       ),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: screenHeight * 0.02,
                       ),
                       Button(
                         borderColor: Colors.white,

@@ -14,6 +14,8 @@ class _AcademicCategoryState extends State<AcademicCategory> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Category'),
@@ -95,163 +97,17 @@ class _AcademicCategoryState extends State<AcademicCategory> {
               ),
               const SizedBox(height: 20), // Add some spacing
               if (selectedButton == 1)
-                Wrap(
-                  spacing: 12.0, // Space between widgets horizontally
-                  runSpacing: 12.0, // Space between lines vertically
-                  alignment: WrapAlignment.spaceBetween,
-                  children: [
-                    // First Row (2 widgets side by side)
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PopularCourses(),
-                            ));
-                      },
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/kids.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Kids Courses',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PopularCourses(),
-                            ));
-                      },
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/primary.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Primary education',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    // Second Row (2 widgets side by side)
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PopularCourses(),
-                            ));
-                      },
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/prep.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Preparatory education',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const PopularCourses(),
-                            ));
-                      },
-                      child: Container(
-                        width: 194,
-                        height: 188,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xff999999),
-                                strokeAlign: BorderSide.strokeAlignCenter),
-                            color: Colors.white,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              'images/courses/secondary.png',
-                              height: 120,
-                              width: 170,
-                            ),
-                            const Text(
-                              'Secondary education',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff071952)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: GestureDetector(
+                SizedBox(
+                  height: screenHeight * 0.9,
+                  child: GridView.builder(
+                    physics: BouncingScrollPhysics(),
+                    itemCount: 8,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
@@ -260,8 +116,8 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                               ));
                         },
                         child: Container(
-                          width: 194,
-                          height: 188,
+                          width: 185,
+                          height: 180,
                           decoration: BoxDecoration(
                               border: Border.all(
                                   color: const Color(0xff999999),
@@ -273,12 +129,12 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Image.asset(
-                                'images/courses/university.png',
+                                'images/courses/kids.png',
                                 height: 120,
                                 width: 170,
                               ),
                               const Text(
-                                'University education',
+                                'Kids Courses',
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -287,16 +143,13 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                             ],
                           ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    )
-                  ],
+                      );
+                    },
+                  ),
                 ),
               if (selectedButton == 2)
                 SizedBox(
-                  height: 1344,
+                  height: screenHeight * 1.3,
                   child: GridView.builder(
                     physics: const BouncingScrollPhysics(),
                     itemCount: 12,

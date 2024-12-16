@@ -13,6 +13,8 @@ class _PopularCoursesState extends State<PopularCourses> {
   TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: _isSearching
@@ -91,92 +93,104 @@ class _PopularCoursesState extends State<PopularCourses> {
                               bottomLeft: Radius.circular(16)),
                           child: Image.asset(
                             'images/courses/flutter.png',
-                            width: 166,
-                            height: 166,
+                            width: screenWidth * 0.35,
+                            height: screenHeight * 0.2,
                             fit: BoxFit.cover,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16),
-                          child: SizedBox(
-                            width: 200,
-                            height: 166,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                        style: IconButton.styleFrom(),
-                                        onPressed: () {},
-                                        icon:
-                                            const Icon(Icons.favorite_outline)),
-                                  ],
-                                ),
-                                const Text(
-                                  'UI UX Diploma',
-                                  style: TextStyle(
-                                      color: Color(0xff202244),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500),
-                                  softWrap: true, // Ensure text wraps
-                                  overflow:
-                                      TextOverflow.ellipsis, // softWrap: true,
-                                ),
-                                // SizedBox(height: 8),
-                                const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: screenWidth * 0.02,
+                            ),
+                            child: SizedBox(
+                              width: screenWidth * 0.4,
+                              height: screenHeight * 0.2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      IconButton(
+                                          style: IconButton.styleFrom(),
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                              Icons.favorite_outline)),
+                                    ],
+                                  ),
+                                  const Text(
+                                    'UI UX Diploma',
+                                    style: TextStyle(
+                                        color: Color(0xff202244),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500),
+                                    maxLines: 1, // Prevent overflow
+                                    softWrap: false, // Ensure text wraps
+                                    overflow: TextOverflow
+                                        .ellipsis, // softWrap: true,
+                                  ),
+                                  // SizedBox(height: 8),
+                                  SizedBox(
+                                    width: 188,
+                                    child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Color(0xffFCCB40),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Icon(
+                                              Icons.star,
+                                              color: Color(0xffFCCB40),
+                                            ),
+                                            Text(
+                                              '4.4',
+                                              style: TextStyle(
+                                                  color: Color(0xff202244),
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: screenWidth * 0.01,
                                         ),
                                         Text(
-                                          '4.4',
+                                          '|',
+                                          style: TextStyle(
+                                              color: Color(0xff202244),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        SizedBox(
+                                          width: screenWidth * 0.01,
+                                        ),
+                                        Text(
+                                          '30 Hrs 06 Mins',
                                           style: TextStyle(
                                               color: Color(0xff202244),
                                               fontSize: 15,
-                                              fontWeight: FontWeight.w600),
+                                              fontWeight: FontWeight.w600,
+                                              overflow: TextOverflow.ellipsis),
+                                          maxLines: 1, // Prevent overflow
+                                          softWrap: false,
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      '|',
-                                      style: TextStyle(
-                                          color: Color(0xff202244),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w900),
-                                    ),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Text(
-                                      '30 Hrs 06 Mins',
-                                      style: TextStyle(
-                                          color: Color(0xff202244),
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
-                                ),
-                                const Text(
-                                  '1000 EGP',
-                                  style: TextStyle(
-                                      color: Color(0xff088395),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                )
-                              ],
+                                  ),
+                                  const Text(
+                                    '1000 EGP',
+                                    style: TextStyle(
+                                        color: Color(0xff088395),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         )

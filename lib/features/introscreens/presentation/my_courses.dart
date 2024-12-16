@@ -199,7 +199,7 @@ class _MyCoursesState extends State<MyCourses> {
                                           horizontal: MediaQuery.of(context)
                                                   .size
                                                   .width *
-                                              0.04,
+                                              0.03,
                                         ),
                                         child: const Column(
                                           crossAxisAlignment:
@@ -317,7 +317,7 @@ class _MyCoursesState extends State<MyCourses> {
                                         'images/courses/network.png',
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.35, // Relative width
+                                                0.3, // Relative width
                                         height: double.infinity,
                                         fit: BoxFit.cover,
                                       ),

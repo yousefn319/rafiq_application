@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/features/introscreens/presentation/first_intro.dart';
 import 'package:rafiq_application/features/introscreens/presentation/home_screen.dart';
+import 'package:rafiq_application/features/introscreens/presentation/instructor_profile.dart';
 import 'package:rafiq_application/features/introscreens/presentation/signup/signup_screen.dart';
 
 void main() {

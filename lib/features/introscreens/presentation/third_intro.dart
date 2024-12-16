@@ -21,7 +21,7 @@ class ThirdIntro extends StatelessWidget {
           onTap: () {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return const GetStarted();
+                return GetStarted();
               },
             ));
           },
