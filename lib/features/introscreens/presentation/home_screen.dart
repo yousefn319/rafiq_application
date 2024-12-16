@@ -62,8 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(32),
                         child: Image.asset(
                           'images/courses/profile_picture.jpg',
-                          height: screenHeight * 0.06,
-                          width: screenHeight * 0.06,
+                          height: screenHeight * 0.055,
+                          width: screenHeight * 0.055,
                         ),
                       ),
                       SizedBox(width: 12),
