@@ -49,6 +49,9 @@ class _CourseDetailsState extends State<CourseDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    final screenWidth = MediaQuery.sizeOf(context).width;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.type}'),
@@ -81,8 +84,8 @@ class _CourseDetailsState extends State<CourseDetails> {
                         ),
                       ),
                       Positioned(
-                        top:
-                            16, // Position the button at the bottom of the image
+                        top: screenHeight *
+                            0.01, // Position the button at the bottom of the image
 
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,14 +94,14 @@ class _CourseDetailsState extends State<CourseDetails> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(22),
                                   color: Colors.white),
-                              height: 48,
-                              width: 88,
-                              child: const Row(
+                              height: screenHeight * 0.04,
+                              width: screenWidth * 0.18,
+                              child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Icon(
-                                    size: 32,
+                                    size: screenWidth * 0.06,
                                     Icons.star,
                                     color: Color(0xffFFE100),
                                   ),
@@ -106,13 +109,13 @@ class _CourseDetailsState extends State<CourseDetails> {
                                     '3.8 ',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 22),
+                                        fontSize: screenWidth * 0.044),
                                   )
                                 ],
                               ),
                             ),
-                            const SizedBox(
-                              width: 228,
+                            SizedBox(
+                              width: screenWidth * 1 / 1.8,
                             ),
                             IconButton(
                               onPressed: () {
@@ -294,9 +297,12 @@ class _CourseDetailsState extends State<CourseDetails> {
                           selectedButton = 1; // Select the first button
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         'Roadmap',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.038,
+                        ),
+                        maxLines: 1,
                       ),
                     ),
                   ),
@@ -324,9 +330,9 @@ class _CourseDetailsState extends State<CourseDetails> {
                           selectedButton = 2; // Select the second button
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         'Reviews',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: screenWidth * 0.038),
                       ),
                     ),
                   ),
@@ -354,9 +360,9 @@ class _CourseDetailsState extends State<CourseDetails> {
                           selectedButton = 3; // Select the second button
                         });
                       },
-                      child: const Text(
+                      child: Text(
                         'Mentor',
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: screenWidth * 0.038),
                       ),
                     ),
                   ),

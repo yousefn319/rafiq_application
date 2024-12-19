@@ -13,7 +13,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Messages'),
+        title: const Text('Notifications'),
         centerTitle: true,
       ),
       body: ListView.builder(
@@ -26,13 +26,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               children: [
                 const SizedBox(height: 4),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChatScreen(),
-                        ));
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 88,
                     child: Row(

@@ -13,6 +13,8 @@ class _MyCoursesState extends State<MyCourses> {
   int selectedButton = 1;
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    final screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('My courses'),
