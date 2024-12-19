@@ -277,9 +277,10 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                         ),
                                       ),
                                     ),
-                                    const Positioned(
+                                    Positioned(
                                       top: 78,
-                                      left: 150,
+                                      left: MediaQuery.sizeOf(context).width *
+                                          (1 / 3.2),
                                       child: CircleAvatar(
                                         radius: 50,
                                         backgroundImage: AssetImage(
