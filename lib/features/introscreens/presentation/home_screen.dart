@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Welcome Omar,',
+                              'Welcome Ahmed,',
                               style: TextStyle(fontSize: 20),
                             ),
                             SizedBox(

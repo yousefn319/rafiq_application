@@ -63,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                               SizedBox(
                                 width: screenWidth * 0.4,
                                 child: const Text(
-                                  'Mo3aref@gmail.com',
+                                  'ahmdhamoda11@gmail.com',
                                   style: TextStyle(
                                       color: Color(0xff999999),
                                       fontWeight: FontWeight.w400,

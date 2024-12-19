@@ -14,6 +14,8 @@ class ForgetPassword extends StatefulWidget {
 class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    final screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
         title: Text('Forget Password'),
@@ -27,8 +29,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             Center(
               child: SvgPicture.asset(
                 "images/logins/forgotpassword.svg",
-                height: 500,
-                width: 300,
+                height: screenHeight * 0.5,
+                width: screenWidth * 0.5,
                 fit: BoxFit.cover,
               ),
             ),
@@ -43,8 +45,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   fontSize: 14,
                   color: Color(0xff999999)),
             ),
-            const SizedBox(
-              height: 44,
+            SizedBox(
+              height: screenHeight * 0.032,
             ),
             TypingField(
               type: TextInputType.emailAddress,
