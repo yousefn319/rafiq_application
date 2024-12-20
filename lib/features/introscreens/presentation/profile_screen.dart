@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq_application/features/introscreens/presentation/get_started.dart';
+import 'package:rafiq_application/features/localization/app_localizations.dart';
+import 'package:rafiq_application/features/localization/cubit/locale_cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -166,7 +169,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               ListTile(
-                onTap: () {},
+                onTap: () => _showLanguagePicker(context),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 leading: const Icon(
                   Icons.language_outlined,
@@ -324,4 +327,47 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showLanguagePicker(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.white,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (context) {
+      return Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "ChooseLanguage".tr(context),
+              style: const TextStyle(color: Colors.black, fontSize: 18),
+            ),
+            const SizedBox(height: 20),
+            ListTile(
+              leading: const Icon(Icons.language, color: Colors.black),
+              title:
+                  const Text('English', style: TextStyle(color: Colors.black)),
+              onTap: () {
+                context.read<LocaleCubit>().changeLanguage('en');
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.language, color: Colors.black),
+              title:
+                  const Text('العربية', style: TextStyle(color: Colors.black)),
+              onTap: () {
+                context.read<LocaleCubit>().changeLanguage('ar');
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      );
+    },
+  );
 }
