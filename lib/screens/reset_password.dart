@@ -19,9 +19,7 @@ class ResetPasswordState extends State<ResetPassword> {
           child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 32),
                     const Center(
                         child: SvgPicture(AssetBytesLoader(
                             'images/logins/reset_password.svg.vec'))),

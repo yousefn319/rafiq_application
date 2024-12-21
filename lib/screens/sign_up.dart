@@ -32,15 +32,10 @@ class _SignUpState extends State<SignUp> {
     ThemeData theme = Theme.of(context);
     ConfigProvider config = ConfigProvider.of(context);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Sign up"),
-          centerTitle: true,
-        ),
+        appBar: AppBar(centerTitle: true, title: const Text("Sign up")),
         body: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const SizedBox(height: 16),
+            padding: const EdgeInsets.all(24),
+            child: Column(children: [
               TextFormField(
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.name,
@@ -94,42 +89,36 @@ class _SignUpState extends State<SignUp> {
                     value: agreeToTerms,
                     onChanged: (value) =>
                         setState(() => agreeToTerms = value!)),
-                const Expanded(
-                    child: Text.rich(TextSpan(text: 'I accept the ', children: [
-                  TextSpan(
-                      text: 'Terms and Conditions',
-                      style: TextStyle(
+                Text('I accept the '),
+                LabelButton(
+                    label: 'Terms and Conditions',
+                    onPressed: () {},
+                    style: TextStyle(
                         color: Color(0xff088395),
-                        decoration: TextDecoration.underline,
-                      ))
-                ])))
+                        decoration: TextDecoration.underline))
               ]),
               const SizedBox(height: 16),
               FilledButton(
-                  onPressed: !agreeToTerms
-                      ? null
-                      : () => Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return const OtpVerification(
+                  onPressed: agreeToTerms
+                      ? () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const OtpVerification(
                                   title: Text("Verify Account"),
                                   image: SvgPicture(AssetBytesLoader(
-                                      "images/logins/otp_security.svg.vec")));
-                            },
-                          )),
+                                      "images/logins/otp_security.svg.vec")))))
+                      : null,
                   child: const Text('Sign up')),
               const SizedBox(height: 16),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 const Text(
                   'Already have an account? ',
-                  style: TextStyle(color: Colors.grey),
                 ),
                 LabelButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginForm()));
-                    },
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginForm())),
                     label: 'Sign in',
                     style: const TextStyle(color: Color(0xff088395))),
               ])

@@ -23,18 +23,26 @@ class GetStarted extends StatelessWidget {
         child: const Text('Sign in'),
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => const LoginForm())));
+    FilledButton ButtonGoogle = FilledButton.icon(
+        style: FilledButton.styleFrom(
+            side: BorderSide(color: theme.colorScheme.onPrimary)),
+        label: const Text('Continue with Google'),
+        icon: const SvgPicture(
+            AssetBytesLoader('images/buttons/Google-color.svg.vec'),
+            width: 30,
+            height: 30),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const LoginForm())));
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Get started'),
-      ),
+      appBar: AppBar(centerTitle: true, title: const Text('Welcome')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const Expanded(child: SvgPicture(AssetBytesLoader('images/intros/5.svg.vec'))),
+          const Expanded(
+              child: SvgPicture(AssetBytesLoader('images/intros/5.svg.vec'))),
           Text('Let’s Start', style: theme.textTheme.titleMedium),
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
           Container(
             decoration: BoxDecoration(
                 color: theme.colorScheme.primary,
@@ -48,7 +56,9 @@ class GetStarted extends StatelessWidget {
                   const SizedBox(height: 32),
                   ButtonSignUp,
                   const SizedBox(height: 16),
-                  ButtonSignIn
+                  ButtonSignIn,
+                  const SizedBox(height: 16),
+                  ButtonGoogle,
                 ])),
           ),
         ],

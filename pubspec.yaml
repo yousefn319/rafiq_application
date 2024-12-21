@@ -116,6 +116,8 @@ flutter:
     - images/buttons/robot.svg.vec
     - images/buttons/notification.svg.vec
     - images/buttons/message.svg.vec
+    - images/buttons/Google-color.svg
+    - images/buttons/Google-color.svg.vec
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

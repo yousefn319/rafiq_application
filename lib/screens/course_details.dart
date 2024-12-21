@@ -50,7 +50,7 @@ class _CourseDetailsState extends State<CourseDetails> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final screenWidth = MediaQuery.sizeOf(context).width;
-
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.type}'),
@@ -62,7 +62,6 @@ class _CourseDetailsState extends State<CourseDetails> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const SizedBox(height: 16),
               Center(
                 child: SizedBox(
                   width: double.infinity,
@@ -161,20 +160,15 @@ class _CourseDetailsState extends State<CourseDetails> {
                       height: 150,
                       child: Column(
                         children: [
-                        const SizedBox(height: 28),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              side: BorderSide(color: Colors.white)),
-                          onPressed: () {},
-                          child: Text('Book Now'),
-                        ),
-                        const SizedBox(height: 12),
-                        ElevatedButton(
+                          const SizedBox(height: 24),
+                          FilledButton(onPressed: () {}, child: const Text('Book Now')),
+                          const SizedBox(height: 8),
+                          FilledButton(
                             onPressed: () {},
-                            child: Text('Add to favorite'),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: Color(0xff071952))),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: theme.colorScheme.onPrimary,
+                              foregroundColor: theme.colorScheme.primary),
+                            child: const Text('Add to favorite'))
 
                         ],
                       ))
@@ -443,39 +437,22 @@ class _CourseDetailsState extends State<CourseDetails> {
                     physics: const BouncingScrollPhysics(),
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return const Column(
+                      return Column(
                         children: [
                           SizedBox(height: 8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                width: 120,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.grey,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                                  width: 120,
+                                  child: Row(
+                                    children: Iterable.generate(
+                                                4,
+                                                (_) => Icon(Icons.star,
+                                                    color: Color(0xffffe100)))
+                                            .toList() +
+                                        [Icon(Icons.star, color: Colors.grey)],
+                                  )),
                               Text('01/07/2024')
                             ],
                           ),

@@ -29,71 +29,64 @@ class LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     TextTheme theme = Theme.of(context).textTheme;
     return Scaffold(
+        appBar: AppBar(centerTitle: true, title: const Text('Sign in')),
         body: Form(
             key: _formKey,
-            child: Padding(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
               child: AutofillGroup(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                    Text('Sign in', style: theme.titleMedium),
-                    Text('Fill your information below to sign in',
-                        style: theme.bodySmall),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.emailAddress,
-                        autofillHints: const [AutofillHints.email],
-                        autofocus: true,
-                        controller: emailController,
-                        validator: (value) =>
-                            EmailValidator.validate(value ?? "")
-                                ? null
-                                : "Invalid email",
-                        decoration: const InputDecoration(
-                            labelText: 'Email', prefixIcon: Icon(Icons.email))),
-                    const SizedBox(height: 16),
-                    DefaultPassword(
-                        controller: passwordController, label: 'Password'),
-                    Align(
-                        alignment: Alignment.bottomRight,
-                        child: TextButton(
-                          child: Text('Forgot Password?', style: theme.labelMedium),
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const OtpVerification(
-                                      title: Text("Reset password"),
-                                      image: SvgPicture(AssetBytesLoader(
-                                          "images/logins/palm_recognition.svg.vec"))))),
-                        )),
-                    FilledButton(
-                        child: Text('Sign in'),
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomeScreen(),
-                                ));
-                            print('Email: ${emailController.text}');
-                            print('Password: ${passwordController.text}');
-                          }
-                        }),
-                    const SizedBox(height: 16),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      const Text('Don\'t have an account? '),
-                      LabelButton(
-                          label: 'Sign up',
-                          style: const TextStyle(color: Color(0xff088395)),
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUp())))
-                    ])
-                  ])),
+                  child: Column(children: [
+                TextFormField(
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    autofillHints: const [AutofillHints.email],
+                    autofocus: true,
+                    controller: emailController,
+                    validator: (value) => EmailValidator.validate(value ?? "")
+                        ? null
+                        : "Invalid email",
+                    decoration: const InputDecoration(
+                        labelText: 'Email', prefixIcon: Icon(Icons.email))),
+                const SizedBox(height: 16),
+                DefaultPassword(
+                    controller: passwordController, label: 'Password'),
+                Align(
+                    alignment: Alignment.bottomRight,
+                    child: TextButton(
+                      child: Text('Forgot Password?', style: theme.labelMedium),
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const OtpVerification(
+                                  title: Text("Reset password"),
+                                  image: SvgPicture(AssetBytesLoader(
+                                      "images/logins/palm_recognition.svg.vec"))))),
+                    )),
+                FilledButton(
+                    child: Text('Sign in'),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                            ));
+                        print('Email: ${emailController.text}');
+                        print('Password: ${passwordController.text}');
+                      }
+                    }),
+                const SizedBox(height: 16),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  const Text('Don\'t have an account? '),
+                  LabelButton(
+                      label: 'Sign up',
+                      style: const TextStyle(color: Color(0xff088395)),
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUp())))
+                ])
+              ])),
             )));
   }
 }
