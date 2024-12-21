@@ -28,6 +28,7 @@ void main() async {
       border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8))),
       focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
           borderSide: BorderSide(color: colorScheme.secondary)));
   ThemeData theme = ThemeData(
       useMaterial3: true,
