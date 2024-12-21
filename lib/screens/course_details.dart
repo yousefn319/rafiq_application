@@ -62,9 +62,7 @@ class _CourseDetailsState extends State<CourseDetails> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const SizedBox(
-                height: 16,
-              ),
+              const SizedBox(height: 16),
               Center(
                 child: SizedBox(
                   width: double.infinity,
@@ -113,9 +111,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              width: screenWidth * 1 / 1.8,
-                            ),
+                            SizedBox( width: screenWidth * 1 / 1.8),
                             IconButton(
                               onPressed: () {
                                 // Action for the button
@@ -137,9 +133,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 12,
-              ),
+              const SizedBox(height: 12),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -167,23 +161,21 @@ class _CourseDetailsState extends State<CourseDetails> {
                       height: 150,
                       child: Column(
                         children: [
-                          const SizedBox(
-                            height: 28,
-                          ),
-                          ElevatedButton(
-                            //borderColor: Colors.white,
-                            onPressed: () {},
-                            child: Text('Book Now'),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          ElevatedButton(
+                        const SizedBox(height: 28),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              side: BorderSide(color: Colors.white)),
+                          onPressed: () {},
+                          child: Text('Book Now'),
+                        ),
+                        const SizedBox(height: 12),
+                        ElevatedButton(
                             onPressed: () {},
                             child: Text('Add to favorite'),
-                            //color: Colors.white,
-                            //textColor: const Color(0xff071952),
-                          ),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Color(0xff071952))),
+
                         ],
                       ))
                   : const SizedBox(),
@@ -199,9 +191,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 12,
-              ),
+              const SizedBox(height: 12),
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 0),
                 leading: Image.asset('images/courses/aref.png'),
@@ -242,9 +232,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               const Divider(
                 color: Color(0xffEEEEEE),
               ),
@@ -257,9 +245,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               const ReadMoreDescription(
                 description:
                     'Unlock the world of user-centric design with our comprehensive UI/UX Design Course! This course is tailored for aspiring designers, developers, and anyone passionate about crafting intuitive and engaging digital experiences. You\'ll learn the fundamentals of user interface (UI) design and user experience (UX) principles, exploring tools like Figma and Adobe XD to create wireframes, prototypes, and mockups. Dive into the psychology of design, usability testing, and responsive design techniques to ensure your creations resonate across all devices. By the end of this course, you\'ll have a polished portfolio of projects, showcasing your ability to design visually appealing and user-friendly websites and mobile applications. Whether you\'re starting from scratch or enhancing your current skills, this course will elevate your design journey.What You’ll Learn: Design principles and color theory Wireframing and prototyping User research and persona creation Usability testing and feedback integration Responsive design for web and mobile Who This Course is For: Beginners, developers, and professionals aiming to transition into the design field or improve their skills in crafting exceptional digital experiences.',
@@ -267,9 +253,7 @@ class _CourseDetailsState extends State<CourseDetails> {
               const Divider(
                 color: Color(0xffEEEEEE),
               ),
-              const SizedBox(
-                height: 12,
-              ),
+              const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -461,9 +445,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                     itemBuilder: (context, index) {
                       return const Column(
                         children: [
-                          SizedBox(
-                            height: 8,
-                          ),
+                          SizedBox(height: 8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -497,9 +479,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                               Text('01/07/2024')
                             ],
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
+                          SizedBox(height: 8),
                           Text(
                             'Simple explanation of the information and constant follow-up and training on practical projects',
                             style: TextStyle(fontSize: 16, color: Colors.grey),
@@ -514,9 +494,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
+                          SizedBox(height: 8),
                           Divider(),
                         ],
                       );

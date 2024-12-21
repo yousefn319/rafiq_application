@@ -16,21 +16,18 @@ class _InterestsPageState extends State<InterestsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(
-          'Determine interests',
-          style: TextStyle(fontWeight: FontWeight.w600),
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(
+            'Determine interests',
+            style: TextStyle(fontWeight: FontWeight.w600),
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 26),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 26),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -48,43 +45,36 @@ class _InterestsPageState extends State<InterestsPage> {
                 )
               ],
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
             SizedBox(
-              height: 400,
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      childAspectRatio: 5,
-                      mainAxisSpacing: 20),
-                  itemCount: 26,
-                  itemBuilder: (context, index) {
-                    return SizedBox(
-                        height: 30,
-                        child: GestureDetector(
-                            onTap: () {
-                              if (clicked == 0) {
-                                setState(() {
-                                  clicked = 1;
-                                });
-                              } else {
-                                setState(() {
-                                  clicked = 0;
-                                });
-                              }
-                            },
-                            child: clicked == 0
-                                ? Interest(
-                                    interest: 'interest',
-                                    color: Colors.red,
-                                  )
-                                : Interest(
-                                    interest: 'interest',
-                                    color: Colors.blue,
-                                  )));
-                  }),
-            ),
+                height: 400,
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            childAspectRatio: 5,
+                            mainAxisSpacing: 20),
+                    itemCount: 26,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                          height: 30,
+                          child: GestureDetector(
+                              onTap: () {
+                                if (clicked == 0) {
+                                  setState(() {
+                                    clicked = 1;
+                                  });
+                                } else {
+                                  setState(() {
+                                    clicked = 0;
+                                  });
+                                }
+                              },
+                              child: Interest(
+                                interest: 'interest',
+                                color: clicked == 0 ? Colors.red : Colors.blue,
+                              )));
+                    })),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             //   children: [
@@ -95,40 +85,30 @@ class _InterestsPageState extends State<InterestsPage> {
             //   ],
             // ),
 
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             GestureDetector(
-              onTap: () {},
-              child: Container(
-                height: 44,
-                width: 360,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: const Color(0xff071952)),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return GetStarted();
-                      },
-                    ));
-                  },
-                  child: const Center(
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+                onTap: () {},
+                child: Container(
+                    height: 44,
+                    width: 360,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: const Color(0xff071952)),
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return const GetStarted();
+                            },
+                          ));
+                        },
+                        child: const Center(
+                            child: Text('Sign up',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700))))))
+          ]),
+        ));
   }
 }

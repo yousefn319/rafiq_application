@@ -16,9 +16,7 @@ class LanguageSelection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
             Center(
               child: SvgPicture.asset(
                 'images/intros/4.svg',
@@ -26,9 +24,7 @@ class LanguageSelection extends StatelessWidget {
                 width: 343,
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
+            const SizedBox(height: 25),
             const Text(
               'Choose Your Language',
               style: TextStyle(
@@ -36,13 +32,9 @@ class LanguageSelection extends StatelessWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.w700),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const LanguageSelectionScreen(),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             GestureDetector(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(

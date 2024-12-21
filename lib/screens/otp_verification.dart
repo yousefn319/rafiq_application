@@ -34,9 +34,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                   child: SvgPicture(AssetBytesLoader(widget.title == 'Verify OTP'
                       ? "images/logins/otp_security.svg.vec"
                       : "images/logins/palm_recognition.svg.vec"))),
-              const SizedBox(
-                height: 34,
-              ),
+              const SizedBox(height: 30),
               const Text(
                 'Check Your email',
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
@@ -51,10 +49,7 @@ class _OtpVerificationState extends State<OtpVerification> {
               const SizedBox(
                 height: 24,
               ),
-              OTPInput(),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 20),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       minimumSize: const Size(double.infinity, 50)),

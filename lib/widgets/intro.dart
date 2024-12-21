@@ -18,30 +18,19 @@ class IntroScreen extends StatelessWidget {
   String nextButton;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 343,
-          height: 343,
-          child: SvgPicture(AssetBytesLoader(image)),
-        ),
-        Text(
-          title,
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      SizedBox(
+          width: 343, height: 343, child: SvgPicture(AssetBytesLoader(image))),
+      Text(title,
           style: const TextStyle(
-              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700),
-        ),
-        Text(
-          subtitle,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.grey,
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700)),
+      Text(
+        subtitle,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+            color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w600),
+      )
+    ]);
   }
 }
 
