@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/features/introscreens/presentation/chat_screen.dart';
+import 'package:rafiq_application/screens/chat_screen.dart';
 
-class MessagesScreen extends StatelessWidget {
-  const MessagesScreen({super.key});
+class NotificationsScreen extends StatefulWidget {
+  const NotificationsScreen({super.key});
 
+  @override
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
+}
+
+class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Messages'),
+        title: const Text('Notifications'),
         centerTitle: true,
       ),
       body: ListView.builder(
@@ -21,13 +26,7 @@ class MessagesScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 4),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChatScreen(),
-                        ));
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 88,
                     child: Row(
@@ -43,23 +42,23 @@ class MessagesScreen extends StatelessWidget {
                           ),
                         ),
                         const Expanded(
-                          // Ensures the Column takes remaining space
+                          // Ensures the text can take remaining space
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Mohammed Aref',
+                                'Notification label',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                maxLines: 1, // Prevent overflow
-                                softWrap: false, // Prevent wrapping
+                                maxLines: 1, // Prevents overflow
+                                softWrap: false, // Prevents wrapping
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 4),
                               Text(
                                 'you must watch the second lecture, apply it, and study it well',
                                 style: TextStyle(
@@ -68,40 +67,17 @@ class MessagesScreen extends StatelessWidget {
                                   fontSize: 18,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                maxLines: 1, // Prevent overflow
-                                softWrap: false, // Prevent wrapping
+                                maxLines: 1, // Prevents overflow
+                                softWrap: false, // Prevents wrapping
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                height: 32,
-                                width: 32,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: const Color(0xff071952)),
-                                child: const Center(
-                                  child: Text(
-                                    '99',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
-                              const Text(
-                                '4:32 am',
+                              Text(
+                                'Jun 23,2020',
                                 style: TextStyle(
-                                    fontSize: 16,
-                                    color: Color(0xff999999),
-                                    fontWeight: FontWeight.w500),
+                                  color: Color(0xff999999),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ],
                           ),
@@ -113,7 +89,7 @@ class MessagesScreen extends StatelessWidget {
                 const SizedBox(height: 4),
                 const Divider(
                   color: Color(0xffeeeeee),
-                ),
+                )
               ],
             ),
           );

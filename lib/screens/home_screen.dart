@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/academic_category.dart';
-import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
-import 'package:rafiq_application/features/introscreens/presentation/favorites_screen.dart';
-import 'package:rafiq_application/features/introscreens/presentation/home_page.dart';
-import 'package:rafiq_application/features/introscreens/presentation/messages_screen.dart';
-import 'package:rafiq_application/features/introscreens/presentation/my_courses.dart';
-import 'package:rafiq_application/features/introscreens/presentation/notifications_screen.dart';
-import 'package:rafiq_application/features/introscreens/presentation/profile_screen.dart';
-import 'package:rafiq_application/features/introscreens/presentation/rafiq_chatbot_screen.dart';
+import 'package:rafiq_application/screens/academic_category.dart';
+import 'package:rafiq_application/screens/course_details.dart';
+import 'package:rafiq_application/screens/favorites_screen.dart';
+import 'package:rafiq_application/screens/home_page.dart';
+import 'package:rafiq_application/screens/messages_screen.dart';
+import 'package:rafiq_application/screens/my_courses.dart';
+import 'package:rafiq_application/screens/notifications_screen.dart';
+import 'package:rafiq_application/screens/profile_screen.dart';
+import 'package:rafiq_application/screens/rafiq_chatbot_screen.dart';
 import 'package:rafiq_application/widgets/nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {

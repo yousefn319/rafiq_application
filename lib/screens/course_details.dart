@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/features/introscreens/presentation/video_screen.dart';
+import 'package:rafiq_application/screens/video_screen.dart';
 import 'package:rafiq_application/widgets/read_more_description.dart';
 import 'package:video_player/video_player.dart';
 

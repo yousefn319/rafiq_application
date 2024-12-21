@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/reset_password.dart';
+import 'package:rafiq_application/screens/reset_password.dart';
 import 'package:rafiq_application/widgets/OTPfields.dart';
 import 'package:rafiq_application/widgets/resend_code_widget.dart';
 import 'package:vector_graphics/vector_graphics.dart';

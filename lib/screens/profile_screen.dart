@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq_application/features/introscreens/presentation/get_started.dart';
-import 'package:rafiq_application/features/localization/app_localizations.dart';
-import 'package:rafiq_application/features/localization/cubit/locale_cubit.dart';
+import 'package:rafiq_application/screens/get_started.dart';
+import 'package:rafiq_application/localization/app_localizations.dart';
+import 'package:rafiq_application/localization/cubit/locale_cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

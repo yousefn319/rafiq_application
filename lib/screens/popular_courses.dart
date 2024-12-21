@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
+import 'package:rafiq_application/screens/course_details.dart';
 
 class PopularCourses extends StatefulWidget {
   const PopularCourses({super.key});

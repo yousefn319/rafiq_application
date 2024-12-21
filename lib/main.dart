@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:rafiq_application/features/localization/app_localizations.dart';
-import 'package:rafiq_application/features/localization/cubit/locale_cubit.dart';
+import 'package:rafiq_application/localization/app_localizations.dart';
+import 'package:rafiq_application/localization/cubit/locale_cubit.dart';
 import 'package:rafiq_application/widgets/intro.dart';
-import 'package:rafiq_application/features/introscreens/presentation/get_started.dart';
+import 'package:rafiq_application/screens/get_started.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 

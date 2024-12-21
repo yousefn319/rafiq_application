@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
-import 'package:rafiq_application/features/introscreens/presentation/signup/signup_screen.dart';
+import 'package:rafiq_application/screens/sign_in.dart';
+import 'package:rafiq_application/screens/signup_screen.dart';
 
 class GetStarted extends StatelessWidget {
   GetStarted({super.key});

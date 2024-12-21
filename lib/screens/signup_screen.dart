@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
-import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
+import 'package:rafiq_application/screens/otp_verification.dart';
+import 'package:rafiq_application/screens/sign_in.dart';
 import 'package:rafiq_application/widgets/date_of_birth.dart';
 import 'package:rafiq_application/widgets/password_field.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
