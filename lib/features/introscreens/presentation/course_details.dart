@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/features/introscreens/presentation/video_screen.dart';
-import 'package:rafiq_application/widgets/button.dart';
 import 'package:rafiq_application/widgets/read_more_description.dart';
 import 'package:video_player/video_player.dart';
 
@@ -67,7 +66,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                 height: 16,
               ),
               Center(
-                child: Container(
+                child: SizedBox(
                   width: double.infinity,
                   child: Stack(
                     alignment: Alignment
@@ -141,22 +140,22 @@ class _CourseDetailsState extends State<CourseDetails> {
               const SizedBox(
                 height: 12,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
                     'UI UX Diploma',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                   ),
-                  widget.type == 'Course Details'
-                      ? const Text(
-                          '4500',
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xff088395)),
-                        )
-                      : const SizedBox()
+                  // widget.type == 'Course Details'
+                  //     ? const Text(
+                  //         '4500',
+                  //         style: TextStyle(
+                  //             fontSize: 22,
+                  //             fontWeight: FontWeight.w600,
+                  //             color: Color(0xff088395)),
+                  //       )
+                  //     : const SizedBox()
                 ],
               ),
               widget.type == 'Course Details'
@@ -171,19 +170,19 @@ class _CourseDetailsState extends State<CourseDetails> {
                           const SizedBox(
                             height: 28,
                           ),
-                          Button(
-                            borderColor: Colors.white,
-                            onClick: () {},
-                            text: 'Book Now',
+                          ElevatedButton(
+                            //borderColor: Colors.white,
+                            onPressed: () {},
+                            child: Text('Book Now'),
                           ),
                           const SizedBox(
                             height: 12,
                           ),
-                          Button(
-                            onClick: () {},
-                            text: 'Add to favorite',
-                            color: Colors.white,
-                            textColor: const Color(0xff071952),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Add to favorite'),
+                            //color: Colors.white,
+                            //textColor: const Color(0xff071952),
                           ),
                         ],
                       ))

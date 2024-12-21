@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NavBar extends StatefulWidget {
+  const NavBar({super.key});
+
   @override
   _NavBarState createState() => _NavBarState();
 }

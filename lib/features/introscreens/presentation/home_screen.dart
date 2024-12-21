@@ -1,4 +1,3 @@
-import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/academic_category.dart';

@@ -1,75 +1,126 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq_application/widgets/button.dart';
+import 'package:rafiq_application/widgets/typing_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
-class Intro extends StatelessWidget {
-  Intro({
-    super.key,
-    this.image,
-    this.text = 'Next',
-    required this.title,
-    required this.subTitle,
-    required this.onTap,
-  });
+class IntroScreen extends StatelessWidget {
+  IntroScreen(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.subtitle,
+      required this.nextButton});
+  String image;
+  String title;
+  String subtitle;
+  String nextButton;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 343,
+          height: 343,
+          child: SvgPicture(AssetBytesLoader(image)),
+        ),
+        Text(
+          title,
+          style: const TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700),
+        ),
+        Text(
+          subtitle,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.grey,
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+}
 
-  final String title;
-  final String subTitle;
-  final String? image;
-  final VoidCallback onTap;
-  final String text;
+Future<void> ignoreIntro() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('ignoreIntro', true);
+}
+
+class Intro extends StatefulWidget {
+  Intro({super.key, required this.infos, required this.child});
+  List<IntroScreen> infos;
+  final Widget child;
+
+  @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> {
+  late PageController _pageViewController;
+  late TabController _tabController;
+  int _currentPageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageViewController = PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageViewController.dispose();
+  }
+
+  void _handlePageViewChanged(int currentPageIndex) {
+    setState(() {
+      _currentPageIndex = currentPageIndex;
+    });
+  }
+
+  Function() _goNext(BuildContext context) => () => Navigator.pushReplacement(
+      context, MaterialPageRoute(builder: (context) => widget.child));
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(screenWidth * 0.06), // Dynamic padding
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: screenHeight * 0.1, // Adjusted spacing
-            ),
-            Center(
-              child: SvgPicture.asset(
-                image ?? "images/intros/white.svg",
-                height: screenHeight * 0.35, // Adjusted image height
-                width: screenWidth * 0.9, // Adjusted image width
-              ),
-            ),
-            SizedBox(
-              height: screenHeight * 0.05, // Dynamic spacing
-            ),
-            Text(
-              title,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: screenWidth * 0.05, // Scaled font size
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            SizedBox(
-              height: screenHeight * 0.01, // Dynamic spacing
-            ),
-            Text(
-              subTitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: screenWidth * 0.04, // Scaled font size
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            SizedBox(
-              height: screenHeight * 0.08, // Adjusted spacing
-            ),
-            Button(onClick: onTap, text: text),
-          ],
-        ),
-      ),
-    );
+    return Scaffold(
+        body: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(children: [
+              Expanded(
+                  child: Stack(children: [
+                PageView(
+                  controller: _pageViewController,
+                  onPageChanged: _handlePageViewChanged,
+                  children: widget.infos,
+                ),
+                SafeArea(
+                    child: Align(
+                        alignment: Alignment.topRight,
+                        child: LabelButton(
+                            label: "Skip", onPressed: _goNext(context))))
+              ])),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(double.infinity, 50)),
+                  child: Text(widget.infos[_currentPageIndex].nextButton),
+                  onPressed: () {
+                    int next = _currentPageIndex + 1;
+                    if (next == widget.infos.length) {
+                      //ignoreIntro();
+                      _goNext(context)();
+                      return;
+                    }
+                    _pageViewController.animateToPage(
+                      next,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  })
+            ])));
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
-import 'package:rafiq_application/widgets/button.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -55,8 +54,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             SizedBox(
               height: 16,
             ),
-            Button(
-                onClick: () {
+            ElevatedButton(
+                onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -64,7 +63,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             OtpVerification(title: 'Password OTP'),
                       ));
                 },
-                text: 'Send Code')
+                child: Text('Send Code'))
           ]),
         ),
       ),

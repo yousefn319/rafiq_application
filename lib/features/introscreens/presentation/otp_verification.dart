@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/academic_category.dart';
 import 'package:rafiq_application/features/introscreens/presentation/reset_password.dart';
 import 'package:rafiq_application/widgets/OTPfields.dart';
-import 'package:rafiq_application/widgets/button.dart';
 import 'package:rafiq_application/widgets/resend_code_widget.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class OtpVerification extends StatefulWidget {
   const OtpVerification({super.key, required this.title});
@@ -31,21 +30,10 @@ class _OtpVerificationState extends State<OtpVerification> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              widget.title == 'Verify OTP'
-                  ? Center(
-                      child: SvgPicture.asset(
-                        "images/logins/otp_security.svg",
-                        height: 343,
-                        width: 343,
-                      ),
-                    )
-                  : Center(
-                      child: SvgPicture.asset(
-                        "images/logins/palm_recognition.svg",
-                        height: 343,
-                        width: 343,
-                      ),
-                    ),
+              Center(
+                  child: SvgPicture(AssetBytesLoader(widget.title == 'Verify OTP'
+                      ? "images/logins/otp_security.svg.vec"
+                      : "images/logins/palm_recognition.svg.vec"))),
               const SizedBox(
                 height: 34,
               ),
@@ -67,17 +55,17 @@ class _OtpVerificationState extends State<OtpVerification> {
               const SizedBox(
                 height: 24,
               ),
-              widget.title == 'Verify OTP'
-                  ? Button(onClick: () {}, text: 'Verify OTP')
-                  : Button(
-                      onClick: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ResetPassword(),
-                            ));
-                      },
-                      text: 'Verify OTP'),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(double.infinity, 50)),
+                  child: Text('Verify OTP'),
+                  onPressed: widget.title == 'Verify OTP'
+                      ? () {}
+                      : () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ResetPassword(),
+                          ))),
               const SizedBox(
                 height: 16,
               ),

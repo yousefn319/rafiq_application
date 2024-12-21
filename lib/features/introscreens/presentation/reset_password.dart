@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/sign_in.dart';
-import 'package:rafiq_application/widgets/button.dart';
+import 'package:vector_graphics/vector_graphics.dart';
+import 'package:rafiq_application/widgets/typing_field.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -20,81 +20,13 @@ class ResetPassword extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 32),
-              Center(
-                  child: SvgPicture.asset('images/logins/reset_password.svg')),
+              const Center(
+                  child: SvgPicture(AssetBytesLoader(
+                      'images/logins/reset_password.svg.vec'))),
               const SizedBox(height: 16),
-              const SizedBox(
-                width: double.infinity,
-                height: 32,
-                child: Row(
-                  children: [
-                    Text('New Password',
-                        style: TextStyle(
-                            color: Color(0xff071952),
-                            fontWeight: FontWeight.w600))
-                  ],
-                ),
-              ),
-              const TextField(
-                cursorColor: Color(0xff088395),
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  floatingLabelBehavior: FloatingLabelBehavior.never,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8))),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(
-                      color: Color(0xff071952),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      gapPadding: BorderSide.strokeAlignCenter,
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                      borderSide: BorderSide(
-                        color: Color(0xff088395),
-                      )),
-                  suffixIcon: Icon(Icons.visibility),
-                ),
-                keyboardType: TextInputType.visiblePassword,
-              ),
+              DefaultPassword(label: 'New Password'),
               const SizedBox(height: 16),
-              const SizedBox(
-                width: double.infinity,
-                height: 32,
-                child: Row(
-                  children: [
-                    Text('Confirm Password',
-                        style: TextStyle(
-                            color: Color(0xff071952),
-                            fontWeight: FontWeight.w600))
-                  ],
-                ),
-              ),
-              const TextField(
-                cursorColor: Color(0xff088395),
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Confirm Password',
-                  floatingLabelBehavior: FloatingLabelBehavior.never,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8))),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(
-                      color: Color(0xff071952),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      gapPadding: BorderSide.strokeAlignCenter,
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                      borderSide: BorderSide(
-                        color: Color(0xff088395),
-                      )),
-                  suffixIcon: Icon(Icons.visibility),
-                ),
-              ),
+              DefaultPassword(label: 'Confirm Password'),
               Row(
                 children: [
                   Checkbox(
@@ -108,16 +40,8 @@ class ResetPassword extends StatelessWidget {
                   )
                 ],
               ),
-              const SizedBox(height: 22),
-              Button(
-                  onClick: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignIn()),
-                      (route) => false, // Remove all routes
-                    );
-                  },
-                  text: 'Save Password')
+              //const SizedBox(height: 22),
+              ElevatedButton(onPressed: () {}, child: Text('Save Password'))
             ],
           ),
         ),
