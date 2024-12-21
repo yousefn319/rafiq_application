@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/screens/signup_screen.dart';
+import 'package:rafiq_application/screens/sign_up.dart';
 import 'package:rafiq_application/screens/home_screen.dart';
 import 'package:rafiq_application/screens/otp_verification.dart';
 import 'package:email_validator/email_validator.dart';
