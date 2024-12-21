@@ -15,8 +15,8 @@ class GetStarted extends StatelessWidget {
             backgroundColor: theme.colorScheme.onPrimary,
             foregroundColor: theme.colorScheme.primary),
         child: const Text('Sign up'),
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const SignupForm())));
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const SignupForm())));
     FilledButton ButtonSignIn = FilledButton(
         style: FilledButton.styleFrom(
             side: BorderSide(color: theme.colorScheme.onPrimary)),
@@ -27,10 +27,8 @@ class GetStarted extends StatelessWidget {
         style: FilledButton.styleFrom(
             side: BorderSide(color: theme.colorScheme.onPrimary)),
         label: const Text('Continue with Google'),
-        icon: const SvgPicture(
-            AssetBytesLoader('images/buttons/Google-color.svg.vec'),
-            width: 30,
-            height: 30),
+        icon: const SvgPicture(AssetBytesLoader('images/logins/google.svg.vec'),
+            width: 30, height: 30),
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => const LoginForm())));
 

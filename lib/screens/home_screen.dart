@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 import 'package:rafiq_application/screens/favorites_screen.dart';
 import 'package:rafiq_application/screens/home_page.dart';
 import 'package:rafiq_application/screens/messages_screen.dart';
@@ -132,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         shape: const CircleBorder(),
         backgroundColor: const Color(0xff071952),
-        child: SvgPicture.asset('images/buttons/robot.svg'),
+        child: SvgPicture(AssetBytesLoader('images/buttons/robot.svg.vec')),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked, // Center FAB

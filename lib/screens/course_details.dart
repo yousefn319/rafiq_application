@@ -110,7 +110,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                 ],
                               ),
                             ),
-                            SizedBox( width: screenWidth * 1 / 1.8),
+                            SizedBox(width: screenWidth * 1 / 1.8),
                             IconButton(
                               onPressed: () {
                                 // Action for the button
@@ -161,15 +161,15 @@ class _CourseDetailsState extends State<CourseDetails> {
                       child: Column(
                         children: [
                           const SizedBox(height: 24),
-                          FilledButton(onPressed: () {}, child: const Text('Book Now')),
+                          FilledButton(
+                              onPressed: () {}, child: const Text('Book Now')),
                           const SizedBox(height: 8),
                           FilledButton(
-                            onPressed: () {},
-                            style: FilledButton.styleFrom(
-                              backgroundColor: theme.colorScheme.onPrimary,
-                              foregroundColor: theme.colorScheme.primary),
-                            child: const Text('Add to favorite'))
-
+                              onPressed: () {},
+                              style: FilledButton.styleFrom(
+                                  backgroundColor: theme.colorScheme.onPrimary,
+                                  foregroundColor: theme.colorScheme.primary),
+                              child: const Text('Add to favorite'))
                         ],
                       ))
                   : const SizedBox(),
@@ -418,7 +418,8 @@ class _CourseDetailsState extends State<CourseDetails> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => const VideoScreen(),
+                                            builder: (context) =>
+                                                const VideoScreen(),
                                           ));
                                     },
                                     icon: const Icon(
@@ -451,7 +452,10 @@ class _CourseDetailsState extends State<CourseDetails> {
                                                 (_) => const Icon(Icons.star,
                                                     color: Color(0xffffe100)))
                                             .toList() +
-                                        [const Icon(Icons.star, color: Colors.grey)],
+                                        [
+                                          const Icon(Icons.star,
+                                              color: Colors.grey)
+                                        ],
                                   )),
                               const Text('01/07/2024')
                             ],

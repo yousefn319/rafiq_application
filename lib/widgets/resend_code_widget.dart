@@ -3,7 +3,11 @@ import 'package:rafiq_application/widgets/typing_field.dart';
 import 'package:flutter/material.dart';
 
 class ResendCodeWidget extends StatefulWidget {
-  ResendCodeWidget({super.key, required this.onPressed, this.label = 'Resend', this.timeout = 60});
+  ResendCodeWidget(
+      {super.key,
+      required this.onPressed,
+      this.label = 'Resend',
+      this.timeout = 60});
   void Function()? onPressed;
   int timeout;
   String label;

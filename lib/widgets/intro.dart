@@ -57,7 +57,8 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
-  void _handlePageViewChanged(int currentPageIndex) => setState(() => _currentPageIndex = currentPageIndex);
+  void _handlePageViewChanged(int currentPageIndex) =>
+      setState(() => _currentPageIndex = currentPageIndex);
 
   Function() _goNext(BuildContext context) => () => Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => widget.child));

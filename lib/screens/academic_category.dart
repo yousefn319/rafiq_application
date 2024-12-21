@@ -102,10 +102,11 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                   child: GridView.builder(
                     physics: const BouncingScrollPhysics(),
                     itemCount: 8,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {

@@ -65,17 +65,24 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/intros/1.svg
-    - images/intros/2.svg
-    - images/intros/3.svg
-    - images/intros/4.svg
-    - images/intros/white.svg
-    - images/intros/tick_square.svg
-    - images/intros/5.svg
-    - images/logins/forgot_pass.svg
-    - images/logins/otp_security.svg
-    - images/logins/palm_recognition.svg
-    - images/logins/reset_password.svg
+    - images/intros/1.svg.vec
+    - images/intros/2.svg.vec
+    - images/intros/3.svg.vec
+    - images/intros/4.svg.vec
+    - images/intros/white.svg.vec
+    - images/intros/tick_square.svg.vec
+    - images/intros/5.svg.vec
+    - images/logins/forgot_pass.svg.vec
+    - images/logins/otp_security.svg.vec
+    - images/logins/palm_recognition.svg.vec
+    - images/logins/reset_password.svg.vec
+    - images/buttons/robot.svg.vec
+    - images/buttons/notification.svg.vec
+    - images/buttons/message.svg.vec
+    - images/courses/Completed.svg.vec
+    - images/logins/facebook.svg.vec
+    - images/logins/google.svg.vec
+    - images/logins/forgotpassword.svg.vec
     - images/courses/kids.png
     - images/courses/prep.png
     - images/courses/primary.png
@@ -92,32 +99,9 @@ flutter:
     - images/courses/uiuxcourse.png
     - images/courses/aref.png
     - images/courses/homeframe.png
-    - images/buttons/robot.svg
-    - images/buttons/notification.svg
-    - images/buttons/message.svg
-    - images/courses/Completed.svg
     - images/courses/profile_picture.jpg
-    - images/logins/facebook.svg
-    - images/logins/google.svg
-    - images/logins/forgotpassword.svg
     - assets/lang/ar.json
     - assets/lang/en.json
-    - images/intros/1.svg.vec
-    - images/intros/2.svg.vec
-    - images/intros/3.svg.vec
-    - images/intros/4.svg.vec
-    - images/intros/white.svg.vec
-    - images/intros/tick_square.svg.vec
-    - images/intros/5.svg.vec
-    - images/logins/forgot_pass.svg.vec
-    - images/logins/otp_security.svg.vec
-    - images/logins/palm_recognition.svg.vec
-    - images/logins/reset_password.svg.vec
-    - images/buttons/robot.svg.vec
-    - images/buttons/notification.svg.vec
-    - images/buttons/message.svg.vec
-    - images/buttons/Google-color.svg
-    - images/buttons/Google-color.svg.vec
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

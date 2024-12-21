@@ -37,7 +37,7 @@ class OtpVerification extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const ResetPassword()))),
           const SizedBox(height: 8),
-          ResendCodeWidget(onPressed: (){}),
+          ResendCodeWidget(onPressed: () {}),
           //Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           //  Text('Didn\'t receive your code? '),
           //  LabelButton(
