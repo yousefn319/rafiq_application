@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,27 +43,21 @@ class Intro extends StatefulWidget {
 
 class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
   late PageController _pageViewController;
-  //late TabController _tabController;
   int _currentPageIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _pageViewController = PageController();
-    //_tabController = TabController(length: widget.infos.length, vsync: this);
   }
 
   @override
   void dispose() {
-    super.dispose();
     _pageViewController.dispose();
-    //_tabController.dispose();
+    super.dispose();
   }
 
-  void _handlePageViewChanged(int currentPageIndex) {
-    //_tabController.index = currentPageIndex;
-    setState(() => _currentPageIndex = currentPageIndex);
-  }
+  void _handlePageViewChanged(int currentPageIndex) => setState(() => _currentPageIndex = currentPageIndex);
 
   Function() _goNext(BuildContext context) => () => Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => widget.child));
@@ -86,7 +79,6 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                         alignment: Alignment.topRight,
                         child: LabelButton(
                             label: "Skip", onPressed: _goNext(context)))),
-                // SafeArea(child: Align(alignment: Alignment.topCenter, child: TabPageSelector(controller: _tabController))),
               ])),
               FilledButton(
                   child: Text(widget.infos[_currentPageIndex].nextButton),

@@ -187,6 +187,10 @@ class LabelButton extends StatelessWidget {
   void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+    TextStyle? style = onPressed == null
+        ? this.style?.copyWith(color: theme.disabledColor)
+        : this.style;
     return InkResponse(
         focusNode: focusNode,
         onTap: onPressed,

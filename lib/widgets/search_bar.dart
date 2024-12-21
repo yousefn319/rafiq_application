@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SearchBarA extends StatefulWidget {
+  const SearchBarA({super.key});
+
   @override
   _SearchBarAState createState() => _SearchBarAState();
 }
@@ -15,62 +17,28 @@ class _SearchBarAState extends State<SearchBarA> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
+    ThemeData theme = Theme.of(context);
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Expanded(
           child: TextField(
-            controller: _searchController,
-            cursorColor: const Color(0xff088395),
-            onSubmitted: (value) {
-              _onSearch(value.trim());
-            },
-            decoration: InputDecoration(
-              labelText: 'Search courses',
-              floatingLabelBehavior: FloatingLabelBehavior.never,
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-              ),
-              enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                borderSide: BorderSide(
-                  color: Color(0xff071952),
-                ),
-              ),
-              focusedBorder: const OutlineInputBorder(
-                gapPadding: BorderSide.strokeAlignCenter,
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                borderSide: BorderSide(
-                  color: Color(0xff088395),
-                ),
-              ),
-              suffixIcon: const Icon(Icons.mic_none),
-              prefixIcon: const Icon(Icons.search),
-            ),
-          ),
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Container(
-          height: 56, // Set height for square
-          width: 56, // Set width equal to height for square
-          decoration: BoxDecoration(
-            color: const Color(0xff071952), // Background color
-            borderRadius: BorderRadius.circular(8), // Rounded corners
-          ),
-          child: IconButton(
-            onPressed: () {
-              // Optional: Perform the search when the filter icon is pressed
-              _onSearch(_searchController.text.trim());
-            },
-            icon: const Icon(
-              Icons.filter_alt_outlined,
-              color: Colors.white, // Icon color
-            ),
-          ),
-        )
-      ],
-    );
+              controller: _searchController,
+              onSubmitted: (value) => _onSearch(value.trim()),
+              decoration: const InputDecoration(
+                  labelText: 'Search courses',
+                  floatingLabelBehavior: FloatingLabelBehavior.never,
+                  suffixIcon: Icon(Icons.mic_none),
+                  prefixIcon: Icon(Icons.search)))),
+      SizedBox(width: 10),
+      IconButton(
+        onPressed: () {},
+        style: IconButton.styleFrom(
+            minimumSize: const Size(56, 56),
+            foregroundColor: theme.colorScheme.onPrimary,
+            backgroundColor: theme.colorScheme.primary,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+        icon: Icon(Icons.filter_alt_outlined),
+      )
+    ]);
   }
 }

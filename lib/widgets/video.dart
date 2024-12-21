@@ -4,7 +4,7 @@ import 'package:video_player/video_player.dart';
 class Video extends StatefulWidget {
   final String videoUrl;
 
-  const Video({required this.videoUrl, Key? key}) : super(key: key);
+  const Video({required this.videoUrl, super.key});
 
   @override
   _VideoState createState() => _VideoState();
@@ -117,8 +117,7 @@ class _ControlsOverlay extends StatelessWidget {
     required this.onFullScreen,
     required this.onMute,
     required this.isMuted,
-    Key? key,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +127,7 @@ class _ControlsOverlay extends StatelessWidget {
         VideoProgressIndicator(
           controller,
           allowScrubbing: true,
-          colors: VideoProgressColors(
+          colors: const VideoProgressColors(
             playedColor: Color(0xff088395),
             backgroundColor: Colors.grey,
           ),
@@ -190,8 +189,8 @@ class FullScreenVideoPlayer extends StatelessWidget {
     required this.onPlayPause,
     required this.onMute,
     required this.isMuted,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

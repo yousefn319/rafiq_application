@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/screens/course_details.dart';
 import 'package:rafiq_application/screens/popular_courses.dart';
 import 'package:rafiq_application/widgets/search_bar.dart';
 
@@ -28,7 +27,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              SearchBarA(),
+              const SearchBarA(),
               const SizedBox(
                 height: 22,
               ),
@@ -101,9 +100,9 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                 SizedBox(
                   height: screenHeight * 0.9,
                   child: GridView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: 8,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12),

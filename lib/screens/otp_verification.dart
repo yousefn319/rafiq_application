@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq_application/screens/reset_password.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:rafiq_application/widgets/typing_field.dart';
 import 'package:rafiq_application/widgets/resend_code_widget.dart';
 
 class OtpVerification extends StatelessWidget {
@@ -20,7 +19,7 @@ class OtpVerification extends StatelessWidget {
           Center(child: image),
           const SizedBox(height: 32),
           Text('Check your email', style: theme.textTheme.titleMedium),
-          Text('We’ve sent the code to your email'),
+          const Text('We’ve sent the code to your email'),
           const SizedBox(height: 16),
           PinCodeTextField(
               appContext: context,
@@ -32,13 +31,13 @@ class OtpVerification extends StatelessWidget {
               animationType: AnimationType.fade),
           const SizedBox(height: 16),
           FilledButton(
-              child: Text('Verify'),
+              child: const Text('Verify'),
               onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const ResetPassword()))),
           const SizedBox(height: 8),
-          ResendCodeWidget(),
+          ResendCodeWidget(onPressed: (){}),
           //Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           //  Text('Didn\'t receive your code? '),
           //  LabelButton(

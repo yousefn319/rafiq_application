@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq_application/screens/academic_category.dart';
-import 'package:rafiq_application/screens/course_details.dart';
 import 'package:rafiq_application/screens/favorites_screen.dart';
 import 'package:rafiq_application/screens/home_page.dart';
 import 'package:rafiq_application/screens/messages_screen.dart';
@@ -9,8 +7,6 @@ import 'package:rafiq_application/screens/my_courses.dart';
 import 'package:rafiq_application/screens/notifications_screen.dart';
 import 'package:rafiq_application/screens/profile_screen.dart';
 import 'package:rafiq_application/screens/rafiq_chatbot_screen.dart';
-import 'package:rafiq_application/widgets/nav_bar.dart';
-import 'package:vector_graphics/vector_graphics.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -66,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: screenHeight * 0.055,
                         ),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       const Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                     ),
-                    SizedBox(width: 18)
+                    const SizedBox(width: 18)
                   ],
                 ),
               ),

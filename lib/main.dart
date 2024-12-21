@@ -22,16 +22,19 @@ void main() async {
       primary: Color(0xff071952),
       onPrimary: Colors.white,
       secondary: Color(0xff088395));
-  InputDecorationTheme decorationTheme = const InputDecorationTheme(
+  InputDecorationTheme decorationTheme = InputDecorationTheme(
+      floatingLabelStyle: TextStyle(color: colorScheme.secondary),
       //hintStyle: TextStyle(fontWeight),
       border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8))),
-      focusedBorder:
-          OutlineInputBorder(borderSide: BorderSide(color: Color(0xff088395))));
+      focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: colorScheme.secondary)));
   ThemeData theme = ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
       inputDecorationTheme: decorationTheme,
+      textSelectionTheme:
+          TextSelectionThemeData(cursorColor: colorScheme.secondary),
       filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
               minimumSize: const Size(double.infinity, 50),
@@ -40,9 +43,7 @@ void main() async {
 
   var app = MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => LocaleCubit()..getSavedLanguage(),
-        ),
+        BlocProvider(create: (context) => LocaleCubit()..getSavedLanguage()),
       ],
       child: ConfigProvider(
           prefs: prefs,
@@ -111,7 +112,7 @@ class RafiqApp extends StatelessWidget {
     if (sessionToken != null) {}
 
     if (ignoreIntro) {
-      return GetStarted();
+      return const GetStarted();
     }
 
     return Intro(infos: [
@@ -134,6 +135,6 @@ class RafiqApp extends StatelessWidget {
             'With video lessons, interactive tests, and certified certificates.',
         nextButton: 'Get Started',
       ),
-    ], child: GetStarted());
+    ], child: const GetStarted());
   }
 }

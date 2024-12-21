@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/screens/chat_screen.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -27,7 +26,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 const SizedBox(height: 4),
                 GestureDetector(
                   onTap: () {},
-                  child: Container(
+                  child: SizedBox(
                     height: 88,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,

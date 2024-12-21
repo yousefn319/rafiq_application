@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
-import 'package:rafiq_application/widgets/typing_field.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -17,7 +16,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     final screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Forget Password'),
+        title: const Text('Forget Password'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -51,7 +50,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               type: TextInputType.emailAddress,
               label: 'Email',
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             ElevatedButton(
@@ -63,7 +62,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             OtpVerification(title: 'Password OTP'),
                       ));
                 },
-                child: Text('Send Code'))
+                child: const Text('Send Code'))
           ]),
         ),
       ),

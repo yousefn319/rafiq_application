@@ -63,7 +63,7 @@ class LoginFormState extends State<LoginForm> {
                                       "images/logins/palm_recognition.svg.vec"))))),
                     )),
                 FilledButton(
-                    child: Text('Sign in'),
+                    child: const Text('Sign in'),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         Navigator.push(
@@ -84,7 +84,7 @@ class LoginFormState extends State<LoginForm> {
                       onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignUp())))
+                              builder: (context) => const SignupForm())))
                 ])
               ])),
             )));

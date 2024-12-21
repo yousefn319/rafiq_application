@@ -25,10 +25,10 @@ class MessagesScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ChatScreen(),
+                          builder: (context) => const ChatScreen(),
                         ));
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 88,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,

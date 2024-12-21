@@ -53,7 +53,7 @@ class _CourseDetailsState extends State<CourseDetails> {
     ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.type}'),
+        title: Text(widget.type),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -99,7 +99,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                   Icon(
                                     size: screenWidth * 0.06,
                                     Icons.star,
-                                    color: Color(0xffFFE100),
+                                    color: const Color(0xffFFE100),
                                   ),
                                   Text(
                                     '3.8 ',
@@ -136,7 +136,7 @@ class _CourseDetailsState extends State<CourseDetails> {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'UI UX Diploma',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                   ),
@@ -418,7 +418,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => VideoScreen(),
+                                            builder: (context) => const VideoScreen(),
                                           ));
                                     },
                                     icon: const Icon(
@@ -439,7 +439,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -448,20 +448,20 @@ class _CourseDetailsState extends State<CourseDetails> {
                                   child: Row(
                                     children: Iterable.generate(
                                                 4,
-                                                (_) => Icon(Icons.star,
+                                                (_) => const Icon(Icons.star,
                                                     color: Color(0xffffe100)))
                                             .toList() +
-                                        [Icon(Icons.star, color: Colors.grey)],
+                                        [const Icon(Icons.star, color: Colors.grey)],
                                   )),
-                              Text('01/07/2024')
+                              const Text('01/07/2024')
                             ],
                           ),
-                          SizedBox(height: 8),
-                          Text(
+                          const SizedBox(height: 8),
+                          const Text(
                             'Simple explanation of the information and constant follow-up and training on practical projects',
                             style: TextStyle(fontSize: 16, color: Colors.grey),
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
@@ -471,8 +471,8 @@ class _CourseDetailsState extends State<CourseDetails> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 8),
-                          Divider(),
+                          const SizedBox(height: 8),
+                          const Divider(),
                         ],
                       );
                     },

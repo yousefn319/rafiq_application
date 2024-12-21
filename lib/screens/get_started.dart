@@ -5,7 +5,7 @@ import 'package:rafiq_application/screens/sign_up.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class GetStarted extends StatelessWidget {
-  GetStarted({super.key});
+  const GetStarted({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class GetStarted extends StatelessWidget {
             foregroundColor: theme.colorScheme.primary),
         child: const Text('Sign up'),
         onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const SignUp())));
+            context, MaterialPageRoute(builder: (context) => const SignupForm())));
     FilledButton ButtonSignIn = FilledButton(
         style: FilledButton.styleFrom(
             side: BorderSide(color: theme.colorScheme.onPrimary)),

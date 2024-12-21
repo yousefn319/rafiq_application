@@ -303,7 +303,7 @@ class ProfileScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => GetStarted()),
+                    MaterialPageRoute(builder: (context) => const GetStarted()),
                     (route) => false, // Remove all routes
                   );
                 },

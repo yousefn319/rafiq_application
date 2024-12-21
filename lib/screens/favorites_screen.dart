@@ -18,7 +18,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           automaticallyImplyLeading: false,
         ),
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(children: [
@@ -281,7 +281,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                       top: 78,
                                       left: MediaQuery.sizeOf(context).width *
                                           (1 / 3.2),
-                                      child: CircleAvatar(
+                                      child: const CircleAvatar(
                                         radius: 50,
                                         backgroundImage: AssetImage(
                                             'images/courses/aref.png'),

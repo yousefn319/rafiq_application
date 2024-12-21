@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18),
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             const SizedBox(
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => AcademicCategory(),
+                          builder: (context) => const AcademicCategory(),
                         ));
                   },
                   child: const Text(
