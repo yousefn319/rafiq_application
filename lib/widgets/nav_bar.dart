@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -26,7 +27,8 @@ class _NavBarState extends State<NavBar> {
         },
         shape: const CircleBorder(),
         backgroundColor: const Color(0xff071952),
-        child: SvgPicture.asset('images/courses/robot.svg'),
+        child:
+            const SvgPicture(AssetBytesLoader('images/courses/robot.svg.vec')),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked, // Center FAB

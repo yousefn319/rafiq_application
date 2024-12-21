@@ -6,21 +6,19 @@ class PasswordField extends StatefulWidget {
   PasswordField(
       {super.key,
       required this.label,
-      this.border,
-      this.enabledBorder,
-      this.focusedBorder,
       this.cursorColor,
       this.controller,
       this.prefixIcon,
-      this.validator});
+      this.validator,
+      this.autofillHints,
+      this.textInputAction});
   String label;
-  InputBorder? border;
-  InputBorder? enabledBorder;
-  InputBorder? focusedBorder;
   Color? cursorColor;
   TextEditingController? controller;
   Widget? prefixIcon;
   FormFieldValidator<String>? validator;
+  List<String>? autofillHints;
+  TextInputAction? textInputAction;
   @override
   State<PasswordField> createState() => PasswordFieldState();
 }
@@ -34,52 +32,61 @@ class PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      obscureText: _obscure,
-      controller: widget.controller,
-      validator: widget.validator,
-      decoration: InputDecoration(
-        labelText: widget.label,
-        prefixIcon: widget.prefixIcon,
-        border: widget.border,
-        enabledBorder: widget.enabledBorder,
-        focusedBorder: widget.focusedBorder,
-        suffixIcon: IconButton(
-            icon: _obscure
-                ? const Icon(Icons.visibility_off)
-                : const Icon(Icons.visibility),
-            onPressed: toggle),
-      ),
-      keyboardType: TextInputType.visiblePassword,
-    );
+        obscureText: _obscure,
+        controller: widget.controller,
+        validator: widget.validator,
+        keyboardType: TextInputType.visiblePassword,
+        autofillHints: widget.autofillHints,
+        textInputAction: widget.textInputAction,
+        maxLength: 72,
+        decoration: InputDecoration(
+          counterText: '',
+          labelText: widget.label,
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: ExcludeFocus(
+              child: IconButton(
+                  icon: _obscure
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
+                  onPressed: toggle)),
+        ));
   }
 }
 
 class DefaultPassword extends StatelessWidget {
-  DefaultPassword({super.key, required this.label, this.controller});
+  DefaultPassword(
+      {super.key,
+      required this.label,
+      this.controller,
+      this.autofillHints = const [AutofillHints.password],
+      this.textInputAction = TextInputAction.done});
   String label;
   TextEditingController? controller;
+  List<String> autofillHints;
+  TextInputAction textInputAction;
   @override
   Widget build(BuildContext context) {
     return PasswordField(
-      prefixIcon: const Icon(Icons.lock),
-      label: label,
-      validator: (value) {
-        int len = value?.length ?? 0;
-        if (len > 72) {
-          return "Password too long";
-        } else if (len < 8) {
-          return "Password too short";
-        }
-        return null;
-      },
-      controller: controller,
-    );
+        autofillHints: autofillHints,
+        prefixIcon: const Icon(Icons.lock),
+        textInputAction: textInputAction,
+        label: label,
+        validator: (value) =>
+            (value?.length ?? 0) < 8 ? "Password too short" : null,
+        controller: controller);
   }
 }
 
+//typedef PhonenumberController = ValueNotifier<Tuple2<CountryWithPhoneCode, String>?>;
+typedef PhonenumberController = ValueNotifier<Map<String, dynamic>?>;
+
 class PhonenumberTextField extends StatefulWidget {
-  PhonenumberTextField({super.key, required this.controller});
-  TextEditingController controller;
+  PhonenumberTextField(
+      {super.key,
+      required this.controller,
+      this.textInputAction = TextInputAction.next});
+  PhonenumberController controller;
+  TextInputAction textInputAction;
   @override
   State<PhonenumberTextField> createState() => PhonenumberTextFieldState();
 }
@@ -94,6 +101,7 @@ String myFormatNumber(String text, CountryWithPhoneCode country) {
 class PhonenumberTextFieldState extends State<PhonenumberTextField> {
   late FocusNode _node;
   late CountryWithPhoneCode currentRegion;
+  TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
@@ -111,48 +119,58 @@ class PhonenumberTextFieldState extends State<PhonenumberTextField> {
   void dispose() {
     super.dispose();
     _node.dispose();
+    controller.dispose();
   }
 
   Widget builder(
       BuildContext context, MenuController controller, Widget? child) {
     return LabelButton(
         focusNode: _node,
-        onPressed: () {
-          if (controller.isOpen) {
-            controller.close();
-          } else {
-            controller.open();
-          }
-        },
-        label: '${currentRegion.countryCode} +${currentRegion.phoneCode} ');
+        label: '${currentRegion.countryCode} +${currentRegion.phoneCode} ',
+        onPressed: () =>
+            controller.isOpen ? controller.close() : controller.open());
   }
 
   @override
   Widget build(BuildContext context) {
     ConfigProvider config = ConfigProvider.of(context);
     return TextFormField(
-      inputFormatters: [LibPhonenumberTextFormatter(country: currentRegion)],
-      controller: widget.controller,
-      keyboardType: TextInputType.phone,
-      decoration: InputDecoration(
-        labelText: 'Phone',
-        hintText: myFormatNumber(
-            currentRegion.exampleNumberMobileInternational, currentRegion),
-        prefixIcon: const Icon(Icons.phone),
-        prefix: MenuAnchor(
-            childFocusNode: _node,
-            menuChildren: config.supportedRegions.entries
-                .map((entry) => MenuItemButton(
-                    onPressed: () => setState(() {
-                          widget.controller.text = myFormatNumber(
-                              widget.controller.text, entry.value);
-                          currentRegion = entry.value;
-                        }),
-                    child: Text("${entry.key} +${entry.value.phoneCode}")))
-                .toList(),
-            builder: builder),
-      ),
-    );
+        inputFormatters: [
+          LibPhonenumberTextFormatter(
+              country: currentRegion,
+              shouldKeepCursorAtEndOfInput: false,
+              onFormatFinished: (val) =>
+                  parse(val, region: currentRegion.countryCode)
+                      .then((v) => widget.controller.value =
+                          v['type'] != 'mobile' ? null : v)
+                      .catchError((_) => widget.controller.value = null))
+        ],
+        controller: controller,
+        validator: (val) =>
+            widget.controller.value == null ? "Invalid phonenumber" : null,
+        keyboardType: TextInputType.phone,
+        textInputAction: widget.textInputAction,
+        autofillHints: const [AutofillHints.telephoneNumberLocal],
+        decoration: InputDecoration(
+          labelText: 'Phone',
+          hintText: myFormatNumber(
+              currentRegion.exampleNumberMobileInternational, currentRegion),
+          prefixIcon: const Icon(Icons.phone),
+          prefix: ExcludeFocus(
+              child: MenuAnchor(
+                  builder: builder,
+                  childFocusNode: _node,
+                  menuChildren: config.supportedRegions.entries
+                      .map((entry) => MenuItemButton(
+                          onPressed: () => setState(() {
+                                controller.text = myFormatNumber(
+                                    controller.text, entry.value);
+                                currentRegion = entry.value;
+                              }),
+                          child:
+                              Text("${entry.key} +${entry.value.phoneCode}")))
+                      .toList())),
+        ));
   }
 }
 

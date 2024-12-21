@@ -18,18 +18,12 @@ class IntroScreen extends StatelessWidget {
   String nextButton;
   @override
   Widget build(BuildContext context) {
+    TextTheme theme = Theme.of(context).textTheme;
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       SizedBox(
           width: 343, height: 343, child: SvgPicture(AssetBytesLoader(image))),
-      Text(title,
-          style: const TextStyle(
-              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700)),
-      Text(
-        subtitle,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-            color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w600),
-      )
+      Text(title, style: theme.titleMedium, textAlign: TextAlign.center),
+      Text(subtitle, style: theme.bodySmall, textAlign: TextAlign.center)
     ]);
   }
 }
@@ -48,27 +42,28 @@ class Intro extends StatefulWidget {
   State<Intro> createState() => _IntroState();
 }
 
-class _IntroState extends State<Intro> {
+class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
   late PageController _pageViewController;
-  late TabController _tabController;
+  //late TabController _tabController;
   int _currentPageIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _pageViewController = PageController();
+    //_tabController = TabController(length: widget.infos.length, vsync: this);
   }
 
   @override
   void dispose() {
     super.dispose();
     _pageViewController.dispose();
+    //_tabController.dispose();
   }
 
   void _handlePageViewChanged(int currentPageIndex) {
-    setState(() {
-      _currentPageIndex = currentPageIndex;
-    });
+    //_tabController.index = currentPageIndex;
+    setState(() => _currentPageIndex = currentPageIndex);
   }
 
   Function() _goNext(BuildContext context) => () => Navigator.pushReplacement(
@@ -83,19 +78,17 @@ class _IntroState extends State<Intro> {
               Expanded(
                   child: Stack(children: [
                 PageView(
-                  controller: _pageViewController,
-                  onPageChanged: _handlePageViewChanged,
-                  children: widget.infos,
-                ),
+                    controller: _pageViewController,
+                    onPageChanged: _handlePageViewChanged,
+                    children: widget.infos),
                 SafeArea(
                     child: Align(
                         alignment: Alignment.topRight,
                         child: LabelButton(
-                            label: "Skip", onPressed: _goNext(context))))
+                            label: "Skip", onPressed: _goNext(context)))),
+                // SafeArea(child: Align(alignment: Alignment.topCenter, child: TabPageSelector(controller: _tabController))),
               ])),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 50)),
+              FilledButton(
                   child: Text(widget.infos[_currentPageIndex].nextButton),
                   onPressed: () {
                     int next = _currentPageIndex + 1;

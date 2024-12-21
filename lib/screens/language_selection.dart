@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq_application/screens/interests_page.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class LanguageSelection extends StatelessWidget {
   const LanguageSelection({
@@ -17,13 +18,8 @@ class LanguageSelection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 50),
-            Center(
-              child: SvgPicture.asset(
-                'images/intros/4.svg',
-                height: 343,
-                width: 343,
-              ),
-            ),
+            const Center(
+                child: SvgPicture(AssetBytesLoader('images/intros/4.svg.vec'))),
             const SizedBox(height: 25),
             const Text(
               'Choose Your Language',

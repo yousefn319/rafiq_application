@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/screens/get_started.dart';
 import 'package:rafiq_application/widgets/interest.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 int clicked = 1;
 
@@ -28,18 +29,14 @@ class _InterestsPageState extends State<InterestsPage> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             const SizedBox(height: 15),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
-                  child: SvgPicture.asset(
-                    'images/intros/tick_square.svg',
-                    height: 24,
-                    width: 24,
-                  ),
-                ),
-                const Text(
+                    padding: EdgeInsets.symmetric(horizontal: 6),
+                    child: SvgPicture(
+                        AssetBytesLoader('images/intros/tick_square.svg.vec'))),
+                Text(
                   'Let’s find out your tastes',
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                 )

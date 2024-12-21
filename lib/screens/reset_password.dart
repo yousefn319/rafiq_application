@@ -3,49 +3,47 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
 
-class ResetPassword extends StatelessWidget {
+class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
+  @override
+  State<ResetPassword> createState() => ResetPasswordState();
+}
 
+class ResetPasswordState extends State<ResetPassword> {
+  bool logout = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Reset password'),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 32),
-              const Center(
-                  child: SvgPicture(AssetBytesLoader(
-                      'images/logins/reset_password.svg.vec'))),
-              const SizedBox(height: 16),
-              DefaultPassword(label: 'New Password'),
-              const SizedBox(height: 16),
-              DefaultPassword(label: 'Confirm Password'),
-              Row(
-                children: [
-                  Checkbox(
-                    activeColor: const Color(0xff071952),
-                    value: const bool.hasEnvironment(AutofillHints.password),
-                    onChanged: (value) {},
-                  ),
-                  const Text(
-                    'Log out From all devices',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-                  )
-                ],
-              ),
-              //const SizedBox(height: 22),
-              ElevatedButton(onPressed: () {}, child: Text('Save Password'))
-            ],
-          ),
-        ),
-      ),
-    );
+        appBar: AppBar(title: const Text('Reset password'), centerTitle: true),
+        body: SingleChildScrollView(
+          child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 32),
+                    const Center(
+                        child: SvgPicture(AssetBytesLoader(
+                            'images/logins/reset_password.svg.vec'))),
+                    const SizedBox(height: 16),
+                    DefaultPassword(
+                        label: 'Password',
+                        autofillHints: const [AutofillHints.newPassword],
+                        textInputAction: TextInputAction.next),
+                    const SizedBox(height: 16),
+                    DefaultPassword(
+                        label: 'Confirm Password',
+                        autofillHints: const [AutofillHints.newPassword]),
+                    Row(children: [
+                      Checkbox(
+                          value: logout,
+                          onChanged: (value) =>
+                              setState(() => logout = value!)),
+                      const Text('Log out From all devices')
+                    ]),
+                    FilledButton(
+                        onPressed: () {}, child: const Text('Reset password'))
+                  ])),
+        ));
   }
 }

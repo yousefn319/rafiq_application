@@ -7,6 +7,8 @@ import 'package:rafiq_application/widgets/password_field.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
 import 'package:rafiq_application/main.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:vector_graphics/vector_graphics.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -17,12 +19,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   bool agreeToTerms = false;
   final _formKey = GlobalKey<FormState>();
-  TextEditingController phoneController = TextEditingController();
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
+  PhonenumberController phoneController = PhonenumberController(null);
 
   @override
   void dispose() {
@@ -45,7 +42,9 @@ class _SignUpState extends State<SignUp> {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               const SizedBox(height: 16),
               TextFormField(
+                  textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.name,
+                  autofocus: true,
                   validator: (value) => EmailValidator.validate(value ?? "")
                       ? null
                       : "Invalid email",
@@ -53,6 +52,8 @@ class _SignUpState extends State<SignUp> {
                       labelText: 'Name', prefixIcon: Icon(Icons.person))),
               const SizedBox(height: 16),
               TextFormField(
+                  textInputAction: TextInputAction.next,
+                  autofillHints: const [AutofillHints.email],
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                       labelText: 'Email', prefixIcon: Icon(Icons.email))),
@@ -60,33 +61,39 @@ class _SignUpState extends State<SignUp> {
               PhonenumberTextField(controller: phoneController),
               const SizedBox(height: 16),
               TextFormField(
+                textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.datetime,
                 decoration: InputDecoration(
                     labelText: 'Date of Birth',
                     hintText: 'dd/mm/yyyy',
                     prefixIcon: const Icon(Icons.calendar_today),
-                    suffixIcon: IconButton(
+                    suffixIcon: ExcludeFocus(
+                        child: IconButton(
                       icon: const Icon(Icons.calendar_month),
                       onPressed: () {
                         showDatePicker(
                             context: context,
                             initialDate: DateTime.now(),
-                            firstDate: DateTime(2015, 8),
+                            firstDate: DateTime(1950),
                             lastDate: DateTime(2101));
                       },
-                    )),
+                    ))),
               ),
               const SizedBox(height: 16),
-              DefaultPassword(label: 'Password'),
+              DefaultPassword(
+                  label: 'Password',
+                  autofillHints: const [AutofillHints.newPassword],
+                  textInputAction: TextInputAction.next),
               const SizedBox(height: 16),
-              DefaultPassword(label: 'Confirm Password'),
+              DefaultPassword(
+                  label: 'Confirm Password',
+                  autofillHints: const [AutofillHints.newPassword]),
               const SizedBox(height: 16),
               Row(children: [
                 Checkbox(
-                  // activeColor: const Color(0xff071952),
-                  value: agreeToTerms,
-                  onChanged: (value) => setState(() => agreeToTerms = value!),
-                ),
+                    value: agreeToTerms,
+                    onChanged: (value) =>
+                        setState(() => agreeToTerms = value!)),
                 const Expanded(
                     child: Text.rich(TextSpan(text: 'I accept the ', children: [
                   TextSpan(
@@ -98,22 +105,21 @@ class _SignUpState extends State<SignUp> {
                 ])))
               ]),
               const SizedBox(height: 16),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 50)),
-                  child: Text('Sign up'),
+              FilledButton(
                   onPressed: !agreeToTerms
                       ? null
                       : () => Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
                               return const OtpVerification(
-                                title: "Verify OTP",
-                              );
+                                  title: Text("Verify Account"),
+                                  image: SvgPicture(AssetBytesLoader(
+                                      "images/logins/otp_security.svg.vec")));
                             },
-                          ))),
+                          )),
+                  child: const Text('Sign up')),
               const SizedBox(height: 16),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
+                const Text(
                   'Already have an account? ',
                   style: TextStyle(color: Colors.grey),
                 ),
@@ -125,7 +131,7 @@ class _SignUpState extends State<SignUp> {
                               builder: (context) => const LoginForm()));
                     },
                     label: 'Sign in',
-                    style: TextStyle(color: Color(0xff088395))),
+                    style: const TextStyle(color: Color(0xff088395))),
               ])
             ])));
   }

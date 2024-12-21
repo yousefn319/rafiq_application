@@ -2,59 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq_application/screens/sign_in.dart';
 import 'package:rafiq_application/screens/signup_screen.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class GetStarted extends StatelessWidget {
   GetStarted({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ElevatedButton ButtonSignUp = ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size(double.infinity, 50),
-            backgroundColor: Colors.white,
-            foregroundColor: Color(0xff071952)),
-        child: Text('Sign up'),
+    ThemeData theme = Theme.of(context);
+    FilledButton ButtonSignUp = FilledButton(
+        style: FilledButton.styleFrom(
+            backgroundColor: theme.colorScheme.onPrimary,
+            foregroundColor: theme.colorScheme.primary),
+        child: const Text('Sign up'),
         onPressed: () => Navigator.push(
             context, MaterialPageRoute(builder: (context) => const SignUp())));
-    ElevatedButton ButtonSignIn = ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            minimumSize: const Size(double.infinity, 50),
-            side: BorderSide(color: Colors.white)),
-        child: Text('Sign in'),
+    FilledButton ButtonSignIn = FilledButton(
+        style: FilledButton.styleFrom(
+            side: BorderSide(color: theme.colorScheme.onPrimary)),
+        child: const Text('Sign in'),
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => const LoginForm())));
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Get started',
-            style: TextStyle(fontWeight: FontWeight.w600)),
+        title: const Text('Get started'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SvgPicture.asset('images/intros/5.svg'),
-          const Text('Let’s Start',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700)),
+          const Expanded(child: SvgPicture(AssetBytesLoader('images/intros/5.svg.vec'))),
+          Text('Let’s Start', style: theme.textTheme.titleMedium),
+          const SizedBox(height: 32),
           Container(
-              decoration: const BoxDecoration(
-                  color: Color(0xff071952),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
-              width: double.infinity,
-              height: 300,
-              child: Center(
-                  child: SizedBox(
-                      width: 360,
-                      height: 120,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [ButtonSignUp, ButtonSignIn],
-                      )))),
+            decoration: BoxDecoration(
+                color: theme.colorScheme.primary,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16))),
+            height: 250,
+            child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Column(children: [
+                  const SizedBox(height: 32),
+                  ButtonSignUp,
+                  const SizedBox(height: 16),
+                  ButtonSignIn
+                ])),
+          ),
         ],
       ),
     );

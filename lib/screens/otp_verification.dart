@@ -1,73 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq_application/screens/reset_password.dart';
-import 'package:rafiq_application/widgets/OTPfields.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:rafiq_application/widgets/typing_field.dart';
 import 'package:rafiq_application/widgets/resend_code_widget.dart';
-import 'package:vector_graphics/vector_graphics.dart';
 
-class OtpVerification extends StatefulWidget {
-  const OtpVerification({super.key, required this.title});
-  final String title;
+class OtpVerification extends StatelessWidget {
+  const OtpVerification({super.key, required this.title, this.image});
+  final Widget title;
+  final Widget? image;
 
-  @override
-  State<OtpVerification> createState() => _OtpVerificationState();
-}
-
-class _OtpVerificationState extends State<OtpVerification> {
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          widget.title == "Verify OTP" ? 'Verify OTP ' : 'Verify Password',
-          style: const TextStyle(fontWeight: FontWeight.w600),
-        ),
+        title: title,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                  child: SvgPicture(AssetBytesLoader(widget.title == 'Verify OTP'
-                      ? "images/logins/otp_security.svg.vec"
-                      : "images/logins/palm_recognition.svg.vec"))),
-              const SizedBox(height: 30),
-              const Text(
-                'Check Your email',
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
-              ),
-              const Text(
-                'We’ve send code to your email',
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    color: Color(0xff999999)),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 50)),
-                  child: Text('Verify OTP'),
-                  onPressed: widget.title == 'Verify OTP'
-                      ? () {}
-                      : () => Navigator.push(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(child: image),
+                  const SizedBox(height: 30),
+                  Text('Check your email', style: theme.textTheme.titleMedium),
+                  Text('We’ve sent the code to your email'),
+                  const SizedBox(height: 20),
+                  PinCodeTextField(
+                      appContext: context,
+                      length: 6,
+                      keyboardType: TextInputType.number,
+                      animationType: AnimationType.fade),
+                  const SizedBox(height: 20),
+                  FilledButton(
+                      child: Text('Verify'),
+                      onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ResetPassword(),
-                          ))),
-              const SizedBox(
-                height: 16,
-              ),
-              ResendCodeWidget()
-            ],
-          ),
-        ),
+                              builder: (context) => const ResetPassword()))),
+                  const SizedBox(height: 12),
+                  ResendCodeWidget()
+                  // Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  //   Text('Didn\'t receive your code? '),
+                  //   LabelButton(
+                  //       label: 'Resend',
+                  //       onPressed: () {},
+                  //       style: TextStyle(color: theme.colorScheme.secondary)), // hmm??
+                  // ])
+                ])),
       ),
     );
   }

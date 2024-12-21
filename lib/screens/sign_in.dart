@@ -4,6 +4,8 @@ import 'package:rafiq_application/screens/home_screen.dart';
 import 'package:rafiq_application/screens/otp_verification.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:rafiq_application/widgets/typing_field.dart';
+import 'package:vector_graphics/vector_graphics.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -25,26 +27,26 @@ class LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme theme = Theme.of(context).textTheme;
     return Scaffold(
         body: Form(
             key: _formKey,
             child: Padding(
               padding: const EdgeInsets.all(24),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Sign in',
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w600)),
-                    const Text('Fill your information below to sign in',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff071952))),
+              child: AutofillGroup(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    Text('Sign in', style: theme.titleMedium),
+                    Text('Fill your information below to sign in',
+                        style: theme.bodySmall),
                     const SizedBox(height: 20),
                     TextFormField(
+                        textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
+                        autofillHints: const [AutofillHints.email],
+                        autofocus: true,
                         controller: emailController,
                         validator: (value) =>
                             EmailValidator.validate(value ?? "")
@@ -58,22 +60,17 @@ class LoginFormState extends State<LoginForm> {
                     Align(
                         alignment: Alignment.bottomRight,
                         child: TextButton(
-                          child: const Text('Forgot Password?',
-                              style: TextStyle(
-                                  color: Color(0xff999999),
-                                  fontWeight: FontWeight.w600)),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OtpVerification(title: "aqa"),
-                                ));
-                          },
+                          child: Text('Forgot Password?', style: theme.labelMedium),
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const OtpVerification(
+                                      title: Text("Reset password"),
+                                      image: SvgPicture(AssetBytesLoader(
+                                          "images/logins/palm_recognition.svg.vec"))))),
                         )),
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(double.infinity, 50)),
+                    FilledButton(
+                        child: Text('Sign in'),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             Navigator.push(
@@ -84,31 +81,19 @@ class LoginFormState extends State<LoginForm> {
                             print('Email: ${emailController.text}');
                             print('Password: ${passwordController.text}');
                           }
-                        },
-                        child: Text('Sign in')),
+                        }),
                     const SizedBox(height: 16),
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      const Text(
-                        'Don\'t have an account?',
-                        style: TextStyle(
-                            color: Color(0xff7F7F7F),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      const Text('Don\'t have an account? '),
                       LabelButton(
-                          label: ' Sign up',
-                          style: const TextStyle(
-                              color: Color(0xff088395),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const SignUp()));
-                          })
+                          label: 'Sign up',
+                          style: const TextStyle(color: Color(0xff088395)),
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUp())))
                     ])
-                  ]),
+                  ])),
             )));
   }
 }

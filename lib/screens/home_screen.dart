@@ -10,6 +10,7 @@ import 'package:rafiq_application/screens/notifications_screen.dart';
 import 'package:rafiq_application/screens/profile_screen.dart';
 import 'package:rafiq_application/screens/rafiq_chatbot_screen.dart';
 import 'package:rafiq_application/widgets/nav_bar.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

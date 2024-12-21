@@ -18,29 +18,25 @@ void main() async {
   await init();
   Map<String, CountryWithPhoneCode> supportedRegions =
       await getAllSupportedRegions();
-
-  //ThemeData theme = Themedata();
+  ColorScheme colorScheme = const ColorScheme.light(
+      primary: Color(0xff071952),
+      onPrimary: Colors.white,
+      secondary: Color(0xff088395));
+  InputDecorationTheme decorationTheme = const InputDecorationTheme(
+      //hintStyle: TextStyle(fontWeight),
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8))),
+      focusedBorder:
+          OutlineInputBorder(borderSide: BorderSide(color: Color(0xff088395))));
   ThemeData theme = ThemeData(
-      textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: Color(0xff088395),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white,
+      useMaterial3: true,
+      colorScheme: colorScheme,
+      inputDecorationTheme: decorationTheme,
+      filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+              minimumSize: const Size(double.infinity, 50),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              backgroundColor: const Color(0xff071952))),
-      inputDecorationTheme: const InputDecorationTheme(
-          floatingLabelStyle: TextStyle(color: Color(0xff088395)),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8))),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              borderSide: BorderSide(color: Color(0xff071952))),
-          focusedBorder: OutlineInputBorder(
-              gapPadding: BorderSide.strokeAlignCenter,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              borderSide: BorderSide(color: Color(0xff088395)))));
+                  borderRadius: BorderRadius.circular(8)))));
 
   var app = MultiBlocProvider(
       providers: [
