@@ -28,7 +28,7 @@ class _ResendCodeWidgetState extends State<ResendCodeWidget> {
     setState(() => _secondsRemaining = widget.timeout);
     Timer.periodic(
         const Duration(seconds: 1),
-        (timer) => _secondsRemaining > 0
+        (timer) => _secondsRemaining > 0 && this.mounted
             ? setState(() => _secondsRemaining--)
             : timer.cancel());
   }

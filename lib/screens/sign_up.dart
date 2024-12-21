@@ -30,7 +30,9 @@ class _SignupFormState extends State<SignupForm> {
     ConfigProvider config = ConfigProvider.of(context);
     return Scaffold(
         appBar: AppBar(centerTitle: true, title: const Text("Sign up")),
-        body: SingleChildScrollView(
+        body: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
             padding: const EdgeInsets.all(24),
             child: Column(children: [
               TextFormField(
@@ -110,9 +112,7 @@ class _SignupFormState extends State<SignupForm> {
                   child: const Text('Sign up')),
               const SizedBox(height: 16),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Text(
-                  'Already have an account? ',
-                ),
+                const Text('Already have an account? '),
                 LabelButton(
                     onPressed: () => Navigator.push(
                         context,
@@ -121,6 +121,6 @@ class _SignupFormState extends State<SignupForm> {
                     label: 'Sign in',
                     style: TextStyle(color: theme.colorScheme.secondary)),
               ])
-            ])));
+            ]))));
   }
 }
