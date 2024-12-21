@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
+import 'package:rafiq_application/screens/course_details.dart';
 
 class PopularCourses extends StatefulWidget {
   const PopularCourses({super.key});
@@ -10,7 +10,7 @@ class PopularCourses extends StatefulWidget {
 
 class _PopularCoursesState extends State<PopularCourses> {
   bool _isSearching = false;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -139,7 +139,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
+                                        const Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
@@ -159,7 +159,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                                         SizedBox(
                                           width: screenWidth * 0.01,
                                         ),
-                                        Text(
+                                        const Text(
                                           '|',
                                           style: TextStyle(
                                               color: Color(0xff202244),
@@ -169,7 +169,7 @@ class _PopularCoursesState extends State<PopularCourses> {
                                         SizedBox(
                                           width: screenWidth * 0.01,
                                         ),
-                                        Text(
+                                        const Text(
                                           '30 Hrs 06 Mins',
                                           style: TextStyle(
                                               color: Color(0xff202244),

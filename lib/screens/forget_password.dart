@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
-import 'package:rafiq_application/widgets/button.dart';
-import 'package:rafiq_application/widgets/typing_field.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -18,7 +17,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     final screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Forget Password'),
+        title: const Text('Forget Password'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -27,8 +26,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Center(
-              child: SvgPicture.asset(
-                "images/logins/forgotpassword.svg",
+              child: SvgPicture(
+                AssetBytesLoader("images/logins/forgotpassword.svg.vec"),
                 height: screenHeight * 0.5,
                 width: screenWidth * 0.5,
                 fit: BoxFit.cover,
@@ -52,11 +51,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               type: TextInputType.emailAddress,
               label: 'Email',
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            Button(
-                onClick: () {
+            ElevatedButton(
+                onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -64,7 +63,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             OtpVerification(title: 'Password OTP'),
                       ));
                 },
-                text: 'Send Code')
+                child: const Text('Send Code'))
           ]),
         ),
       ),

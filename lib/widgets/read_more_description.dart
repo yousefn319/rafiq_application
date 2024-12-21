@@ -5,10 +5,10 @@ class ReadMoreDescription extends StatefulWidget {
   final int trimLength; // Number of characters to show before "Read More"
 
   const ReadMoreDescription({
-    Key? key,
+    super.key,
     required this.description,
     this.trimLength = 100,
-  }) : super(key: key);
+  });
 
   @override
   _ReadMoreDescriptionState createState() => _ReadMoreDescriptionState();

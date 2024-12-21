@@ -12,7 +12,7 @@ class _InstructorProfileState extends State<InstructorProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Instructor Profile'),
+        title: const Text('Instructor Profile'),
         centerTitle: true,
       ),
     );

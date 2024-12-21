@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/features/introscreens/presentation/video_screen.dart';
-import 'package:rafiq_application/widgets/button.dart';
+import 'package:rafiq_application/screens/video_screen.dart';
 import 'package:rafiq_application/widgets/read_more_description.dart';
 import 'package:video_player/video_player.dart';
 
@@ -51,10 +50,10 @@ class _CourseDetailsState extends State<CourseDetails> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final screenWidth = MediaQuery.sizeOf(context).width;
-
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.type}'),
+        title: Text(widget.type),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -63,11 +62,8 @@ class _CourseDetailsState extends State<CourseDetails> {
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const SizedBox(
-                height: 16,
-              ),
               Center(
-                child: Container(
+                child: SizedBox(
                   width: double.infinity,
                   child: Stack(
                     alignment: Alignment
@@ -103,7 +99,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                   Icon(
                                     size: screenWidth * 0.06,
                                     Icons.star,
-                                    color: Color(0xffFFE100),
+                                    color: const Color(0xffFFE100),
                                   ),
                                   Text(
                                     '3.8 ',
@@ -114,9 +110,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              width: screenWidth * 1 / 1.8,
-                            ),
+                            SizedBox(width: screenWidth * 1 / 1.8),
                             IconButton(
                               onPressed: () {
                                 // Action for the button
@@ -138,25 +132,23 @@ class _CourseDetailsState extends State<CourseDetails> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 12,
-              ),
-              Row(
+              const SizedBox(height: 12),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'UI UX Diploma',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                   ),
-                  widget.type == 'Course Details'
-                      ? const Text(
-                          '4500',
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xff088395)),
-                        )
-                      : const SizedBox()
+                  // widget.type == 'Course Details'
+                  //     ? const Text(
+                  //         '4500',
+                  //         style: TextStyle(
+                  //             fontSize: 22,
+                  //             fontWeight: FontWeight.w600,
+                  //             color: Color(0xff088395)),
+                  //       )
+                  //     : const SizedBox()
                 ],
               ),
               widget.type == 'Course Details'
@@ -168,23 +160,16 @@ class _CourseDetailsState extends State<CourseDetails> {
                       height: 150,
                       child: Column(
                         children: [
-                          const SizedBox(
-                            height: 28,
-                          ),
-                          Button(
-                            borderColor: Colors.white,
-                            onClick: () {},
-                            text: 'Book Now',
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Button(
-                            onClick: () {},
-                            text: 'Add to favorite',
-                            color: Colors.white,
-                            textColor: const Color(0xff071952),
-                          ),
+                          const SizedBox(height: 24),
+                          FilledButton(
+                              onPressed: () {}, child: const Text('Book Now')),
+                          const SizedBox(height: 8),
+                          FilledButton(
+                              onPressed: () {},
+                              style: FilledButton.styleFrom(
+                                  backgroundColor: theme.colorScheme.onPrimary,
+                                  foregroundColor: theme.colorScheme.primary),
+                              child: const Text('Add to favorite'))
                         ],
                       ))
                   : const SizedBox(),
@@ -200,9 +185,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 12,
-              ),
+              const SizedBox(height: 12),
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 0),
                 leading: Image.asset('images/courses/aref.png'),
@@ -243,9 +226,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               const Divider(
                 color: Color(0xffEEEEEE),
               ),
@@ -258,9 +239,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               const ReadMoreDescription(
                 description:
                     'Unlock the world of user-centric design with our comprehensive UI/UX Design Course! This course is tailored for aspiring designers, developers, and anyone passionate about crafting intuitive and engaging digital experiences. You\'ll learn the fundamentals of user interface (UI) design and user experience (UX) principles, exploring tools like Figma and Adobe XD to create wireframes, prototypes, and mockups. Dive into the psychology of design, usability testing, and responsive design techniques to ensure your creations resonate across all devices. By the end of this course, you\'ll have a polished portfolio of projects, showcasing your ability to design visually appealing and user-friendly websites and mobile applications. Whether you\'re starting from scratch or enhancing your current skills, this course will elevate your design journey.What You’ll Learn: Design principles and color theory Wireframing and prototyping User research and persona creation Usability testing and feedback integration Responsive design for web and mobile Who This Course is For: Beginners, developers, and professionals aiming to transition into the design field or improve their skills in crafting exceptional digital experiences.',
@@ -268,9 +247,7 @@ class _CourseDetailsState extends State<CourseDetails> {
               const Divider(
                 color: Color(0xffEEEEEE),
               ),
-              const SizedBox(
-                height: 12,
-              ),
+              const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -441,7 +418,8 @@ class _CourseDetailsState extends State<CourseDetails> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => VideoScreen(),
+                                            builder: (context) =>
+                                                const VideoScreen(),
                                           ));
                                     },
                                     icon: const Icon(
@@ -460,52 +438,34 @@ class _CourseDetailsState extends State<CourseDetails> {
                     physics: const BouncingScrollPhysics(),
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return const Column(
+                      return Column(
                         children: [
-                          SizedBox(
-                            height: 8,
-                          ),
+                          const SizedBox(height: 8),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                width: 120,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Color(0xffFFE100),
-                                    ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.grey,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text('01/07/2024')
+                                  width: 120,
+                                  child: Row(
+                                    children: Iterable.generate(
+                                                4,
+                                                (_) => const Icon(Icons.star,
+                                                    color: Color(0xffffe100)))
+                                            .toList() +
+                                        [
+                                          const Icon(Icons.star,
+                                              color: Colors.grey)
+                                        ],
+                                  )),
+                              const Text('01/07/2024')
                             ],
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
+                          const SizedBox(height: 8),
+                          const Text(
                             'Simple explanation of the information and constant follow-up and training on practical projects',
                             style: TextStyle(fontSize: 16, color: Colors.grey),
                           ),
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
@@ -515,10 +475,8 @@ class _CourseDetailsState extends State<CourseDetails> {
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Divider(),
+                          const SizedBox(height: 8),
+                          const Divider(),
                         ],
                       );
                     },

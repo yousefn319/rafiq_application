@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
+import 'package:rafiq_application/screens/course_details.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class MyCourses extends StatefulWidget {
   const MyCourses({super.key});
@@ -354,8 +355,9 @@ class _MyCoursesState extends State<MyCourses> {
                                                   ),
                                                 ),
                                                 const SizedBox(width: 24),
-                                                SvgPicture.asset(
-                                                  'images/courses/Completed.svg',
+                                                SvgPicture(
+                                                  AssetBytesLoader(
+                                                      'images/courses/Completed.svg.vec'),
                                                 ),
                                               ],
                                             ),

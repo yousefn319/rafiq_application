@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/course_details.dart';
-import 'package:rafiq_application/features/introscreens/presentation/popular_courses.dart';
+import 'package:rafiq_application/screens/popular_courses.dart';
 import 'package:rafiq_application/widgets/search_bar.dart';
 
 class AcademicCategory extends StatefulWidget {
+  const AcademicCategory({super.key});
+
   @override
   _AcademicCategoryState createState() => _AcademicCategoryState();
 }
@@ -27,7 +27,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              SearchBarA(),
+              const SearchBarA(),
               const SizedBox(
                 height: 22,
               ),
@@ -100,12 +100,13 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                 SizedBox(
                   height: screenHeight * 0.9,
                   child: GridView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: 8,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 12,
-                        mainAxisSpacing: 12),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 12,
+                            mainAxisSpacing: 12),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
