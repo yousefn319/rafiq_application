@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/get_started.dart';
+import 'package:rafiq_application/screens/get_started.dart';
 import 'package:rafiq_application/widgets/interest.dart';
 
 int clicked = 1;
