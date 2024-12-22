@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/main.dart';
+import 'package:rafiq/main.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 
 class PasswordField extends StatefulWidget {
@@ -117,9 +117,9 @@ class PhonenumberTextFieldState extends State<PhonenumberTextField> {
 
   @override
   void dispose() {
-    super.dispose();
     _node.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   Widget builder(

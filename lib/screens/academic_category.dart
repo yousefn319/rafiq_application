@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/screens/popular_courses.dart';
-import 'package:rafiq_application/widgets/search_bar.dart';
+import 'package:rafiq/screens/popular_courses.dart';
+import 'package:rafiq/widgets/search_bar.dart';
 
 class AcademicCategory extends StatefulWidget {
   const AcademicCategory({super.key});

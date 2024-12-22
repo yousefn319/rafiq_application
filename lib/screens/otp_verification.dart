@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/screens/reset_password.dart';
+import 'package:rafiq/screens/reset_password.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:rafiq_application/widgets/resend_code_widget.dart';
+import 'package:rafiq/widgets/resend_code_widget.dart';
 
 class OtpVerification extends StatelessWidget {
   const OtpVerification({super.key, required this.title, this.image});
@@ -37,14 +37,10 @@ class OtpVerification extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const ResetPassword()))),
           const SizedBox(height: 8),
-          ResendCodeWidget(onPressed: () {}),
-          //Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          //  Text('Didn\'t receive your code? '),
-          //  LabelButton(
-          //      label: 'Resend',
-          //      onPressed: () {},
-          //      style: TextStyle(color: theme.colorScheme.secondary)), // hmm??
-          //])
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('Didn\'t receive your code? '),
+            ResendCodeWidget(onPressed: () {})
+          ])
         ]),
       ),
     );

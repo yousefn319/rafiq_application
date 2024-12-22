@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/screens/otp_verification.dart';
-import 'package:rafiq_application/screens/sign_in.dart';
-import 'package:rafiq_application/widgets/typing_field.dart';
-import 'package:rafiq_application/main.dart';
+import 'package:rafiq/screens/otp_verification.dart';
+import 'package:rafiq/screens/sign_in.dart';
+import 'package:rafiq/widgets/typing_field.dart';
+import 'package:rafiq/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 

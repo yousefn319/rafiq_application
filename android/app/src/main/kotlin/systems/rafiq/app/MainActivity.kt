@@ -1,4 +1,4 @@
-package com.example.rafiq_application
+package systems.rafiq.app
 
 import io.flutter.embedding.android.FlutterActivity
 
