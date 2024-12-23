@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:rafiq_application/localization/app_localizations.dart';
-import 'package:rafiq_application/localization/cubit/locale_cubit.dart';
-import 'package:rafiq_application/widgets/intro.dart';
-import 'package:rafiq_application/screens/get_started.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+//import 'package:flutter_localizations/flutter_localizations.dart';
+// import 'package:rafiq/localization/app_localizations.dart';
+// import 'package:rafiq/localization/cubit/locale_cubit.dart';
+import 'package:rafiq/widgets/intro.dart';
+import 'package:rafiq/screens/get_started.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 
@@ -18,17 +19,17 @@ void main() async {
   await init();
   Map<String, CountryWithPhoneCode> supportedRegions =
       await getAllSupportedRegions();
+
   ColorScheme colorScheme = const ColorScheme.light(
       primary: Color(0xff071952),
       onPrimary: Colors.white,
       secondary: Color(0xff088395));
   InputDecorationTheme decorationTheme = InputDecorationTheme(
       floatingLabelStyle: TextStyle(color: colorScheme.secondary),
-      //hintStyle: TextStyle(fontWeight),
       border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(8))),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: BorderRadius.all(Radius.circular(8)),
           borderSide: BorderSide(color: colorScheme.secondary)));
   ThemeData theme = ThemeData(
       useMaterial3: true,
@@ -42,38 +43,14 @@ void main() async {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)))));
 
-  var app = MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => LocaleCubit()..getSavedLanguage()),
-      ],
-      child: ConfigProvider(
-          prefs: prefs,
-          supportedRegions: supportedRegions,
-          child: BlocBuilder<LocaleCubit, ChangeLocaleState>(
-              builder: (context, state) {
-            return MaterialApp(
-              home: const RafiqApp(),
-              theme: theme,
-              locale: state.locale,
-              supportedLocales: const [Locale('en'), Locale('ar')],
-              localizationsDelegates: const [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              localeResolutionCallback: (deviceLocale, supportedLocales) {
-                for (var locale in supportedLocales) {
-                  if (deviceLocale != null &&
-                      deviceLocale.languageCode == locale.languageCode) {
-                    return deviceLocale;
-                  }
-                }
-
-                return supportedLocales.first;
-              },
-            );
-          })));
+  var app = ConfigProvider(
+      prefs: prefs,
+      supportedRegions: supportedRegions,
+      child: MaterialApp(
+          home: const RafiqApp(),
+          theme: theme,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales));
   runApp(app);
 }
 

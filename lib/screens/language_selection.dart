@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/screens/interests_page.dart';
+import 'package:rafiq/screens/interests_page.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class LanguageSelection extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/widgets/video.dart';
+import 'package:rafiq/widgets/video.dart';
 
 class VideoScreen extends StatelessWidget {
   const VideoScreen({super.key});

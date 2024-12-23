@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq_application/widgets/typing_field.dart';
+import 'package:rafiq/widgets/typing_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -77,7 +77,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                     children: widget.infos),
                 SafeArea(
                     child: Align(
-                        alignment: Alignment.topRight,
+                        alignment: AlignmentDirectional.topEnd,
                         child: LabelButton(
                             label: "Skip", onPressed: _goNext(context)))),
               ])),

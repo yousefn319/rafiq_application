@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
-import 'package:rafiq_application/widgets/typing_field.dart';
+import 'package:rafiq/widgets/typing_field.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
