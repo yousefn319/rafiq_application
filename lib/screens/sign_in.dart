@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/screens/sign_up.dart';
-import 'package:rafiq_application/screens/home_screen.dart';
-import 'package:rafiq_application/screens/otp_verification.dart';
+import 'package:rafiq/screens/sign_up.dart';
+import 'package:rafiq/screens/home_screen.dart';
+import 'package:rafiq/screens/otp_verification.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:rafiq_application/widgets/typing_field.dart';
+import 'package:rafiq/widgets/typing_field.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -51,7 +51,7 @@ class LoginFormState extends State<LoginForm> {
                 DefaultPassword(
                     controller: passwordController, label: 'Password'),
                 Align(
-                    alignment: Alignment.bottomRight,
+                  alignment: AlignmentDirectional.bottomEnd,
                     child: TextButton(
                       child: Text('Forgot Password?', style: theme.labelMedium),
                       onPressed: () => Navigator.push(

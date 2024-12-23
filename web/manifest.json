@@ -1,6 +1,6 @@
 {
-    "name": "rafiq_application",
-    "short_name": "rafiq_application",
+    "name": "rafiq",
+    "short_name": "rafiq",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

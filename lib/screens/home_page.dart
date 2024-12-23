@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_application/screens/academic_category.dart';
-import 'package:rafiq_application/screens/course_details.dart';
+import 'package:rafiq/screens/academic_category.dart';
+import 'package:rafiq/screens/course_details.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

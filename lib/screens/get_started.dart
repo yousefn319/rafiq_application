@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/screens/sign_in.dart';
-import 'package:rafiq_application/screens/sign_up.dart';
+import 'package:rafiq/screens/sign_in.dart';
+import 'package:rafiq/screens/sign_up.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class GetStarted extends StatelessWidget {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rafiq_application/screens/get_started.dart';
-import 'package:rafiq_application/localization/app_localizations.dart';
-import 'package:rafiq_application/localization/cubit/locale_cubit.dart';
+import 'package:rafiq/screens/get_started.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:rafiq/localization/app_localizations.dart';
+// import 'package:rafiq/localization/cubit/locale_cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -11,6 +12,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    AppLocalizations locale = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Profile'),
@@ -169,15 +171,16 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               ListTile(
-                onTap: () => _showLanguagePicker(context),
+                //onTap: () => _showLanguagePicker(context),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 leading: const Icon(
                   Icons.language_outlined,
                   color: Color(0xff088395),
                   size: 32,
                 ),
-                title: const Text(
-                  'Language',
+                title: Text(
+                  locale.helloWorld,
+                  //'Language',
                   style: TextStyle(
                     color: Color(0xff088395),
                     fontWeight: FontWeight.w500,
@@ -277,11 +280,11 @@ class ProfileScreen extends StatelessWidget {
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 leading: const Icon(
                   Icons.local_post_office_outlined,
-                  color: Color(0xff088395),
+                  //color: Color(0xff088395),
                   size: 32,
                 ),
                 title: const Text(
-                  'Intive Friends',
+                  'Invite Friends',
                   style: TextStyle(
                     color: Color(0xff088395),
                     fontWeight: FontWeight.w600,
@@ -329,45 +332,45 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-void _showLanguagePicker(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    backgroundColor: Colors.white,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-    ),
-    builder: (context) {
-      return Container(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "ChooseLanguage".tr(context),
-              style: const TextStyle(color: Colors.black, fontSize: 18),
-            ),
-            const SizedBox(height: 20),
-            ListTile(
-              leading: const Icon(Icons.language, color: Colors.black),
-              title:
-                  const Text('English', style: TextStyle(color: Colors.black)),
-              onTap: () {
-                context.read<LocaleCubit>().changeLanguage('en');
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.language, color: Colors.black),
-              title:
-                  const Text('العربية', style: TextStyle(color: Colors.black)),
-              onTap: () {
-                context.read<LocaleCubit>().changeLanguage('ar');
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
+// void _showLanguagePicker(BuildContext context) {
+//   showModalBottomSheet(
+//     context: context,
+//     backgroundColor: Colors.white,
+//     shape: const RoundedRectangleBorder(
+//       borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+//     ),
+//     builder: (context) {
+//       return Container(
+//         padding: const EdgeInsets.all(20),
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             Text(
+//               "ChooseLanguage".tr(context),
+//               style: const TextStyle(color: Colors.black, fontSize: 18),
+//             ),
+//             const SizedBox(height: 20),
+//             ListTile(
+//               leading: const Icon(Icons.language, color: Colors.black),
+//               title:
+//                   const Text('English', style: TextStyle(color: Colors.black)),
+//               onTap: () {
+//                 context.read<LocaleCubit>().changeLanguage('en');
+//                 Navigator.pop(context);
+//               },
+//             ),
+//             ListTile(
+//               leading: const Icon(Icons.language, color: Colors.black),
+//               title:
+//                   const Text('العربية', style: TextStyle(color: Colors.black)),
+//               onTap: () {
+//                 context.read<LocaleCubit>().changeLanguage('ar');
+//                 Navigator.pop(context);
+//               },
+//             ),
+//           ],
+//         ),
+//       );
+//     },
+//   );
+// }

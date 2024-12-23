@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq_application/features/introscreens/presentation/otp_verification.dart';
+import 'package:rafiq/screens/otp_verification.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class ForgetPassword extends StatefulWidget {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
-import 'package:rafiq_application/screens/favorites_screen.dart';
-import 'package:rafiq_application/screens/home_page.dart';
-import 'package:rafiq_application/screens/messages_screen.dart';
-import 'package:rafiq_application/screens/my_courses.dart';
-import 'package:rafiq_application/screens/notifications_screen.dart';
-import 'package:rafiq_application/screens/profile_screen.dart';
-import 'package:rafiq_application/screens/rafiq_chatbot_screen.dart';
+import 'package:rafiq/screens/favorites_screen.dart';
+import 'package:rafiq/screens/home_page.dart';
+import 'package:rafiq/screens/messages_screen.dart';
+import 'package:rafiq/screens/my_courses.dart';
+import 'package:rafiq/screens/notifications_screen.dart';
+import 'package:rafiq/screens/profile_screen.dart';
+import 'package:rafiq/screens/rafiq_chatbot_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

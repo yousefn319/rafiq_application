@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:rafiq_application/widgets/typing_field.dart';
+import 'package:rafiq/widgets/typing_field.dart';
 import 'package:flutter/material.dart';
 
 class ResendCodeWidget extends StatefulWidget {
@@ -41,14 +41,11 @@ class _ResendCodeWidgetState extends State<ResendCodeWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      const Text('Didn\'t receive your code? '),
-      LabelButton(
-          label: _secondsRemaining > 0
-              ? '${widget.label} (${_secondsRemaining}s)'
-              : widget.label,
-          onPressed: _secondsRemaining > 0 ? null : _pressed,
-          style: TextStyle(color: theme.colorScheme.secondary)) // hmm??
-    ]);
+    return LabelButton(
+        label: _secondsRemaining > 0
+            ? '${widget.label} (${_secondsRemaining}s)'
+            : widget.label,
+        onPressed: _secondsRemaining > 0 ? null : _pressed,
+        style: TextStyle(color: theme.colorScheme.secondary));
   }
 }

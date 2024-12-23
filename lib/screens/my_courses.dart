@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rafiq_application/screens/course_details.dart';
+import 'package:rafiq/screens/course_details.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class MyCourses extends StatefulWidget {

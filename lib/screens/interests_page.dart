@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq_application/screens/get_started.dart';
-import 'package:rafiq_application/widgets/interest.dart';
+import 'package:rafiq/screens/get_started.dart';
+import 'package:rafiq/widgets/interest.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 int clicked = 1;
