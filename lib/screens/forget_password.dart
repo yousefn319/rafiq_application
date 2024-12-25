@@ -44,16 +44,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   fontSize: 14,
                   color: Color(0xff999999)),
             ),
-            SizedBox(
-              height: screenHeight * 0.032,
-            ),
+            SizedBox(height: screenHeight * 0.032),
             TypingField(
               type: TextInputType.emailAddress,
               label: 'Email',
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(

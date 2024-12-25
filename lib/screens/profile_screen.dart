@@ -179,7 +179,7 @@ class ProfileScreen extends StatelessWidget {
                   size: 32,
                 ),
                 title: Text(
-                  locale.helloWorld,
+                  locale.chooseLanguage,
                   //'Language',
                   style: TextStyle(
                     color: Color(0xff088395),
