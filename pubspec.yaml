@@ -107,6 +107,9 @@ flutter:
     - images/courses/profile_picture.jpg
     - assets/lang/ar.json
     - assets/lang/en.json
+    - images/payment/instaPay_logo.webp
+    - images/payment/Visa_Mastercard.webp
+    - images/payment/wallet.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

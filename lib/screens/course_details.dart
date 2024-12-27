@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rafiq/screens/booking_screen.dart';
 import 'package:rafiq/screens/video_screen.dart';
 import 'package:rafiq/widgets/read_more_description.dart';
 import 'package:video_player/video_player.dart';
@@ -162,7 +163,15 @@ class _CourseDetailsState extends State<CourseDetails> {
                         children: [
                           const SizedBox(height: 24),
                           FilledButton(
-                              onPressed: () {}, child: const Text('Book Now')),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => BookingScreen(),
+                                  ),
+                                );
+                              },
+                              child: const Text('Book Now')),
                           const SizedBox(height: 8),
                           FilledButton(
                               onPressed: () {},
@@ -378,7 +387,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                             const Color(0xff088395)),
                                     onPressed: () {},
                                     icon: const Icon(
-                                      Icons.file_copy_outlined,
+                                      Icons.lock_outline_sharp,
                                       color: Colors.white,
                                     )),
                               ),
