@@ -28,56 +28,45 @@ class _MyCoursesState extends State<MyCourses> {
           physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Expanded(
-                    child: TextField(
-                      cursorColor: Color(0xff088395),
-                      decoration: InputDecoration(
-                          labelText: 'Search courses',
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8))),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            borderSide: BorderSide(
-                              color: Color(0xff071952),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              gapPadding: BorderSide.strokeAlignCenter,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)),
-                              borderSide: BorderSide(
-                                color: Color(0xff088395),
-                              )),
-                          suffixIcon: Icon(Icons.mic_none),
-                          prefixIcon: Icon(Icons.search)),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 56, // Set height for square
-                    width: 56, // Set width equal to height for square
-                    decoration: BoxDecoration(
-                      color: const Color(0xff071952), // Background color
-                      borderRadius: BorderRadius.circular(8), // Rounded corners
-                    ),
-                    child: IconButton(
-                      onPressed: () {
-                        // Button action
-                      },
-                      icon: const Icon(
-                        Icons.filter_alt_outlined,
-                        color: Colors.white, // Icon color
+              SearchAnchor(
+                builder: (BuildContext context, SearchController controller) {
+                  return SearchBar(
+                    hintText: 'Search Courses',
+                    shape: WidgetStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        side: BorderSide(color: Colors.grey),
                       ),
                     ),
-                  )
-                ],
+                    controller: controller,
+                    padding: const WidgetStatePropertyAll<EdgeInsets>(
+                      EdgeInsets.symmetric(horizontal: 16.0),
+                    ),
+                    // Remove shadow by ensuring elevation is 0
+                    elevation: MaterialStatePropertyAll(0),
+                    onTap: () {
+                      controller.openView();
+                    },
+                    onChanged: (_) {
+                      controller.openView();
+                    },
+                    leading: const Icon(Icons.search),
+                  );
+                },
+                suggestionsBuilder:
+                    (BuildContext context, SearchController controller) {
+                  return List<ListTile>.generate(5, (int index) {
+                    final String item = 'item $index';
+                    return ListTile(
+                      title: Text(item),
+                      onTap: () {
+                        setState(() {
+                          controller.closeView(item);
+                        });
+                      },
+                    );
+                  });
+                },
               ),
               const SizedBox(
                 height: 22,
@@ -168,7 +157,7 @@ class _MyCoursesState extends State<MyCourses> {
                               },
                               child: Container(
                                 height: MediaQuery.of(context).size.height *
-                                    0.2, // Relative height
+                                    0.25, // Adjusted height to fit progress bar
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(16),
@@ -180,86 +169,133 @@ class _MyCoursesState extends State<MyCourses> {
                                     ),
                                   ],
                                 ),
-                                child: Row(
+                                child: Column(
                                   children: [
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(16),
-                                        bottomLeft: Radius.circular(16),
-                                      ),
-                                      child: Image.asset(
-                                        'images/courses/flutter.png',
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.35, // Relative width
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
                                     Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.03,
-                                        ),
-                                        child: const Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Text(
-                                              'UI/UX Design',
-                                              style: TextStyle(
-                                                color: Color(0xffFF6B00),
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                overflow: TextOverflow.ellipsis,
+                                      child: Row(
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(16),
+                                              bottomLeft: Radius.circular(16),
+                                            ),
+                                            child: Image.asset(
+                                              'images/courses/flutter.png',
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.35,
+                                              height: double.infinity,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.03,
+                                              ),
+                                              child: const Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Text(
+                                                    'UI/UX Design',
+                                                    style: TextStyle(
+                                                      color: Color(0xffFF6B00),
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Intro to UI/UX Design',
+                                                    style: TextStyle(
+                                                      color: Color(0xff202244),
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Icon(Icons.star,
+                                                          color: Color(
+                                                              0xffFCCB40)),
+                                                      SizedBox(width: 4),
+                                                      Text(
+                                                        '4.4',
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0xff202244),
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                        ),
+                                                      ),
+                                                      SizedBox(width: 16),
+                                                      Text('|'),
+                                                      SizedBox(width: 16),
+                                                      Text(
+                                                        '30 Hrs 06 Mins',
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0xff202244),
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  // Progress bar
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'Progress',
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0xff202244),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 4),
+                                                      LinearProgressIndicator(
+                                                        value:
+                                                            0.6, // Example progress value (60%)
+                                                        backgroundColor:
+                                                            Colors.grey,
+                                                        color:
+                                                            Color(0xffFF6B00),
+                                                        minHeight: 6,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                            Text(
-                                              'Intro to UI/UX Design',
-                                              style: TextStyle(
-                                                color: Color(0xff202244),
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w500,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Icon(Icons.star,
-                                                    color: Color(0xffFCCB40)),
-                                                SizedBox(width: 4),
-                                                Text(
-                                                  '4.4',
-                                                  style: TextStyle(
-                                                    color: Color(0xff202244),
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w600,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                                SizedBox(width: 16),
-                                                Text('|'),
-                                                SizedBox(width: 16),
-                                                Text(
-                                                  '30 Hrs 06 Mins',
-                                                  style: TextStyle(
-                                                    color: Color(0xff202244),
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w600,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],

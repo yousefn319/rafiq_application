@@ -280,7 +280,7 @@ class ProfileScreen extends StatelessWidget {
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 leading: const Icon(
                   Icons.local_post_office_outlined,
-                  //color: Color(0xff088395),
+                  color: Color(0xff088395),
                   size: 32,
                 ),
                 title: const Text(
