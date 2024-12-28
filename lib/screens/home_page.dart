@@ -643,10 +643,10 @@ class _HomePageState extends State<HomePage> {
                                   child: IconButton(
                                       style: IconButton.styleFrom(
                                           backgroundColor: Colors.white70),
-                                      onPressed: () {},
+                                      onPressed: () => _toggleFavorite(index),
                                       icon: Icon(
-                                        Icons.favorite_outline,
-                                        color: Colors.red.shade400,
+                                        isFavoriteList[index] ? Icons.favorite : Icons.favorite_outline,
+                                        color: isFavoriteList[index] ? Colors.red.shade400 : Colors.grey,
                                       )))
                             ],
                           ),
