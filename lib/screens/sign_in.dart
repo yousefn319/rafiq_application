@@ -65,12 +65,12 @@ class LoginFormState extends State<LoginForm> {
                 FilledButton(
                     child: const Text('Sign in'),
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ));
                       if (_formKey.currentState!.validate()) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
-                            ));
                         print('Email: ${emailController.text}');
                         print('Password: ${passwordController.text}');
                       }

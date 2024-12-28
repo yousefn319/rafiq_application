@@ -79,7 +79,7 @@ class _VideoState extends State<Video> {
       children: [
         if (_controller.value.isInitialized)
           Stack(
-            alignment: Alignment.bottomCenter,
+            alignment: AlignmentDirectional.bottomCenter,
             children: [
               AspectRatio(
                 aspectRatio: _controller.value.aspectRatio,
@@ -197,7 +197,7 @@ class FullScreenVideoPlayer extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
-        alignment: Alignment.center,
+        alignment: AlignmentDirectional.center,
         children: [
           Center(
             child: AspectRatio(

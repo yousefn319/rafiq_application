@@ -67,7 +67,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                 child: SizedBox(
                   width: double.infinity,
                   child: Stack(
-                    alignment: Alignment
+                    alignment: AlignmentDirectional
                         .center, // Align the button in the center of the picture
                     children: [
                       ClipRRect(

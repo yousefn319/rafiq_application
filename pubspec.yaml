@@ -51,6 +51,7 @@ dependencies:
   circle_nav_bar: ^2.1.1
 
   language_code: ^0.5.5
+  devicelocale: ^0.8.1
 
 dev_dependencies:
   flutter_lints: ^4.0.0

@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: Align(
                     alignment:
-                        Alignment.centerRight, // Align message to the right
+                        AlignmentDirectional.centerEnd, // Align message to the right
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
