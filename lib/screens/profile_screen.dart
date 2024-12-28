@@ -50,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditProfileScreen(),
+                          builder: (context) => MyProfile(),
                         ));
                   },
                   title: const Text('ahmed elsayed hamoda',
