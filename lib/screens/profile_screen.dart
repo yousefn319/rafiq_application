@@ -50,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditProfileScreen(),
+                          builder: (context) => MyProfile(),
                         ));
                   },
                   title: const Text('ahmed elsayed hamoda',
@@ -60,10 +60,7 @@ class ProfileScreen extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: Color(0xff999999))),
                   trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                  leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(64),
-                      child:
-                          Image.asset('images/courses/profile_picture.jpg'))),
+                  leading: CircleAvatar(backgroundImage:AssetImage('images/courses/profile_picture.jpg'))),
               const SizedBox(height: 12),
               makeTile(
                   onTap: () {
