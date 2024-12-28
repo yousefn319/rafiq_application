@@ -10,7 +10,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isFavorite = false;
   int selectedButton = 1;
+  // Function to handle the favorite toggle
+  List<bool> isFavoriteList = List.generate(5, (index) => false);
+
+  void _toggleFavorite(int index) {
+    setState(() {
+      isFavoriteList[index] = !isFavoriteList[index];
+    });
+
+    // Add the instructor to the favorites screen if it's marked as favorite
+    if (isFavoriteList[index]) {
+      // Code to add instructor to favorites (e.g., saving it to a list or database)
+      print("Instructor at index $index added to favorites.");
+    } else {
+      // Code to remove instructor from favorites if it's unmarked
+      print("Instructor at index $index removed from favorites.");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -573,16 +591,22 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Positioned(
-                                right: 8,
-                                top: 8,
-                                child: IconButton(
-                                    style: IconButton.styleFrom(
-                                        backgroundColor: Colors.white70),
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.favorite_outline,
-                                      color: Colors.red.shade400,
-                                    )))
+                              right: 8,
+                              top: 8,
+                              child: IconButton(
+                                style: IconButton.styleFrom(
+                                    backgroundColor: Colors.white70),
+                                onPressed: () => _toggleFavorite(index),
+                                icon: Icon(
+                                  isFavoriteList[index]
+                                      ? Icons.favorite
+                                      : Icons.favorite_outline,
+                                  color: isFavoriteList[index]
+                                      ? Colors.red.shade400
+                                      : Colors.grey,
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),

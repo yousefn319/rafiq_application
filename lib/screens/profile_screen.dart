@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/screens/edit_profile_screen.dart';
 import 'package:rafiq/screens/get_started.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:rafiq/screens/my_profile.dart';
 // import 'package:rafiq/localization/app_localizations.dart';
 // import 'package:rafiq/localization/cubit/locale_cubit.dart';
 
@@ -27,7 +29,13 @@ class ProfileScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 16),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyProfile(),
+                      ));
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
@@ -89,6 +97,38 @@ class ProfileScreen extends StatelessWidget {
                       )
                     ],
                   ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditProfileScreen(),
+                      ));
+                },
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                leading: const Icon(
+                  Icons.person_outline_outlined,
+                  color: Color(0xff088395),
+                  size: 32,
+                ),
+                title: const Text(
+                  'Edit Profile',
+                  style: TextStyle(
+                    color: Color(0xff088395),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 22,
+                  ),
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color: Color(0xff088395),
+                ),
+                shape: ContinuousRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: const BorderSide(color: Color(0xffd0d0d0)),
                 ),
               ),
               const SizedBox(height: 12),

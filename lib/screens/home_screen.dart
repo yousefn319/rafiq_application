@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(32),

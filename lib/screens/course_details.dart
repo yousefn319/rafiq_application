@@ -236,9 +236,54 @@ class _CourseDetailsState extends State<CourseDetails> {
                 ),
               ),
               const SizedBox(height: 8),
-              const Divider(
-                color: Color(0xffEEEEEE),
+              const Divider(color: Colors.grey),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.access_time_sharp,
+                        color: Colors.grey,
+                      ),
+                      Text(
+                        '120h 45min',
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
+                  Row(
+                    spacing: 2,
+                    children: [
+                      Icon(
+                        Icons.school_outlined,
+                        color: Colors.grey,
+                      ),
+                      Text(
+                        'Certificate',
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
+                  Row(
+                    spacing: 2,
+                    children: [
+                      Icon(
+                        Icons.person_add_alt_outlined,
+                        color: Colors.grey,
+                      ),
+                      Text(
+                        '150+ Students',
+                        style: TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
+                ],
               ),
+              const Divider(color: Colors.grey),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -357,140 +402,130 @@ class _CourseDetailsState extends State<CourseDetails> {
               const SizedBox(height: 20),
               if (selectedButton == 1)
                 widget.type == 'Course Details'
-                    ? SizedBox(
-                        height: 800,
-                        child: ListView.builder(
-                          itemCount: 10,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 8),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Colors.grey)),
-                              child: ListTile(
-                                leading: const Text(
-                                  '01',
-                                  style: TextStyle(
-                                      fontSize: 42,
-                                      color: Color(0xff999999),
-                                      fontWeight: FontWeight.bold),
+                    ? Column(
+                        children: List.generate(
+                          10,
+                          (index) => Container(
+                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.grey),
+                            ),
+                            child: ListTile(
+                              leading: const Text(
+                                '01',
+                                style: TextStyle(
+                                  fontSize: 42,
+                                  color: Color(0xff999999),
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                title: const Text(
-                                  'Session 1',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                subtitle: const Text('Subtitle'),
-                                trailing: IconButton(
-                                    style: IconButton.styleFrom(
-                                        backgroundColor:
-                                            const Color(0xff088395)),
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.lock_outline_sharp,
-                                      color: Colors.white,
-                                    )),
                               ),
-                            );
-                          },
+                              title: const Text(
+                                'Session 1',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: const Text('Subtitle'),
+                              trailing: IconButton(
+                                style: IconButton.styleFrom(
+                                  backgroundColor: const Color(0xff088395),
+                                ),
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.lock_outline_sharp,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       )
-                    : SizedBox(
-                        height: 800,
-                        child: ListView.builder(
-                          itemCount: 10,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 8),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Colors.grey)),
-                              child: ListTile(
-                                leading: const Text(
-                                  '01',
-                                  style: TextStyle(
-                                      fontSize: 42,
-                                      color: Color(0xff999999),
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                title: const Text(
-                                  'Session 1',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                subtitle: const Text('Subtitle'),
-                                trailing: IconButton(
-                                    style: IconButton.styleFrom(
-                                        backgroundColor:
-                                            const Color(0xff088395)),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const VideoScreen(),
-                                          ));
-                                    },
-                                    icon: const Icon(
-                                      Icons.play_arrow,
-                                      color: Colors.white,
-                                    )),
+                    : Column(
+                        children: List.generate(
+                          10,
+                          (index) => Container(
+                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.grey)),
+                            child: ListTile(
+                              leading: const Text(
+                                '01',
+                                style: TextStyle(
+                                    fontSize: 42,
+                                    color: Color(0xff999999),
+                                    fontWeight: FontWeight.bold),
                               ),
-                            );
-                          },
+                              title: const Text(
+                                'Session 1',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              subtitle: const Text('Subtitle'),
+                              trailing: IconButton(
+                                  style: IconButton.styleFrom(
+                                      backgroundColor: const Color(0xff088395)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const VideoScreen(),
+                                        ));
+                                  },
+                                  icon: const Icon(
+                                    Icons.play_arrow,
+                                    color: Colors.white,
+                                  )),
+                            ),
+                          ),
                         ),
                       ),
               if (selectedButton == 2)
-                SizedBox(
-                  height: 800,
-                  child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          const SizedBox(height: 8),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                  width: 120,
-                                  child: Row(
-                                    children: Iterable.generate(
-                                                4,
-                                                (_) => const Icon(Icons.star,
-                                                    color: Color(0xffffe100)))
-                                            .toList() +
-                                        [
-                                          const Icon(Icons.star,
-                                              color: Colors.grey)
-                                        ],
-                                  )),
-                              const Text('01/07/2024')
-                            ],
-                          ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            'Simple explanation of the information and constant follow-up and training on practical projects',
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
-                          ),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'By Mohammed Nasser',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 8),
-                          const Divider(),
-                        ],
-                      );
-                    },
+                Column(
+                  children: List.generate(
+                    10,
+                    (index) => Column(
+                      children: [
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                                width: 120,
+                                child: Row(
+                                  children: Iterable.generate(
+                                              4,
+                                              (_) => const Icon(Icons.star,
+                                                  color: Color(0xffffe100)))
+                                          .toList() +
+                                      [
+                                        const Icon(Icons.star,
+                                            color: Colors.grey)
+                                      ],
+                                )),
+                            const Text('01/07/2024')
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          'Simple explanation of the information and constant follow-up and training on practical projects',
+                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'By Mohammed Nasser',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        const Divider(),
+                      ],
+                    ),
                   ),
-                ),
+                )
             ],
           ),
         ),
