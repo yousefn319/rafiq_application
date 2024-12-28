@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rafiq/screens/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-//import 'package:flutter_localizations/flutter_localizations.dart';
-// import 'package:rafiq/localization/app_localizations.dart';
-// import 'package:rafiq/localization/cubit/locale_cubit.dart';
 import 'package:rafiq/widgets/intro.dart';
 import 'package:rafiq/screens/get_started.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
+import 'package:devicelocale/devicelocale.dart';
+import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,38 +21,48 @@ void main() async {
   Map<String, CountryWithPhoneCode> supportedRegions =
       await getAllSupportedRegions();
 
-  ColorScheme colorScheme = const ColorScheme.light(
-      primary: Color(0xff071952),
-      onPrimary: Colors.white,
-      secondary: Color(0xff088395));
-  InputDecorationTheme decorationTheme = InputDecorationTheme(
-      floatingLabelStyle: TextStyle(color: colorScheme.secondary),
-      border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8))),
-      focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          borderSide: BorderSide(color: colorScheme.secondary)));
-  ThemeData theme = ThemeData(
-      useMaterial3: true,
-      colorScheme: colorScheme,
-      inputDecorationTheme: decorationTheme,
-      textSelectionTheme:
-          TextSelectionThemeData(cursorColor: colorScheme.secondary),
-      filledButtonTheme: FilledButtonThemeData(
-          style: FilledButton.styleFrom(
-              minimumSize: const Size(double.infinity, 50),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)))));
+  bool languagePerApp = await Devicelocale.isLanguagePerAppSettingSupported;
+  Locale? currentLocale = await Devicelocale.currentAsLocale;
 
-  var app = ConfigProvider(
-      prefs: prefs,
-      supportedRegions: supportedRegions,
-      child: MaterialApp(
-          home: const RafiqApp(),
-          theme: theme,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales));
+  LocaleProvider Function(BuildContext)? localeProvider;
+  if (languagePerApp) {
+    localeProvider = (_) => SystemLocaleProvider();
+  } else {
+    localeProvider = (_) => AppLocaleProvider(currentLocale, prefs);
+  }
+
+  var app = MultiProvider(
+      providers: [ChangeNotifierProvider(create: localeProvider!)],
+      child: ConfigProvider(
+          prefs: prefs,
+          supportedRegions: supportedRegions,
+          child: const RafiqApp()));
   runApp(app);
+}
+
+abstract class LocaleProvider extends ChangeNotifier {
+  Locale? getLocale();
+  void setLocale(Locale value);
+}
+
+class SystemLocaleProvider extends LocaleProvider {
+  Locale? getLocale() => null;
+  void setLocale(Locale value) {
+    Devicelocale.setLanguagePerApp(value);
+  }
+}
+
+class AppLocaleProvider extends LocaleProvider {
+  AppLocaleProvider(this.locale, this.prefs);
+  Locale? locale;
+  SharedPreferencesWithCache prefs;
+
+  Locale? getLocale() => this.locale;
+  void setLocale(Locale value) {
+    locale = value;
+    // prefs.setString('locale', value.toString());
+    notifyListeners();
+  }
 }
 
 class ConfigProvider extends InheritedWidget {
@@ -82,17 +93,36 @@ class ConfigProvider extends InheritedWidget {
 class RafiqApp extends StatelessWidget {
   const RafiqApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    ConfigProvider config = ConfigProvider.of(context);
-    String? sessionToken = config.prefs.getString('sessionToken');
-    bool ignoreIntro = config.prefs.getBool('ignoreIntro') ?? false;
-    if (sessionToken != null) {}
+  ThemeData theme() {
+    ColorScheme colorScheme = const ColorScheme.light(
+        primary: Color(0xff071952),
+        onPrimary: Colors.white,
+        secondary: Color(0xff088395));
 
-    if (ignoreIntro) {
-      return const GetStarted();
-    }
+    InputDecorationTheme decorationTheme = InputDecorationTheme(
+        floatingLabelStyle: TextStyle(color: colorScheme.secondary),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8))),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderSide: BorderSide(color: colorScheme.secondary)));
 
+    ThemeData theme = ThemeData(
+        useMaterial3: true,
+        colorScheme: colorScheme,
+        inputDecorationTheme: decorationTheme,
+        textSelectionTheme:
+            TextSelectionThemeData(cursorColor: colorScheme.secondary),
+        filledButtonTheme: FilledButtonThemeData(
+            style: FilledButton.styleFrom(
+                minimumSize: const Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)))));
+
+    return theme;
+  }
+
+  Widget defaultIntro() {
     return Intro(infos: [
       IntroScreen(
         image: 'images/intros/1.svg.vec',
@@ -114,5 +144,30 @@ class RafiqApp extends StatelessWidget {
         nextButton: 'Get Started',
       ),
     ], child: const GetStarted());
+  }
+
+  Widget startScreen(BuildContext context) {
+    ConfigProvider config = ConfigProvider.of(context);
+    String? sessionToken = config.prefs.getString('sessionToken');
+    if (sessionToken != null) {
+      return HomeScreen();
+    }
+    bool ignoreIntro = config.prefs.getBool('ignoreIntro') ?? false;
+    if (ignoreIntro) {
+      return GetStarted();
+    }
+    return defaultIntro();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget start = startScreen(context);
+    Locale? locale = context.watch<LocaleProvider>().getLocale();
+    return MaterialApp(
+        home: start,
+        locale: locale,
+        theme: theme(),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales);
   }
 }

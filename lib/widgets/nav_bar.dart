@@ -27,8 +27,9 @@ class _NavBarState extends State<NavBar> {
         },
         shape: const CircleBorder(),
         backgroundColor: const Color(0xff071952),
-        child:
-            const SvgPicture(AssetBytesLoader('images/courses/robot.svg.vec')),
+        child: Container(),
+        // child:
+        //     const SvgPicture(AssetBytesLoader('images/courses/robot.svg.vec')),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked, // Center FAB

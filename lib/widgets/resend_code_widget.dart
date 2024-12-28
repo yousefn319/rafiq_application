@@ -3,20 +3,21 @@ import 'package:rafiq/widgets/typing_field.dart';
 import 'package:flutter/material.dart';
 
 class ResendCodeWidget extends StatefulWidget {
-  ResendCodeWidget(
+  const ResendCodeWidget(
       {super.key,
       required this.onPressed,
       this.label = 'Resend',
       this.timeout = 60});
-  void Function()? onPressed;
-  int timeout;
-  String label;
+  final void Function()? onPressed;
+  final int timeout;
+  final String label;
   @override
   _ResendCodeWidgetState createState() => _ResendCodeWidgetState();
 }
 
-class _ResendCodeWidgetState extends State<ResendCodeWidget> {
+class _ResendCodeWidgetState extends State<ResendCodeWidget> with AutomaticKeepAliveClientMixin {
   late int _secondsRemaining;
+  bool wantKeepAlive = true;
 
   @override
   void initState() {
@@ -40,6 +41,7 @@ class _ResendCodeWidgetState extends State<ResendCodeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     ThemeData theme = Theme.of(context);
     return LabelButton(
         label: _secondsRemaining > 0

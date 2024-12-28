@@ -16,171 +16,62 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+Widget navDest(String label, IconData icon, ColorScheme colorScheme) {
+  return NavigationDestination(
+      label: label,
+      icon: Icon(icon, color: colorScheme.secondary),
+      selectedIcon: Icon(icon, color: colorScheme.primary));
+}
+
 class _HomeScreenState extends State<HomeScreen> {
+  final PageController pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
-  int selectedButton = 1;
+
   // List of screens
   final List<Widget> _screens = [
     const HomePage(),
     const MyCourses(),
-    const RafiqChatbotScreen(),
     const FavoritesScreen(),
     const ProfileScreen(),
+    //const RafiqChatbotScreen(),
   ];
-  void _onItemTapped(int index) {
-    setState(() {
+
+  void pageChanged(int index) => setState(() => _selectedIndex = index);
+  void _onItemTapped(int index) => setState(() {
       _selectedIndex = index;
+      pageController.jumpToPage(index);
     });
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     bool showAppBar = _selectedIndex == 0;
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: showAppBar
-          ? PreferredSize(
-              preferredSize: const Size.fromHeight(
-                  kToolbarHeight + 8), // Adjust height for padding
-              child: Container(
-                color: Colors.white, // AppBar color
-                child: AppBar(
-                  backgroundColor:
-                      Colors.white, // Make AppBar itself transparent
-                  elevation: 0, // Remove shadow
-                  automaticallyImplyLeading: false,
-
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(32),
-                        child: Image.asset(
-                          'images/courses/profile_picture.jpg',
-                          height: screenHeight * 0.055,
-                          width: screenHeight * 0.055,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Welcome Ahmed,',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              'What do you want to learn today ?',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color(0xff999999),
-                                  fontWeight: FontWeight.w500,
-                                  overflow: TextOverflow.ellipsis),
-                              maxLines: 1, // Prevent overflow
-                              softWrap: false,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  actions: [
-                    IconButton(
-                      color: const Color(0xff088395),
-                      style:
-                          IconButton.styleFrom(backgroundColor: Colors.black12),
-                      icon: const Icon(Icons.notifications_outlined),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const NotificationsScreen(),
-                            ));
-                      },
-                    ),
-                    const SizedBox(width: 8),
-                    IconButton(
-                      color: const Color(0xff088395),
-                      style:
-                          IconButton.styleFrom(backgroundColor: Colors.black12),
-                      icon: const Icon(Icons.message_outlined),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MessagesScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(width: 18)
-                  ],
-                ),
-              ),
-            )
-          : null,
-      body: _screens[_selectedIndex],
-
+      body: PageView(controller: pageController, onPageChanged: pageChanged, children: _screens),
+      extendBody: true,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _onItemTapped(2); // Set the center button action
-        },
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RafiqChatbotScreen())),
         shape: const CircleBorder(),
-        backgroundColor: const Color(0xff071952),
-        child: SvgPicture(AssetBytesLoader('images/buttons/robot.svg.vec')),
+        backgroundColor: colorScheme.primary,
+        child: SvgPicture(AssetBytesLoader('images/buttons/robot.svg.vec'))
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked, // Center FAB
       bottomNavigationBar: BottomAppBar(
-        padding: const EdgeInsets.symmetric(horizontal: 18),
         shape: const CircularNotchedRectangle(),
-        notchMargin: 16.0, // Space around the FAB notch
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              iconSize: 32,
-              icon: Icon(Icons.home_outlined,
-                  color: _selectedIndex == 0
-                      ? const Color(0xff071952)
-                      : const Color(0xff088395)),
-              onPressed: () {
-                _onItemTapped(0);
-              },
-            ),
-            IconButton(
-              iconSize: 32,
-              icon: Icon(Icons.menu_book_outlined,
-                  color: _selectedIndex == 1
-                      ? const Color(0xff071952)
-                      : const Color(0xff088395)),
-              onPressed: () => _onItemTapped(1),
-            ),
-            const SizedBox(width: 60), // Adds space between the two sides
-            IconButton(
-              iconSize: 32,
-              icon: Icon(Icons.favorite_outline,
-                  color: _selectedIndex == 3
-                      ? const Color(0xff071952)
-                      : const Color(0xff088395)),
-              onPressed: () => _onItemTapped(3),
-            ),
-            IconButton(
-              iconSize: 32,
-              icon: Icon(Icons.person_outline,
-                  color: _selectedIndex == 4
-                      ? const Color(0xff071952)
-                      : const Color(0xff088395)),
-              onPressed: () => _onItemTapped(4),
-            ),
-          ],
-        ),
+        clipBehavior: Clip.antiAlias,
+        notchMargin: 5.0, // Space around the FAB notch
+        child: NavigationBar(
+            selectedIndex: _selectedIndex,
+            onDestinationSelected: _onItemTapped,
+            indicatorColor: Colors.white,
+            destinations: [
+              navDest('Home', Icons.home_outlined, colorScheme),
+              navDest('My Courses', Icons.book_outlined, colorScheme),
+              navDest('Favourites', Icons.favorite_outlined, colorScheme),
+              navDest('Profile', Icons.person_outlined, colorScheme)
+            ]),
       ),
     );
   }

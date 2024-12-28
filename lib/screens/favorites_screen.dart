@@ -114,7 +114,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                 child: Column(
                                   children: [
                                     Stack(
-                                      alignment: Alignment.center,
+                                      alignment: AlignmentDirectional.center,
                                       children: [
                                         ClipRRect(
                                           borderRadius:

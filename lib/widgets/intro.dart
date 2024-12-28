@@ -15,6 +15,7 @@ class IntroScreen extends StatelessWidget {
   String title;
   String subtitle;
   String nextButton;
+
   @override
   Widget build(BuildContext context) {
     TextTheme theme = Theme.of(context).textTheme;
@@ -22,7 +23,7 @@ class IntroScreen extends StatelessWidget {
       SizedBox(
           width: 343, height: 343, child: SvgPicture(AssetBytesLoader(image))),
       Text(title, style: theme.titleMedium, textAlign: TextAlign.center),
-      Text(subtitle, style: theme.bodySmall, textAlign: TextAlign.center)
+      Text(subtitle, style: theme.bodySmall, textAlign: TextAlign.center),
     ]);
   }
 }
