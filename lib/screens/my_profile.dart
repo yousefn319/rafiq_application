@@ -153,24 +153,9 @@ class _MyProfileState extends State<MyProfile> {
         padding: const EdgeInsets.all(18),
         child: SizedBox(
           width: double.infinity,
-          child: ElevatedButton(
-            onPressed: () {
-              // Handle update logic
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xff071952),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              // backgroundColor: Colors.orange,
-            ),
-            child: const Text(
-              'Message me',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
-            ),
+          child: FilledButton(
+            onPressed: () {},
+            child: const Text('Message me'),
           ),
         ),
       ),

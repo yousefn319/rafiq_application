@@ -151,24 +151,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             // Update Button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
+              child: FilledButton(
                 onPressed: () {
                   // Handle update logic
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff071952),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  // backgroundColor: Colors.orange,
-                ),
-                child: const Text(
-                  'Update Profile',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                ),
+                child: const Text('Update Profile'),
               ),
             ),
           ],
