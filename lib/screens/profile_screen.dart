@@ -11,11 +11,10 @@ Widget makeTile({GestureTapCallback? onTap, IconData? leading, Widget? title}) {
   return Padding(
       padding: EdgeInsets.only(bottom: 12),
       child: ListTile(
-        onTap: onTap,
-        title: title,
-        leading: Icon(leading, size: 32),
-        trailing: const Icon(Icons.arrow_forward_ios_outlined),
-      ));
+          onTap: onTap,
+          title: title,
+          leading: Icon(leading, size: 32),
+          trailing: const Icon(Icons.arrow_forward_ios_outlined)));
 }
 
 class ProfileScreen extends StatelessWidget {
@@ -60,7 +59,9 @@ class ProfileScreen extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: Color(0xff999999))),
                   trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                  leading: CircleAvatar(backgroundImage:AssetImage('images/courses/profile_picture.jpg'))),
+                  leading: CircleAvatar(
+                      backgroundImage:
+                          AssetImage('images/courses/profile_picture.jpg'))),
               const SizedBox(height: 12),
               makeTile(
                   onTap: () {
@@ -126,7 +127,6 @@ class ProfileScreen extends StatelessWidget {
 void _showLanguagePicker(BuildContext context) {
   showModalBottomSheet(
     context: context,
-    backgroundColor: Colors.white,
     shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
     builder: (context) {
@@ -135,7 +135,6 @@ void _showLanguagePicker(BuildContext context) {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Text(AppLocalizations.of(context)!.chooseLanguage,
               style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: 20),
           ...[
             for (final l in AppLocalizations.supportedLocales)
               ListTile(

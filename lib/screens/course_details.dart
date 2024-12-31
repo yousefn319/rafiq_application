@@ -492,11 +492,10 @@ class _CourseDetailsState extends State<CourseDetails> {
                             SizedBox(
                                 width: 120,
                                 child: Row(
-                                  children: Iterable.generate(
-                                              4,
-                                              (_) => const Icon(Icons.star,
-                                                  color: Color(0xffffe100)))
-                                          .toList() +
+                                  children: List<Icon>.generate(
+                                          4,
+                                          (_) => const Icon(Icons.star,
+                                              color: Color(0xffffe100))) +
                                       [
                                         const Icon(Icons.star,
                                             color: Colors.grey)
