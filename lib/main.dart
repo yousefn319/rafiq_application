@@ -10,6 +10,11 @@ import 'package:devicelocale/devicelocale.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
+
+extension Let<T> on T? {
+  R? let<R>(R Function(T) fn) => this == null ? null : fn(this!);
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -28,7 +33,7 @@ void main() async {
   if (languagePerApp) {
     localeProvider = (_) => SystemLocaleProvider();
   } else {
-    localeProvider = (_) => AppLocaleProvider(currentLocale, prefs);
+    localeProvider = (_) => AppLocaleProvider(prefs.getString('locale').let(Locale.new) ?? currentLocale, prefs);
   }
 
   var app = MultiProvider(
@@ -59,9 +64,11 @@ class AppLocaleProvider extends LocaleProvider {
 
   Locale? getLocale() => this.locale;
   void setLocale(Locale value) {
-    locale = value;
-    // prefs.setString('locale', value.toString());
-    notifyListeners();
+    if (value != locale) {
+      locale = value;
+      prefs.setString('locale', value.languageCode);
+      notifyListeners();
+    }
   }
 }
 
