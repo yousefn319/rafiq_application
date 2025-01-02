@@ -28,7 +28,7 @@ class _SearchBarAState extends State<SearchBarA> {
                   floatingLabelBehavior: FloatingLabelBehavior.never,
                   suffixIcon: Icon(Icons.mic_none),
                   prefixIcon: Icon(Icons.search)))),
-      SizedBox(width: 10),
+      const SizedBox(width: 10),
       IconButton(
         onPressed: () {},
         style: IconButton.styleFrom(
@@ -37,7 +37,7 @@ class _SearchBarAState extends State<SearchBarA> {
             backgroundColor: theme.colorScheme.primary,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
-        icon: Icon(Icons.filter_alt_outlined),
+        icon: const Icon(Icons.filter_alt_outlined),
       )
     ]);
   }

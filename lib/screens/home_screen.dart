@@ -3,9 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 import 'package:rafiq/screens/favorites_screen.dart';
 import 'package:rafiq/screens/home_page.dart';
-import 'package:rafiq/screens/messages_screen.dart';
 import 'package:rafiq/screens/my_courses.dart';
-import 'package:rafiq/screens/notifications_screen.dart';
 import 'package:rafiq/screens/profile_screen.dart';
 import 'package:rafiq/screens/rafiq_chatbot_screen.dart';
 
@@ -54,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RafiqChatbotScreen())),
         shape: const CircleBorder(),
         backgroundColor: colorScheme.primary,
-        child: SvgPicture(AssetBytesLoader('images/buttons/robot.svg.vec'))
+        child: const SvgPicture(AssetBytesLoader('images/buttons/robot.svg.vec'))
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked, // Center FAB

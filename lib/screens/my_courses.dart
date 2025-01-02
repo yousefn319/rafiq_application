@@ -32,7 +32,7 @@ class _MyCoursesState extends State<MyCourses> {
                   shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
-                      side: BorderSide(color: Colors.grey),
+                      side: const BorderSide(color: Colors.grey),
                     ),
                   ),
                   controller: controller,
@@ -40,7 +40,7 @@ class _MyCoursesState extends State<MyCourses> {
                     EdgeInsets.symmetric(horizontal: 16.0),
                   ),
                   // Remove shadow by ensuring elevation is 0
-                  elevation: MaterialStatePropertyAll(0),
+                  elevation: const WidgetStatePropertyAll(0),
                   onTap: () {
                     controller.openView();
                   },
@@ -357,7 +357,7 @@ class _MyCoursesState extends State<MyCourses> {
                                             MediaQuery.of(context).size.width *
                                                 0.04,
                                       ),
-                                      child: Column(
+                                      child: const Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         mainAxisAlignment:
@@ -367,7 +367,7 @@ class _MyCoursesState extends State<MyCourses> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              const Text(
+                                              Text(
                                                 'Flutter Development',
                                                 style: TextStyle(
                                                   color: Color(0xffFF6B00),
@@ -377,14 +377,14 @@ class _MyCoursesState extends State<MyCourses> {
                                                       TextOverflow.ellipsis,
                                                 ),
                                               ),
-                                              const SizedBox(width: 24),
+                                              SizedBox(width: 24),
                                               SvgPicture(
                                                 AssetBytesLoader(
                                                     'images/courses/Completed.svg.vec'),
                                               ),
                                             ],
                                           ),
-                                          const Text(
+                                          Text(
                                             'Intro to Dart',
                                             style: TextStyle(
                                               color: Color(0xff202244),
@@ -393,7 +393,7 @@ class _MyCoursesState extends State<MyCourses> {
                                               overflow: TextOverflow.ellipsis,
                                             ),
                                           ),
-                                          const Row(
+                                          Row(
                                             children: [
                                               Icon(Icons.star,
                                                   color: Color(0xffFCCB40)),

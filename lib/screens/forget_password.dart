@@ -27,7 +27,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Center(
               child: SvgPicture(
-                AssetBytesLoader("images/logins/forgotpassword.svg.vec"),
+                const AssetBytesLoader("images/logins/forgotpassword.svg.vec"),
                 height: screenHeight * 0.5,
                 width: screenWidth * 0.5,
                 fit: BoxFit.cover,
@@ -56,7 +56,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            OtpVerification(title: 'Password OTP'),
+                            const OtpVerification(title: 'Password OTP'),
                       ));
                 },
                 child: const Text('Send Code'))

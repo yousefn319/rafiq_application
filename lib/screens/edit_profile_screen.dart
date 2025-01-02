@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class EditProfileScreen extends StatefulWidget {
+  const EditProfileScreen({super.key});
+
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
@@ -24,7 +26,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +51,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     width: 42,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: Color(0xff071952),
+                            color: const Color(0xff071952),
                             strokeAlign: BorderSide.strokeAlignCenter,
                             width: 3),
                         borderRadius: BorderRadius.circular(10),
@@ -58,7 +60,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       onPressed: () {
                         // Implement functionality to change avatar
                       },
-                      icon: Icon(Icons.camera_alt, color: Color(0xff071952)),
+                      icon: const Icon(Icons.camera_alt, color: Color(0xff071952)),
                     ),
                   ),
                 ],

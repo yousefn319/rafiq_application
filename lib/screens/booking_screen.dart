@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BookingScreen extends StatefulWidget {
+  const BookingScreen({super.key});
+
   @override
   _BookingScreenState createState() => _BookingScreenState();
 }
@@ -33,7 +35,7 @@ class _BookingScreenState extends State<BookingScreen> {
         _currentStep++;
       });
       _pageController.nextPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     } else {
@@ -48,7 +50,7 @@ class _BookingScreenState extends State<BookingScreen> {
         _currentStep--;
       });
       _pageController.previousPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
@@ -57,7 +59,7 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget _buildPaymentInfoForm() {
     if (_selectedPaymentIndex == 0 || _selectedPaymentIndex == 2) {
       // Instapay or E-Wallet
-      return Column(
+      return const Column(
         children: [
           TextField(
             decoration: InputDecoration(
@@ -77,7 +79,7 @@ class _BookingScreenState extends State<BookingScreen> {
       );
     } else if (_selectedPaymentIndex == 1) {
       // Credit or Debit Card
-      return Column(
+      return const Column(
         children: [
           TextField(
             decoration: InputDecoration(
@@ -104,7 +106,7 @@ class _BookingScreenState extends State<BookingScreen> {
         ],
       );
     } else {
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     }
   }
 
@@ -116,7 +118,7 @@ class _BookingScreenState extends State<BookingScreen> {
         centerTitle: true,
         leading: _currentStep > 0
             ? IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: _onBack,
               )
             : null,
@@ -134,7 +136,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     CircleAvatar(
                       radius: 16,
                       backgroundColor: _currentStep >= index
-                          ? Color(0xff071952)
+                          ? const Color(0xff071952)
                           : Colors.grey[300],
                       child: Text(
                         (index + 1).toString(),
@@ -150,7 +152,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         width: 112,
                         height: 2,
                         color: _currentStep > index
-                            ? Color(0xff071952)
+                            ? const Color(0xff071952)
                             : Colors.grey[300],
                       ),
                   ],
@@ -162,14 +164,14 @@ class _BookingScreenState extends State<BookingScreen> {
           Expanded(
             child: PageView(
               controller: _pageController,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 // Screen 1: Payment Method Selection
                 Column(
                   children: [
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18),
+                    const SizedBox(height: 16),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 18),
                       child: Row(
                         children: [
                           Text(
@@ -183,10 +185,10 @@ class _BookingScreenState extends State<BookingScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Expanded(
                       child: ListView.builder(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         itemCount: _paymentMethods.length,
                         itemBuilder: (context, index) {
                           final method = _paymentMethods[index];
@@ -196,7 +198,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             child: ListTile(
                               shape: ContinuousRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
-                                side: BorderSide(color: Color(0xff071952)),
+                                side: const BorderSide(color: Color(0xff071952)),
                               ),
                               leading: Image.asset(
                                 method['image'],
@@ -205,7 +207,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               ),
                               title: Text(method['name']),
                               trailing: Radio<int>(
-                                activeColor: Color(0xff071952),
+                                activeColor: const Color(0xff071952),
                                 value: index,
                                 groupValue: _selectedPaymentIndex,
                                 onChanged: (value) {
@@ -233,15 +235,15 @@ class _BookingScreenState extends State<BookingScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          minimumSize: Size(double.infinity, 50),
+                          minimumSize: const Size(double.infinity, 50),
                           foregroundColor: _selectedPaymentIndex != null
                               ? Colors.white
                               : Colors.black54,
                           backgroundColor: _selectedPaymentIndex != null
-                              ? Color(0xff071952)
+                              ? const Color(0xff071952)
                               : Colors.grey,
                         ),
-                        child: Text('Continue'),
+                        child: const Text('Continue'),
                       ),
                     ),
                   ],
@@ -261,12 +263,12 @@ class _BookingScreenState extends State<BookingScreen> {
                         onPressed: _onContinue,
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Color(0xff071952),
+                          backgroundColor: const Color(0xff071952),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
-                          minimumSize: Size(double.infinity, 50),
+                          minimumSize: const Size(double.infinity, 50),
                         ),
-                        child: Text('Continue'),
+                        child: const Text('Continue'),
                       ),
                     ),
                   ],
@@ -280,10 +282,10 @@ class _BookingScreenState extends State<BookingScreen> {
                         height: 320,
                         width: 368,
                         decoration: BoxDecoration(
-                            color: Color(0xff071952),
+                            color: const Color(0xff071952),
                             borderRadius: BorderRadius.circular(16)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(
                               vertical: 24.0, horizontal: 16),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -409,12 +411,12 @@ class _BookingScreenState extends State<BookingScreen> {
                         onPressed: _onContinue,
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Color(0xff071952),
+                          backgroundColor: const Color(0xff071952),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
-                          minimumSize: Size(double.infinity, 50),
+                          minimumSize: const Size(double.infinity, 50),
                         ),
-                        child: Text('Pay Now'),
+                        child: const Text('Pay Now'),
                       ),
                     ),
                   ],

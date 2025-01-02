@@ -38,7 +38,7 @@ class OtpVerification extends StatelessWidget {
                       builder: (context) => const ResetPassword()))),
           const SizedBox(height: 8),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Didn\'t receive your code? '),
+            const Text('Didn\'t receive your code? '),
             ResendCodeWidget(onPressed: () {})
           ])
         ]),

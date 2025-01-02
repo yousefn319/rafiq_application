@@ -9,7 +9,7 @@ import 'package:rafiq/main.dart';
 
 Widget makeTile({GestureTapCallback? onTap, IconData? leading, Widget? title}) {
   return Padding(
-      padding: EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 12),
       child: ListTile(
           onTap: onTap,
           title: title,
@@ -23,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations locale = AppLocalizations.of(context)!;
-    ThemeData theme = Theme.of(context)!;
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Profile'),
@@ -49,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyProfile(),
+                          builder: (context) => const MyProfile(),
                         ));
                   },
                   title: const Text('ahmed elsayed hamoda',
@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: Color(0xff999999))),
                   trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                  leading: CircleAvatar(
+                  leading: const CircleAvatar(
                       backgroundImage:
                           AssetImage('images/courses/profile_picture.jpg'))),
               const SizedBox(height: 12),
@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditProfileScreen(),
+                          builder: (context) => const EditProfileScreen(),
                         ));
                   },
                   leading: Icons.person_outline_outlined,
@@ -138,7 +138,7 @@ void _showLanguagePicker(BuildContext context) {
           ...[
             for (final l in AppLocalizations.supportedLocales)
               ListTile(
-                  leading: Icon(Icons.language),
+                  leading: const Icon(Icons.language),
                   title: Text(LanguageCodes.fromLocale(l).nativeName,
                       style: Theme.of(context).textTheme.bodyMedium),
                   onTap: () => context.read<LocaleProvider>().setLocale(l))

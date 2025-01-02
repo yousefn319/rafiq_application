@@ -17,6 +17,7 @@ class ResendCodeWidget extends StatefulWidget {
 
 class _ResendCodeWidgetState extends State<ResendCodeWidget> with AutomaticKeepAliveClientMixin {
   late int _secondsRemaining;
+  @override
   bool wantKeepAlive = true;
 
   @override
@@ -29,7 +30,7 @@ class _ResendCodeWidgetState extends State<ResendCodeWidget> with AutomaticKeepA
     setState(() => _secondsRemaining = widget.timeout);
     Timer.periodic(
         const Duration(seconds: 1),
-        (timer) => _secondsRemaining > 0 && this.mounted
+        (timer) => _secondsRemaining > 0 && mounted
             ? setState(() => _secondsRemaining--)
             : timer.cancel());
   }

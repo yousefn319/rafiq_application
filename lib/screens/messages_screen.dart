@@ -19,7 +19,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
@@ -32,7 +32,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                     shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
-                        side: BorderSide(color: Colors.grey),
+                        side: const BorderSide(color: Colors.grey),
                       ),
                     ),
                     controller: controller,
@@ -40,7 +40,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                       EdgeInsets.symmetric(horizontal: 16.0),
                     ),
                     // Remove shadow by ensuring elevation is 0
-                    elevation: MaterialStatePropertyAll(0),
+                    elevation: const WidgetStatePropertyAll(0),
                     onTap: () {
                       controller.openView();
                     },
@@ -274,7 +274,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                                         left: 8, right: 16),
                                     child: ClipRRect(
                                         borderRadius: BorderRadius.circular(64),
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.group_outlined,
                                           size: 34,
                                           color: Color(0xff071952),

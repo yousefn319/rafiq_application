@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rafiq/screens/home_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:rafiq/widgets/intro.dart';
@@ -8,11 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 import 'package:devicelocale/devicelocale.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
-
 
 extension Let<T> on T? {
-  R? let<R>(R Function(T) fn) => this == null ? null : fn(this!);
+  R? let<R>(R Function(T) fn) => this == null ? null : fn(this as T);
 }
 
 void main() async {
@@ -37,7 +34,7 @@ void main() async {
   }
 
   var app = MultiProvider(
-      providers: [ChangeNotifierProvider(create: localeProvider!)],
+      providers: [ChangeNotifierProvider(create: localeProvider)],
       child: ConfigProvider(
           prefs: prefs,
           supportedRegions: supportedRegions,
@@ -51,7 +48,9 @@ abstract class LocaleProvider extends ChangeNotifier {
 }
 
 class SystemLocaleProvider extends LocaleProvider {
+  @override
   Locale? getLocale() => null;
+  @override
   void setLocale(Locale value) {
     Devicelocale.setLanguagePerApp(value);
   }
@@ -62,7 +61,9 @@ class AppLocaleProvider extends LocaleProvider {
   Locale? locale;
   SharedPreferencesWithCache prefs;
 
-  Locale? getLocale() => this.locale;
+  @override
+  Locale? getLocale() => locale;
+  @override
   void setLocale(Locale value) {
     if (value != locale) {
       locale = value;
@@ -108,10 +109,10 @@ class RafiqApp extends StatelessWidget {
 
     InputDecorationTheme decorationTheme = InputDecorationTheme(
         floatingLabelStyle: TextStyle(color: colorScheme.secondary),
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(8))),
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             borderSide: BorderSide(color: colorScheme.secondary)));
 
     ThemeData theme = ThemeData(
@@ -157,11 +158,11 @@ class RafiqApp extends StatelessWidget {
     ConfigProvider config = ConfigProvider.of(context);
     String? sessionToken = config.prefs.getString('sessionToken');
     if (sessionToken != null) {
-      return HomeScreen();
+      return const HomeScreen();
     }
     bool ignoreIntro = config.prefs.getBool('ignoreIntro') ?? false;
     if (ignoreIntro) {
-      return GetStarted();
+      return const GetStarted();
     }
     return defaultIntro();
   }

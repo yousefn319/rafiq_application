@@ -167,7 +167,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BookingScreen(),
+                                    builder: (context) => const BookingScreen(),
                                   ),
                                 );
                               },

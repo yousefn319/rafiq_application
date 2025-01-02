@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rafiq/screens/popular_courses.dart';
-import 'package:rafiq/widgets/search_bar.dart';
 
 class AcademicCategory extends StatefulWidget {
   const AcademicCategory({super.key});
@@ -34,7 +33,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                     shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
-                        side: BorderSide(color: Colors.grey),
+                        side: const BorderSide(color: Colors.grey),
                       ),
                     ),
                     controller: controller,
@@ -42,7 +41,7 @@ class _AcademicCategoryState extends State<AcademicCategory> {
                       EdgeInsets.symmetric(horizontal: 16.0),
                     ),
                     // Remove shadow by ensuring elevation is 0
-                    elevation: MaterialStatePropertyAll(0),
+                    elevation: const WidgetStatePropertyAll(0),
                     onTap: () {
                       controller.openView();
                     },

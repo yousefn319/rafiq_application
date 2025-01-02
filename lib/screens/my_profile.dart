@@ -12,36 +12,36 @@ class _MyProfileState extends State<MyProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Profile'),
+        title: const Text('My Profile'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
           child: Column(
             children: [
-              SizedBox(height: 16),
-              Center(
+              const SizedBox(height: 16),
+              const Center(
                 child: CircleAvatar(
                   backgroundImage:
                       AssetImage('images/courses/profile_picture.jpg'),
                   radius: 64,
                 ),
               ),
-              SizedBox(height: 8),
-              Text(
+              const SizedBox(height: 8),
+              const Text(
                 'Ahmed Elsayed',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              Text(
+              const Text(
                 'Student',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 14,
@@ -59,7 +59,7 @@ class _MyProfileState extends State<MyProfile> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      side: WidgetStatePropertyAll(
+                      side: const WidgetStatePropertyAll(
                         BorderSide(color: Colors.black),
                       ),
                     ),
@@ -77,7 +77,7 @@ class _MyProfileState extends State<MyProfile> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      side: WidgetStatePropertyAll(
+                      side: const WidgetStatePropertyAll(
                         BorderSide(color: Colors.black),
                       ),
                     ),
@@ -95,7 +95,7 @@ class _MyProfileState extends State<MyProfile> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      side: WidgetStatePropertyAll(
+                      side: const WidgetStatePropertyAll(
                         BorderSide(color: Colors.black),
                       ),
                     ),
@@ -113,15 +113,15 @@ class _MyProfileState extends State<MyProfile> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      side: WidgetStatePropertyAll(
+                      side: const WidgetStatePropertyAll(
                         BorderSide(color: Colors.black),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 24),
-              Row(
+              const SizedBox(height: 24),
+              const Row(
                 children: [
                   Text(
                     'About me',
@@ -132,8 +132,8 @@ class _MyProfileState extends State<MyProfile> {
                   ),
                 ],
               ),
-              SizedBox(height: 8),
-              IntrinsicHeight(
+              const SizedBox(height: 8),
+              const IntrinsicHeight(
                 child: Text(
                   """Hello! My name is Ahmed Hamoda, and I am a passionate engineering student in my final year, with a strong focus on software development. I enjoy building mobile applications using Flutter and Dart, and I'm currently working on an educational app to enhance learning experiences.""",
                   style: TextStyle(
@@ -144,7 +144,7 @@ class _MyProfileState extends State<MyProfile> {
                   textAlign: TextAlign.justify,
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
             ],
           ),
         ),
