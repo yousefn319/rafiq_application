@@ -116,6 +116,7 @@ flutter:
     - images/social_media/instagram_black.png
     - images/social_media/facebook_blk.png
     - images/social_media/behance_blk.png
+    - images/lodosplash.mp4
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

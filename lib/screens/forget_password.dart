@@ -45,9 +45,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   color: Color(0xff999999)),
             ),
             SizedBox(height: screenHeight * 0.032),
-            TypingField(
-              type: TextInputType.emailAddress,
-              label: 'Email',
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: const BorderSide(color: Color(0xffd0d0d0))),
+              ),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
@@ -55,8 +59,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const OtpVerification(title: 'Password OTP'),
+                        builder: (context) => const OtpVerification(
+                            title: Text(
+                          'Reset Password',
+                        )),
                       ));
                 },
                 child: const Text('Send Code'))
