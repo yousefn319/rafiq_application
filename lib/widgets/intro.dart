@@ -5,16 +5,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class IntroScreen extends StatelessWidget {
-  IntroScreen(
+  const IntroScreen(
       {super.key,
       required this.image,
       required this.title,
       required this.subtitle,
       required this.nextButton});
-  String image;
-  String title;
-  String subtitle;
-  String nextButton;
+  final String image;
+  final String title;
+  final String subtitle;
+  final String nextButton;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ Future<void> ignoreIntro() async {
 }
 
 class Intro extends StatefulWidget {
-  Intro({super.key, required this.infos, required this.child});
-  List<IntroScreen> infos;
+  const Intro({super.key, required this.infos, required this.child});
+  final List<IntroScreen> infos;
   final Widget child;
 
   @override

@@ -23,14 +23,14 @@ class ResetPasswordState extends State<ResetPassword> {
                     child: SvgPicture(AssetBytesLoader(
                         'images/logins/reset_password.svg.vec'))),
                 const SizedBox(height: 16),
-                DefaultPassword(
+                const DefaultPassword(
                     label: 'Password',
-                    autofillHints: const [AutofillHints.newPassword],
+                    autofillHints: [AutofillHints.newPassword],
                     textInputAction: TextInputAction.next),
                 const SizedBox(height: 16),
-                DefaultPassword(
+                const DefaultPassword(
                     label: 'Confirm Password',
-                    autofillHints: const [AutofillHints.newPassword]),
+                    autofillHints: [AutofillHints.newPassword]),
                 Row(children: [
                   Checkbox(
                       value: logout,

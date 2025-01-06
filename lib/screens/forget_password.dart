@@ -45,14 +45,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   color: Color(0xff999999)),
             ),
             SizedBox(height: screenHeight * 0.032),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: const BorderSide(color: Color(0xffd0d0d0))),
-              ),
-            ),
+            const TextField(decoration: InputDecoration(labelText: 'Email')),
             const SizedBox(height: 16),
             ElevatedButton(
                 onPressed: () {

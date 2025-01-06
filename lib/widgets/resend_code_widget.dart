@@ -12,7 +12,7 @@ class ResendCodeWidget extends StatefulWidget {
   final int timeout;
   final String label;
   @override
-  _ResendCodeWidgetState createState() => _ResendCodeWidgetState();
+  State<ResendCodeWidget> createState() => _ResendCodeWidgetState();
 }
 
 class _ResendCodeWidgetState extends State<ResendCodeWidget> with AutomaticKeepAliveClientMixin {

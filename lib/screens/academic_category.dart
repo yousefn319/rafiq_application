@@ -5,7 +5,7 @@ class AcademicCategory extends StatefulWidget {
   const AcademicCategory({super.key});
 
   @override
-  _AcademicCategoryState createState() => _AcademicCategoryState();
+  State<AcademicCategory> createState() => _AcademicCategoryState();
 }
 
 class _AcademicCategoryState extends State<AcademicCategory> {
@@ -14,7 +14,6 @@ class _AcademicCategoryState extends State<AcademicCategory> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Category'),

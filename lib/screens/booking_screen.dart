@@ -4,7 +4,7 @@ class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
 
   @override
-  _BookingScreenState createState() => _BookingScreenState();
+  State<BookingScreen> createState() => _BookingScreenState();
 }
 
 class _BookingScreenState extends State<BookingScreen> {

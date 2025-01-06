@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final PageController pageController = PageController(initialPage: 0);
   int _selectedIndex = 0;
 
-  // List of screens
   final List<Widget> _screens = [
     const HomePage(),
     const MyCourses(),
@@ -40,10 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
       pageController.jumpToPage(index);
     });
 
-
   @override
   Widget build(BuildContext context) {
-    bool showAppBar = _selectedIndex == 0;
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       body: PageView(controller: pageController, onPageChanged: pageChanged, children: _screens),

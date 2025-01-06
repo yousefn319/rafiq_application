@@ -14,14 +14,13 @@ class CourseDetails extends StatefulWidget {
 
 class _CourseDetailsState extends State<CourseDetails> {
   late VideoPlayerController _videoController;
-  bool _isPlaying = false;
   int selectedButton = 1;
   @override
   void initState() {
     super.initState();
     // Initialize the video player with a real video URL
     _videoController = VideoPlayerController.network(
-      'https://www.w3schools.com/html/mov_bbb.mp4', // Sample video URL
+      'www.w3schools.com/html/mov_bbb.mp4', // Sample video URL
     )
       ..addListener(() {
         setState(() {});
@@ -42,9 +41,6 @@ class _CourseDetailsState extends State<CourseDetails> {
     } else {
       _videoController.play();
     }
-    setState(() {
-      _isPlaying = _videoController.value.isPlaying;
-    });
   }
 
   @override

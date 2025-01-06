@@ -10,20 +10,20 @@ class GetStarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    FilledButton ButtonSignUp = FilledButton(
+    FilledButton buttonSignUp = FilledButton(
         style: FilledButton.styleFrom(
             backgroundColor: theme.colorScheme.onPrimary,
             foregroundColor: theme.colorScheme.primary),
         child: const Text('Sign up'),
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => const SignupForm())));
-    FilledButton ButtonSignIn = FilledButton(
+    FilledButton buttonSignIn = FilledButton(
         style: FilledButton.styleFrom(
             side: BorderSide(color: theme.colorScheme.onPrimary)),
         child: const Text('Sign in'),
         onPressed: () => Navigator.push(context,
             MaterialPageRoute(builder: (context) => const LoginForm())));
-    FilledButton ButtonGoogle = FilledButton.icon(
+    FilledButton buttonGoogle = FilledButton.icon(
         style: FilledButton.styleFrom(
             side: BorderSide(color: theme.colorScheme.onPrimary)),
         label: const Text('Continue with Google'),
@@ -52,11 +52,11 @@ class GetStarted extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(children: [
                   const SizedBox(height: 32),
-                  ButtonSignUp,
+                  buttonSignUp,
                   const SizedBox(height: 16),
-                  ButtonSignIn,
+                  buttonSignIn,
                   const SizedBox(height: 16),
-                  ButtonGoogle,
+                  buttonGoogle,
                 ])),
           ),
         ],

@@ -3,7 +3,7 @@ import 'package:rafiq/main.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
 
 class PasswordField extends StatefulWidget {
-  PasswordField(
+  const PasswordField(
       {super.key,
       required this.label,
       this.cursorColor,
@@ -12,13 +12,13 @@ class PasswordField extends StatefulWidget {
       this.validator,
       this.autofillHints,
       this.textInputAction});
-  String label;
-  Color? cursorColor;
-  TextEditingController? controller;
-  Widget? prefixIcon;
-  FormFieldValidator<String>? validator;
-  List<String>? autofillHints;
-  TextInputAction? textInputAction;
+  final String label;
+  final Color? cursorColor;
+  final TextEditingController? controller;
+  final Widget? prefixIcon;
+  final FormFieldValidator<String>? validator;
+  final List<String>? autofillHints;
+  final TextInputAction? textInputAction;
   @override
   State<PasswordField> createState() => PasswordFieldState();
 }
@@ -54,16 +54,16 @@ class PasswordFieldState extends State<PasswordField> {
 }
 
 class DefaultPassword extends StatelessWidget {
-  DefaultPassword(
+  const DefaultPassword(
       {super.key,
       required this.label,
       this.controller,
       this.autofillHints = const [AutofillHints.password],
       this.textInputAction = TextInputAction.done});
-  String label;
-  TextEditingController? controller;
-  List<String> autofillHints;
-  TextInputAction textInputAction;
+  final String label;
+  final TextEditingController? controller;
+  final List<String> autofillHints;
+  final TextInputAction textInputAction;
   @override
   Widget build(BuildContext context) {
     return PasswordField(
@@ -77,16 +77,15 @@ class DefaultPassword extends StatelessWidget {
   }
 }
 
-//typedef PhonenumberController = ValueNotifier<Tuple2<CountryWithPhoneCode, String>?>;
 typedef PhonenumberController = ValueNotifier<Map<String, dynamic>?>;
 
 class PhonenumberTextField extends StatefulWidget {
-  PhonenumberTextField(
+  const PhonenumberTextField(
       {super.key,
       required this.controller,
       this.textInputAction = TextInputAction.next});
-  PhonenumberController controller;
-  TextInputAction textInputAction;
+  final PhonenumberController controller;
+  final TextInputAction textInputAction;
   @override
   State<PhonenumberTextField> createState() => PhonenumberTextFieldState();
 }
@@ -101,7 +100,7 @@ String myFormatNumber(String text, CountryWithPhoneCode country) {
 class PhonenumberTextFieldState extends State<PhonenumberTextField> {
   late FocusNode _node;
   late CountryWithPhoneCode currentRegion;
-  TextEditingController controller = TextEditingController();
+  final TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
@@ -175,16 +174,16 @@ class PhonenumberTextFieldState extends State<PhonenumberTextField> {
 }
 
 class LabelButton extends StatelessWidget {
-  LabelButton(
+  const LabelButton(
       {super.key,
       required this.label,
       required this.onPressed,
       this.focusNode,
       this.style});
-  String label;
-  TextStyle? style;
-  FocusNode? focusNode;
-  void Function()? onPressed;
+  final String label;
+  final TextStyle? style;
+  final FocusNode? focusNode;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);

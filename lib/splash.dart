@@ -1,41 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/screens/get_started.dart';
 import 'package:video_player/video_player.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({super.key, required this.next});
+  final Widget next;
 
   @override
-  SplashScreenState createState() => SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   late VideoPlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/image/lodosplash.mp4')
+    _controller = VideoPlayerController.asset('images/lodosplash.mp4')
       ..initialize().then((_) {
-        // تشغيل الفيديو عند التحميل
         _controller.play();
-        // الانتقال إلى الشاشة الرئيسية بعد انتهاء الفيديو
         _controller.addListener(() {
-          if (_controller.value.position == _controller.value.duration) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const GetStarted()),
-            );
+          if (_controller.value.isCompleted) {
+            _navigateToNextScreen();
           }
         });
         setState(() {});
-      });
+      }).catchError((_) => _navigateToNextScreen());
   }
 
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void _navigateToNextScreen() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => widget.next),
+    );
   }
 
   @override

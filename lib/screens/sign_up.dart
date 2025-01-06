@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/screens/otp_verification.dart';
 import 'package:rafiq/screens/sign_in.dart';
 import 'package:rafiq/widgets/typing_field.dart';
-import 'package:rafiq/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -27,7 +26,6 @@ class _SignupFormState extends State<SignupForm> {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    ConfigProvider config = ConfigProvider.of(context);
     return Scaffold(
         appBar: AppBar(centerTitle: true, title: const Text("Sign up")),
         body: Form(
@@ -76,14 +74,14 @@ class _SignupFormState extends State<SignupForm> {
                         },
                       )))),
               const SizedBox(height: 16),
-              DefaultPassword(
+              const DefaultPassword(
                   label: 'Password',
-                  autofillHints: const [AutofillHints.newPassword],
+                  autofillHints: [AutofillHints.newPassword],
                   textInputAction: TextInputAction.next),
               const SizedBox(height: 16),
-              DefaultPassword(
+              const DefaultPassword(
                   label: 'Confirm Password',
-                  autofillHints: const [AutofillHints.newPassword]),
+                  autofillHints: [AutofillHints.newPassword]),
               const SizedBox(height: 16),
               Row(children: [
                 Checkbox(

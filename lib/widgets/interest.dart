@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 List<int> colorindex = [];
 
 class Interest extends StatefulWidget {
-  Interest({super.key, required this.interest, required this.color});
+  const Interest({super.key, required this.interest, required this.color});
 
-  String interest;
-  Color color;
+  final String interest;
+  final Color color;
 
   @override
   State<Interest> createState() => _InterestState();

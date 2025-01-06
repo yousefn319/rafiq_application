@@ -66,7 +66,7 @@ class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({super.key});
 
   @override
-  _LanguageSelectionScreenState createState() =>
+  State<LanguageSelectionScreen> createState() =>
       _LanguageSelectionScreenState();
 }
 

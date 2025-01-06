@@ -11,7 +11,7 @@ class ReadMoreDescription extends StatefulWidget {
   });
 
   @override
-  _ReadMoreDescriptionState createState() => _ReadMoreDescriptionState();
+  State<ReadMoreDescription> createState() => _ReadMoreDescriptionState();
 }
 
 class _ReadMoreDescriptionState extends State<ReadMoreDescription> {
