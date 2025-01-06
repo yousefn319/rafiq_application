@@ -48,7 +48,6 @@ void main() async {
   runApp(app);
 }
 
-
 class RafiqApp extends StatelessWidget {
   const RafiqApp({super.key});
 

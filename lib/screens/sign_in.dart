@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
+import 'package:email_validator/email_validator.dart';
+
 import 'package:rafiq/screens/sign_up.dart';
 import 'package:rafiq/screens/home_screen.dart';
-import 'package:rafiq/screens/otp_verification.dart';
-import 'package:email_validator/email_validator.dart';
+import 'package:rafiq/screens/forget_password.dart';
+
 import 'package:rafiq/widgets/password_field.dart';
 import 'package:rafiq/widgets/label_button.dart';
-import 'package:vector_graphics/vector_graphics.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -52,25 +54,23 @@ class LoginFormState extends State<LoginForm> {
                 DefaultPassword(
                     controller: passwordController, label: 'Password'),
                 Align(
-                  alignment: AlignmentDirectional.bottomEnd,
+                    alignment: AlignmentDirectional.bottomEnd,
                     child: TextButton(
                       child: Text('Forgot Password?', style: theme.labelMedium),
                       onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const OtpVerification(
-                                  title: Text("Reset password"),
-                                  image: SvgPicture(AssetBytesLoader(
-                                      "images/logins/palm_recognition.svg.vec"))))),
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgetPassword()),
+                      ),
                     )),
                 FilledButton(
                     child: const Text('Sign in'),
                     onPressed: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ));
                       if (_formKey.currentState!.validate()) {
                         print('Email: ${emailController.text}');
                         print('Password: ${passwordController.text}');
@@ -91,4 +91,3 @@ class LoginFormState extends State<LoginForm> {
             )));
   }
 }
-

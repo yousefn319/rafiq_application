@@ -49,14 +49,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      body: PageView(controller: _pageController, onPageChanged: _pageChanged, children: _screens),
-      extendBody: true,
+      body: PageView(
+          controller: _pageController,
+          onPageChanged: _pageChanged,
+          children: _screens),
+      // extendBody: true,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RafiqChatbotScreen())),
-        shape: const CircleBorder(),
-        backgroundColor: colorScheme.primary,
-        child: const SvgPicture(AssetBytesLoader('images/buttons/robot.svg.vec'))
-      ),
+          onPressed: () => Navigator.push(context,
+              MaterialPageRoute(builder: (_) => const RafiqChatbotScreen())),
+          shape: const CircleBorder(),
+          backgroundColor: colorScheme.primary,
+          child: const SvgPicture(
+              AssetBytesLoader('images/buttons/robot.svg.vec'))),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked, // Center FAB
       bottomNavigationBar: BottomAppBar(

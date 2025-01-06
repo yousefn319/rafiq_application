@@ -51,160 +51,157 @@ class _PopularCoursesState extends State<PopularCourses> {
           )
         ],
       ),
-      body: Padding(
+      body: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemCount: 8,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                const SizedBox(
-                  height: 8,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CourseDetails(
-                            type: 'Course Details',
-                          ),
-                        ));
-                  },
-                  child: Container(
-                    // height: 166,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          blurRadius: 6,
-                          offset: Offset(0, 3),
+        physics: const BouncingScrollPhysics(),
+        itemCount: 8,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              const SizedBox(
+                height: 8,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CourseDetails(
+                          type: 'Course Details',
                         ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(16),
-                              bottomLeft: Radius.circular(16)),
-                          child: Image.asset(
-                            'images/courses/flutter.png',
-                            width: screenWidth * 0.35,
+                      ));
+                },
+                child: Container(
+                  // height: 166,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 6,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(16),
+                            bottomLeft: Radius.circular(16)),
+                        child: Image.asset(
+                          'images/courses/flutter.png',
+                          width: screenWidth * 0.35,
+                          height: screenHeight * 0.2,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: screenWidth * 0.02,
+                          ),
+                          child: SizedBox(
+                            width: screenWidth * 0.4,
                             height: screenHeight * 0.2,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: screenWidth * 0.02,
-                            ),
-                            child: SizedBox(
-                              width: screenWidth * 0.4,
-                              height: screenHeight * 0.2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                        style: IconButton.styleFrom(),
+                                        onPressed: () {},
+                                        icon:
+                                            const Icon(Icons.favorite_outline)),
+                                  ],
+                                ),
+                                const Text(
+                                  'UI UX Diploma',
+                                  style: TextStyle(
+                                      color: Color(0xff202244),
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                  maxLines: 1, // Prevent overflow
+                                  softWrap: false, // Ensure text wraps
+                                  overflow:
+                                      TextOverflow.ellipsis, // softWrap: true,
+                                ),
+                                // SizedBox(height: 8),
+                                SizedBox(
+                                  width: 188,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      IconButton(
-                                          style: IconButton.styleFrom(),
-                                          onPressed: () {},
-                                          icon: const Icon(
-                                              Icons.favorite_outline)),
+                                      const Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Icon(
+                                            Icons.star,
+                                            color: Color(0xffFCCB40),
+                                          ),
+                                          Text(
+                                            '4.4',
+                                            style: TextStyle(
+                                                color: Color(0xff202244),
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        width: screenWidth * 0.01,
+                                      ),
+                                      const Text(
+                                        '|',
+                                        style: TextStyle(
+                                            color: Color(0xff202244),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      SizedBox(
+                                        width: screenWidth * 0.01,
+                                      ),
+                                      const Text(
+                                        '30 Hrs 06 Mins',
+                                        style: TextStyle(
+                                            color: Color(0xff202244),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w600,
+                                            overflow: TextOverflow.ellipsis),
+                                        maxLines: 1, // Prevent overflow
+                                        softWrap: false,
+                                      ),
                                     ],
                                   ),
-                                  const Text(
-                                    'UI UX Diploma',
-                                    style: TextStyle(
-                                        color: Color(0xff202244),
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500),
-                                    maxLines: 1, // Prevent overflow
-                                    softWrap: false, // Ensure text wraps
-                                    overflow: TextOverflow
-                                        .ellipsis, // softWrap: true,
-                                  ),
-                                  // SizedBox(height: 8),
-                                  SizedBox(
-                                    width: 188,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Icon(
-                                              Icons.star,
-                                              color: Color(0xffFCCB40),
-                                            ),
-                                            Text(
-                                              '4.4',
-                                              style: TextStyle(
-                                                  color: Color(0xff202244),
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: screenWidth * 0.01,
-                                        ),
-                                        const Text(
-                                          '|',
-                                          style: TextStyle(
-                                              color: Color(0xff202244),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w900),
-                                        ),
-                                        SizedBox(
-                                          width: screenWidth * 0.01,
-                                        ),
-                                        const Text(
-                                          '30 Hrs 06 Mins',
-                                          style: TextStyle(
-                                              color: Color(0xff202244),
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w600,
-                                              overflow: TextOverflow.ellipsis),
-                                          maxLines: 1, // Prevent overflow
-                                          softWrap: false,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const Text(
-                                    '1000 EGP',
-                                    style: TextStyle(
-                                        color: Color(0xff088395),
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
+                                ),
+                                const Text(
+                                  '1000 EGP',
+                                  style: TextStyle(
+                                      color: Color(0xff088395),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
                             ),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                const SizedBox(
-                  height: 8,
-                )
-              ],
-            );
-          },
-        ),
+              ),
+              const SizedBox(
+                height: 8,
+              )
+            ],
+          );
+        },
       ),
     );
   }

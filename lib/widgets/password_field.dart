@@ -23,9 +23,7 @@ class PasswordField extends StatefulWidget {
 
 class _PasswordFieldState extends State<PasswordField> {
   bool _obscure = true;
-  void _toggle() => setState(() {
-        _obscure = !_obscure;
-      });
+  void _toggle() => setState(() => _obscure = !_obscure);
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +58,8 @@ class DefaultPassword extends StatelessWidget {
       this.textInputAction = TextInputAction.done});
   final String label;
   final TextEditingController? controller;
-  final List<String> autofillHints;
-  final TextInputAction textInputAction;
+  final List<String>? autofillHints;
+  final TextInputAction? textInputAction;
   @override
   Widget build(BuildContext context) {
     return PasswordField(

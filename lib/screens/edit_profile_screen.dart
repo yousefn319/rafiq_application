@@ -60,7 +60,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       onPressed: () {
                         // Implement functionality to change avatar
                       },
-                      icon: const Icon(Icons.camera_alt, color: Color(0xff071952)),
+                      icon: const Icon(Icons.camera_alt,
+                          color: Color(0xff071952)),
                     ),
                   ),
                 ],

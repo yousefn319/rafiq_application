@@ -15,7 +15,8 @@ class ResendCodeWidget extends StatefulWidget {
   State<ResendCodeWidget> createState() => _ResendCodeWidgetState();
 }
 
-class _ResendCodeWidgetState extends State<ResendCodeWidget> with AutomaticKeepAliveClientMixin {
+class _ResendCodeWidgetState extends State<ResendCodeWidget>
+    with AutomaticKeepAliveClientMixin {
   late int _secondsRemaining;
   @override
   bool wantKeepAlive = true;

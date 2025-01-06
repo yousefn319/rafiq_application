@@ -49,13 +49,11 @@ class GetStarted extends StatelessWidget {
                     topRight: Radius.circular(16))),
             height: 250,
             child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(children: [
-                  const SizedBox(height: 32),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 32),
+                child: Column(spacing: 16, children: [
                   buttonSignUp,
-                  const SizedBox(height: 16),
                   buttonSignIn,
-                  const SizedBox(height: 16),
                   buttonGoogle,
                 ])),
           ),

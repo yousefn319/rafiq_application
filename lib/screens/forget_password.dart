@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rafiq/screens/otp_verification.dart';
 import 'package:vector_graphics/vector_graphics.dart';
@@ -13,54 +14,46 @@ class ForgetPassword extends StatefulWidget {
 class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.sizeOf(context).height;
-    final screenWidth = MediaQuery.sizeOf(context).width;
+    ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Forget Password'),
+        title: const Text('Forgot Password'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Center(
-              child: SvgPicture(
-                const AssetBytesLoader("images/logins/forgotpassword.svg.vec"),
-                height: screenHeight * 0.5,
-                width: screenWidth * 0.5,
-                fit: BoxFit.cover,
-              ),
+        padding: const EdgeInsets.all(24),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Center(
+            child: SvgPicture(
+              const AssetBytesLoader("images/logins/forgotpassword.svg.vec"),
+              fit: BoxFit.cover,
             ),
-            const Text(
-              'Check Your email',
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22),
-            ),
-            const Text(
-              'We’ll send code to your email',
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                  color: Color(0xff999999)),
-            ),
-            SizedBox(height: screenHeight * 0.032),
-            const TextField(decoration: InputDecoration(labelText: 'Email')),
-            const SizedBox(height: 16),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const OtpVerification(
-                            title: Text(
-                          'Reset Password',
-                        )),
-                      ));
-                },
-                child: const Text('Send Code'))
-          ]),
-        ),
+          ),
+          Text('Enter your email address', style: theme.textTheme.titleMedium),
+          const Text('We’ll send the code to your email'),
+          const SizedBox(height: 16),
+          TextFormField(
+              textInputAction: TextInputAction.done,
+              autofillHints: const [AutofillHints.email],
+              validator: (value) =>
+                  EmailValidator.validate(value ?? "") ? null : "Invalid email",
+              keyboardType: TextInputType.emailAddress,
+              decoration: const InputDecoration(
+                  labelText: 'Email', prefixIcon: Icon(Icons.email))),
+          const SizedBox(height: 16),
+          FilledButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OtpVerification(
+                          title: Text('Verify'),
+                          image: SvgPicture(AssetBytesLoader(
+                              "images/logins/palm_recognition.svg.vec"))),
+                    ));
+              },
+              child: const Text('Send Code'))
+        ]),
       ),
     );
   }

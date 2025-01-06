@@ -198,7 +198,8 @@ class _BookingScreenState extends State<BookingScreen> {
                             child: ListTile(
                               shape: ContinuousRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
-                                side: const BorderSide(color: Color(0xff071952)),
+                                side:
+                                    const BorderSide(color: Color(0xff071952)),
                               ),
                               leading: Image.asset(
                                 method['image'],
