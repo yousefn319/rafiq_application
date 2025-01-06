@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:rafiq/screens/my_profile.dart';
 import 'package:language_code/language_code.dart';
 import 'package:rafiq/main.dart';
+import 'package:rafiq/localization.dart';
 
 Widget makeTile({GestureTapCallback? onTap, IconData? leading, Widget? title}) {
   return Padding(
@@ -141,7 +142,7 @@ void _showLanguagePicker(BuildContext context) {
                   leading: const Icon(Icons.language),
                   title: Text(LanguageCodes.fromLocale(l).nativeName,
                       style: Theme.of(context).textTheme.bodyMedium),
-                  onTap: () => context.read<LocaleProvider>().setLocale(l))
+                  onTap: () => context.read<LocaleProvider>().locale = l)
           ]
         ]),
       );

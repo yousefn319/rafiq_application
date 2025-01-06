@@ -9,6 +9,7 @@ import 'package:rafiq/screens/home_screen.dart';
 import 'package:rafiq/screens/get_started.dart';
 import 'package:rafiq/widgets/intro.dart';
 import 'package:rafiq/splash.dart';
+import 'package:rafiq/localization.dart';
 
 extension Let<T> on T? {
   R? let<R>(R Function(T) fn) => this == null ? null : fn(this as T);
@@ -28,12 +29,13 @@ void main() async {
   bool languagePerApp = await Devicelocale.isLanguagePerAppSettingSupported;
   Locale? currentLocale = await Devicelocale.currentAsLocale;
 
-  LocaleProvider Function(BuildContext)? localeProvider;
-  if (languagePerApp) {
-    localeProvider = (_) => SystemLocaleProvider();
-  } else {
-    localeProvider = (_) => AppLocaleProvider(
-        prefs.getString('locale').let(Locale.new) ?? currentLocale, prefs);
+  LocaleProvider? localeProvider(BuildContext context) {
+    if (languagePerApp) {
+      return SystemLocaleProvider();
+    } else {
+      return AppLocaleProvider(
+          prefs.getString('locale').let(Locale.new) ?? currentLocale, prefs);
+    }
   }
 
   var app = MultiProvider(
@@ -43,37 +45,6 @@ void main() async {
           supportedRegions: supportedRegions,
           child: const RafiqApp()));
   runApp(app);
-}
-
-abstract class LocaleProvider extends ChangeNotifier {
-  Locale? getLocale();
-  void setLocale(Locale value);
-}
-
-class SystemLocaleProvider extends LocaleProvider {
-  @override
-  Locale? getLocale() => null;
-  @override
-  void setLocale(Locale value) {
-    Devicelocale.setLanguagePerApp(value);
-  }
-}
-
-class AppLocaleProvider extends LocaleProvider {
-  AppLocaleProvider(this.locale, this.prefs);
-  Locale? locale;
-  SharedPreferencesWithCache prefs;
-
-  @override
-  Locale? getLocale() => locale;
-  @override
-  void setLocale(Locale value) {
-    if (value != locale) {
-      locale = value;
-      prefs.setString('locale', value.languageCode);
-      notifyListeners();
-    }
-  }
 }
 
 class ConfigProvider extends InheritedWidget {
@@ -172,11 +143,9 @@ class RafiqApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Locale? locale = context.watch<LocaleProvider>().getLocale();
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
         home: SplashScreen(next: startScreen(context)),
-        locale: locale,
+        locale: context.watch<LocaleProvider>().locale,
         theme: theme(),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales);
