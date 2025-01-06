@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rafiq/screens/home_screen.dart';
 import 'package:rafiq/screens/get_started.dart';
 import 'package:rafiq/widgets/intro.dart';
-import 'package:rafiq/splash.dart';
+import 'package:rafiq/screens/splash.dart';
 import 'package:rafiq/localization.dart';
 
 extension Let<T> on T? {
