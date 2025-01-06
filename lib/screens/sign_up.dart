@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rafiq/screens/otp_verification.dart';
 import 'package:rafiq/screens/sign_in.dart';
-import 'package:rafiq/widgets/typing_field.dart';
+import 'package:rafiq/widgets/phonenumber_field.dart';
+import 'package:rafiq/widgets/password_field.dart';
+import 'package:rafiq/widgets/label_button.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -19,8 +21,8 @@ class _SignupFormState extends State<SignupForm> {
 
   @override
   void dispose() {
-    super.dispose();
     phoneController.dispose();
+    super.dispose();
   }
 
   @override

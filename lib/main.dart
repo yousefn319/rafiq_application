@@ -10,6 +10,7 @@ import 'package:rafiq/screens/get_started.dart';
 import 'package:rafiq/widgets/intro.dart';
 import 'package:rafiq/screens/splash.dart';
 import 'package:rafiq/localization.dart';
+import 'package:rafiq/config.dart';
 
 extension Let<T> on T? {
   R? let<R>(R Function(T) fn) => this == null ? null : fn(this as T);
@@ -47,30 +48,6 @@ void main() async {
   runApp(app);
 }
 
-class ConfigProvider extends InheritedWidget {
-  const ConfigProvider({
-    super.key,
-    required this.prefs,
-    required this.supportedRegions,
-    required super.child,
-  });
-
-  final SharedPreferencesWithCache prefs;
-  final Map<String, CountryWithPhoneCode> supportedRegions;
-
-  static ConfigProvider? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ConfigProvider>();
-  }
-
-  static ConfigProvider of(BuildContext context) {
-    final ConfigProvider? result = maybeOf(context);
-    assert(result != null, 'No ConfigProvider found in context');
-    return result!;
-  }
-
-  @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
-}
 
 class RafiqApp extends StatelessWidget {
   const RafiqApp({super.key});

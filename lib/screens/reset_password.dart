@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vector_graphics/vector_graphics.dart';
-import 'package:rafiq/widgets/typing_field.dart';
+import 'package:rafiq/widgets/password_field.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});
   @override
-  State<ResetPassword> createState() => ResetPasswordState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class ResetPasswordState extends State<ResetPassword> {
+class _ResetPasswordState extends State<ResetPassword> {
   bool logout = false;
   @override
   Widget build(BuildContext context) {

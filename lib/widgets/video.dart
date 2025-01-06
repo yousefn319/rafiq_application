@@ -18,7 +18,7 @@ class _VideoState extends State<Video> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(widget.videoUrl)
+    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl))
       ..initialize().then((_) {
         setState(() {}); // Refresh UI once the video is initialized
       });

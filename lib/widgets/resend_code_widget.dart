@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:rafiq/widgets/typing_field.dart';
+import 'package:rafiq/widgets/label_button.dart';
 import 'package:flutter/material.dart';
 
 class ResendCodeWidget extends StatefulWidget {

@@ -22,28 +22,34 @@ Widget navDest(String label, IconData icon, ColorScheme colorScheme) {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final PageController pageController = PageController(initialPage: 0);
+  late PageController _pageController;
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   final List<Widget> _screens = [
     const HomePage(),
     const MyCourses(),
     const FavoritesScreen(),
     const ProfileScreen(),
-    //const RafiqChatbotScreen(),
   ];
 
-  void pageChanged(int index) => setState(() => _selectedIndex = index);
-  void _onItemTapped(int index) => setState(() {
-      _selectedIndex = index;
-      pageController.jumpToPage(index);
-    });
-
+  void _pageChanged(int index) => setState(() => _selectedIndex = index);
   @override
   Widget build(BuildContext context) {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      body: PageView(controller: pageController, onPageChanged: pageChanged, children: _screens),
+      body: PageView(controller: _pageController, onPageChanged: _pageChanged, children: _screens),
       extendBody: true,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RafiqChatbotScreen())),
@@ -59,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
         notchMargin: 5.0, // Space around the FAB notch
         child: NavigationBar(
             selectedIndex: _selectedIndex,
-            onDestinationSelected: _onItemTapped,
+            onDestinationSelected: _pageController.jumpToPage,
             indicatorColor: Colors.white,
             destinations: [
               navDest('Home', Icons.home_outlined, colorScheme),

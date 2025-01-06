@@ -1,81 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq/main.dart';
+import 'package:rafiq/config.dart';
+import 'package:rafiq/widgets/label_button.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
-
-class PasswordField extends StatefulWidget {
-  const PasswordField(
-      {super.key,
-      required this.label,
-      this.cursorColor,
-      this.controller,
-      this.prefixIcon,
-      this.validator,
-      this.autofillHints,
-      this.textInputAction});
-  final String label;
-  final Color? cursorColor;
-  final TextEditingController? controller;
-  final Widget? prefixIcon;
-  final FormFieldValidator<String>? validator;
-  final List<String>? autofillHints;
-  final TextInputAction? textInputAction;
-  @override
-  State<PasswordField> createState() => PasswordFieldState();
-}
-
-class PasswordFieldState extends State<PasswordField> {
-  bool _obscure = true;
-  void toggle() => setState(() {
-        _obscure = !_obscure;
-      });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-        obscureText: _obscure,
-        controller: widget.controller,
-        validator: widget.validator,
-        keyboardType: TextInputType.visiblePassword,
-        autofillHints: widget.autofillHints,
-        textInputAction: widget.textInputAction,
-        maxLength: 72,
-        decoration: InputDecoration(
-          counterText: '',
-          labelText: widget.label,
-          prefixIcon: widget.prefixIcon,
-          suffixIcon: ExcludeFocus(
-              child: IconButton(
-                  icon: _obscure
-                      ? const Icon(Icons.visibility_off)
-                      : const Icon(Icons.visibility),
-                  onPressed: toggle)),
-        ));
-  }
-}
-
-class DefaultPassword extends StatelessWidget {
-  const DefaultPassword(
-      {super.key,
-      required this.label,
-      this.controller,
-      this.autofillHints = const [AutofillHints.password],
-      this.textInputAction = TextInputAction.done});
-  final String label;
-  final TextEditingController? controller;
-  final List<String> autofillHints;
-  final TextInputAction textInputAction;
-  @override
-  Widget build(BuildContext context) {
-    return PasswordField(
-        autofillHints: autofillHints,
-        prefixIcon: const Icon(Icons.lock),
-        textInputAction: textInputAction,
-        label: label,
-        validator: (value) =>
-            (value?.length ?? 0) < 8 ? "Password too short" : null,
-        controller: controller);
-  }
-}
 
 typedef PhonenumberController = ValueNotifier<Map<String, dynamic>?>;
 
@@ -87,7 +13,7 @@ class PhonenumberTextField extends StatefulWidget {
   final PhonenumberController controller;
   final TextInputAction textInputAction;
   @override
-  State<PhonenumberTextField> createState() => PhonenumberTextFieldState();
+  State<PhonenumberTextField> createState() => _PhonenumberTextFieldState();
 }
 
 String myFormatNumber(String text, CountryWithPhoneCode country) {
@@ -97,7 +23,7 @@ String myFormatNumber(String text, CountryWithPhoneCode country) {
       inputContainsCountryCode: false);
 }
 
-class PhonenumberTextFieldState extends State<PhonenumberTextField> {
+class _PhonenumberTextFieldState extends State<PhonenumberTextField> {
   late FocusNode _node;
   late CountryWithPhoneCode currentRegion;
   final TextEditingController controller = TextEditingController();
@@ -173,26 +99,3 @@ class PhonenumberTextFieldState extends State<PhonenumberTextField> {
   }
 }
 
-class LabelButton extends StatelessWidget {
-  const LabelButton(
-      {super.key,
-      required this.label,
-      required this.onPressed,
-      this.focusNode,
-      this.style});
-  final String label;
-  final TextStyle? style;
-  final FocusNode? focusNode;
-  final void Function()? onPressed;
-  @override
-  Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
-    TextStyle? style = onPressed == null
-        ? this.style?.copyWith(color: theme.disabledColor)
-        : this.style;
-    return InkResponse(
-        focusNode: focusNode,
-        onTap: onPressed,
-        child: Text(label, style: style));
-  }
-}

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:rafiq/widgets/typing_field.dart';
+import 'package:rafiq/widgets/label_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -43,22 +43,22 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
-  late PageController _pageViewController;
+  late PageController _pageController;
   int _currentPageIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _pageViewController = PageController();
+    _pageController = PageController();
   }
 
   @override
   void dispose() {
-    _pageViewController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
-  void _handlePageViewChanged(int currentPageIndex) =>
+  void _pageChanged(int currentPageIndex) =>
       setState(() => _currentPageIndex = currentPageIndex);
 
   Function() _goNext(BuildContext context) => () => Navigator.pushReplacement(
@@ -73,8 +73,8 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
               Expanded(
                   child: Stack(children: [
                 PageView(
-                    controller: _pageViewController,
-                    onPageChanged: _handlePageViewChanged,
+                    controller: _pageController,
+                    onPageChanged: _pageChanged,
                     children: widget.infos),
                 SafeArea(
                     child: Align(
@@ -91,7 +91,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                       _goNext(context)();
                       return;
                     }
-                    _pageViewController.animateToPage(
+                    _pageController.animateToPage(
                       next,
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,

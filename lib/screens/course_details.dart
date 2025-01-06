@@ -19,8 +19,8 @@ class _CourseDetailsState extends State<CourseDetails> {
   void initState() {
     super.initState();
     // Initialize the video player with a real video URL
-    _videoController = VideoPlayerController.network(
-      'www.w3schools.com/html/mov_bbb.mp4', // Sample video URL
+    _videoController = VideoPlayerController.networkUrl(
+      Uri.parse('www.w3schools.com/html/mov_bbb.mp4'), // Sample video URL
     )
       ..addListener(() {
         setState(() {});
