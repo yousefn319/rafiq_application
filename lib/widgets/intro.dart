@@ -29,7 +29,7 @@ class IntroScreen extends StatelessWidget {
 }
 
 Future<void> ignoreIntro() async {
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final prefs = await SharedPreferencesAsync();
   await prefs.setBool('ignoreIntro', true);
 }
 
@@ -87,7 +87,7 @@ class _IntroState extends State<Intro> with SingleTickerProviderStateMixin {
                   onPressed: () {
                     int next = _currentPageIndex + 1;
                     if (next == widget.infos.length) {
-                      //ignoreIntro();
+                      ignoreIntro();
                       _goNext(context)();
                       return;
                     }

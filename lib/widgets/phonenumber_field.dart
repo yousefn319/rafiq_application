@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rafiq/config.dart';
 import 'package:rafiq/widgets/label_button.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart';
+import 'package:provider/provider.dart';
 
 typedef PhonenumberController = ValueNotifier<Map<String, dynamic>?>;
 
@@ -37,7 +38,7 @@ class _PhonenumberTextFieldState extends State<PhonenumberTextField> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    currentRegion = ConfigProvider.of(context).supportedRegions['EG']!;
+    currentRegion = Provider.of<Map<String, CountryWithPhoneCode>>(context)['EG']!;
   }
 
   @override
@@ -58,7 +59,7 @@ class _PhonenumberTextFieldState extends State<PhonenumberTextField> {
 
   @override
   Widget build(BuildContext context) {
-    ConfigProvider config = ConfigProvider.of(context);
+    final supportedRegions = Provider.of<Map<String, CountryWithPhoneCode>>(context);
     return TextFormField(
         inputFormatters: [
           LibPhonenumberTextFormatter(
@@ -72,7 +73,7 @@ class _PhonenumberTextFieldState extends State<PhonenumberTextField> {
         ],
         controller: controller,
         validator: (val) =>
-            widget.controller.value == null ? "Invalid phonenumber" : null,
+            widget.controller.value == null ? "Invalid phone number" : null,
         keyboardType: TextInputType.phone,
         textInputAction: widget.textInputAction,
         autofillHints: const [AutofillHints.telephoneNumberLocal],
@@ -85,7 +86,7 @@ class _PhonenumberTextFieldState extends State<PhonenumberTextField> {
               child: MenuAnchor(
                   builder: builder,
                   childFocusNode: _node,
-                  menuChildren: config.supportedRegions.entries
+                  menuChildren: supportedRegions.entries
                       .map((entry) => MenuItemButton(
                           onPressed: () => setState(() {
                                 controller.text = myFormatNumber(

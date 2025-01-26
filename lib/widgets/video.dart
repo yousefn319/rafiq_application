@@ -46,8 +46,8 @@ class _VideoState extends State<Video> {
     });
 
     if (_isFullScreen) {
-      Navigator.of(context)
-          .push(
+      Navigator.push(
+        context,
         MaterialPageRoute(
           builder: (context) => FullScreenVideoPlayer(
             controller: _controller,

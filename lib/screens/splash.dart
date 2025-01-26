@@ -20,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
         _controller.play();
         _controller.addListener(() {
           if (_controller.value.isCompleted) {
+            // widget.next();
             _navigateToNextScreen();
           }
         });

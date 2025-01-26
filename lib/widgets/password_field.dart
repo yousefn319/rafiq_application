@@ -55,11 +55,14 @@ class DefaultPassword extends StatelessWidget {
       required this.label,
       this.controller,
       this.autofillHints = const [AutofillHints.password],
-      this.textInputAction = TextInputAction.done});
+      this.textInputAction = TextInputAction.done,
+      this.validator});
+
   final String label;
   final TextEditingController? controller;
   final List<String>? autofillHints;
   final TextInputAction? textInputAction;
+  final FormFieldValidator<String>? validator;
   @override
   Widget build(BuildContext context) {
     return PasswordField(
@@ -67,8 +70,8 @@ class DefaultPassword extends StatelessWidget {
         prefixIcon: const Icon(Icons.lock),
         textInputAction: textInputAction,
         label: label,
-        validator: (value) =>
-            (value?.length ?? 0) < 8 ? "Password too short" : null,
+        validator: validator ?? ((value) =>
+            (value?.length ?? 0) < 8 ? "Password too short" : null),
         controller: controller);
   }
 }
